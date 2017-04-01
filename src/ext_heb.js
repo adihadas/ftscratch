@@ -69,7 +69,7 @@ var Lang = {
 		},
 		
 		en: {
-			onOpenClose: 'If %m.openCloseSensors %m.inputs %m.openClose',
+			onOpenClose: 'אם %m.openCloseSensors %m.inputs %m.openClose',
 			onCounter: 'If counter %m.counters %m.compares %n',
 			onInput: 'If value of %m.inputSensors %m.inputs %m.compares %n',
 			isClosed: 'Is %m.openCloseSensors %m.inputs closed?',
@@ -80,7 +80,7 @@ var Lang = {
 			doSetLamp: 'Set lamp %m.outputs to %n',
 			doSetOutput: 'Set output %m.outputs to %n',
 			doResetCounter: 'Reset counter %m.counters',
-			doSetMotorSpeed: '%m.motors מנוע בעבור %n מהירות קבע',
+			doSetMotorSpeed: '%m.motors למנוע %n מהירות',
 			doSetMotorSpeedDir: 'Set motor %m.motors to %n %m.motorDirections',
 			doSetMotorDir: 'Set motor %m.motors to %m.motorDirections',
 			doSetMotorSpeedDirDist: 'Move motor %m.motors by %n steps with %n %m.motorDirections',
@@ -97,8 +97,8 @@ var Lang = {
 			sens_lightBarrier: 'Light barrier',
 			sens_button: 'Switch',
 			sens_reed: 'Reed contact',
-			openclose_opens: 'opens',
-			openclose_closes: 'closes',
+			openclose_opens: 'נפתח',
+			openclose_closes: 'נסגר',
 			mode_a5k: 'Analogue resistance',
 			mode_d5k: 'Digital resistance',
 			mode_a10v: 'Analogue voltage',
