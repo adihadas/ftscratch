@@ -70,9 +70,9 @@ var Lang = {
 		
 		en: {
 
-			onOpenClose: '%m.openClose %m.inputs %m.openCloseSensors אם',
-			onCounter: '%n %m.compares %m.counters אם מונה ',
-			onInput: '%n %m.compares %m.inputs %m.inputSensors אם ערכו של',
+			onOpenClose: '%m.openClose %m.openCloseSensors %m.inputs אם',
+			onCounter: '%n %m.compares %m.counters מונה אם',
+			onInput: '%n %m.compares %m.inputs %m.inputSensors של ערכו אם',
 			isClosed: '?סגור %m.inputs %m.openCloseSensors האם',
 			getCounter: '%m.counters קרא ערכו של מונה',
 			getSensor: '%m.inputSensors %m.inputs קרא ערכו של',
@@ -760,7 +760,7 @@ var IO = {
 	
 	
 	/** counter 'Cx' >,<,= value */
-	ext.onCounter = function(counterName, operator, value) {
+	ext.onCounter = function(value, operator, counterName) {
 		
 		var idx = ext._counterNameToIdx(counterName);
 		if (operator === '>') {
