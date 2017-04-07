@@ -77,7 +77,7 @@ var Lang = {
 			getSensor: 'קרא ערכו של %m.inputSensors %m.inputs',
 			doPlaySound: 'נגן צליל %n',
 			doPlaySoundWait: 'נגן צליל עד לסיומו %n',
-			doSetLamp: 'קבע ערך הנורה %m.outputs ל %n',
+			doSetLamp: 'קבע ערך נורה %m.outputs ל %n',
 			doSetOutput: 'הגדר פלט %m.outputs ל %n',
 			doResetCounter: 'אפס מונה %m.counters',
 			doSetMotorSpeed: 'הגדר מנוע %m.motors למהירות %n',
@@ -786,7 +786,7 @@ var IO = {
 			// events
 			['h', Lang.get('onOpenClose'),					'onOpenClose',					Lang.getSensor('button'), 'I1', Lang.getOpenClose('opens')],
 			['h', Lang.get('onCounter'),					'onCounter',					'C1', '>', 0],
-			['h', Lang.get('onInput'),						'onInput',						Lang.getSensor('color'), 'I1', '>', 0],
+			['h', Lang.get('onInput'),						'onInput',						Lang.getSensor('color'), '0', '>', I1],
 				
 			// gets
 			['r', Lang.get('getCounter'),					'getCounter',					'C1'],
