@@ -80,7 +80,7 @@ var Lang = {
 			doSetLamp: 'קבע ערך נורה %m.outputs ל %n',
 			doSetOutput: 'הגדר פלט %m.outputs ל %n',
 			doResetCounter: 'אפס מונה %m.counters',
-			doSetMotorSpeed: '%m.motors למנוע %n קבע מהירות',
+			doSetMotorSpeed: 'הגדר מנוע %m.motors למהירות %n',
 			doSetMotorSpeedDir: 'הגדר מנוע %m.motors ל %n %m.motorDirections',
 			doSetMotorDir: 'הגדר מנוע %m.motors ל %m.motorDirections',
 			doSetMotorSpeedDirDist: 'הזז מנוע %m.motors ב %n צעדים ועם %n %m.motorDirections',
