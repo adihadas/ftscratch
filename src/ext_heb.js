@@ -71,8 +71,8 @@ var Lang = {
 		en: {
 			onOpenClose: 'אם %m.openCloseSensors %m.inputs %m.openClose',
 			onCounter: 'אם המונה %m.counters %m.compares %n',
-			onInput: 'אם ערך של %m.inputSensors %m.inputs %m.compares %n',
-			isClosed: 'האם %m.openCloseSensors %m.inputs סגור?',
+			onInput: 'אם ערך של %m.inputSensors %n %m.compares %m.inputs',
+			isClosed: 'האם %m.openCloseSensors %m.inputs סגור',
 			getCounter: 'קרא ערך מונה %m.counters',
 			getSensor: 'קרא ערכו של %m.inputSensors %m.inputs',
 			doPlaySound: 'נגן צליל %n',
