@@ -716,7 +716,7 @@ var IO = {
 	
 	
 	/** sensor X on input 'Ix' >,<,= value */
-	ext.onInput = function(sensorType, inputName, operator, value) {
+	ext.onInput = function(sensorType, value, operator, inputName) {
 				
 		// ensure correct working mode
 		ext._adjustInputModeAnalog(inputName, sensorType);
