@@ -74,140 +74,140 @@
 			<div class="blockDesc">
 				<div class="image"><img src="onOpenClose.png"/></div>
 				<div class="text">
-					This incident is activated as soon as a switch / reed contact / light barrier is pressed / closed on universal input I1-I8 (or released / opened).
+					אירוע זה יופעל כאשר חיישן מגע/מגנטי/אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8 נלחץ/משוחרר או נסגר/נפתח
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="onCounter.png"/></div>
 				<div class="text">
-					This incident is activated as soon as the number of pulses on counter input C1-C4 is higher / lower than an entered value or a value resulting in combination with blocks from the category "Operators".
+					אירוע זה יופעל כאשר מספר הפולסים בקלט המונה C1-C4 יהיה גבוה/נמוך יותר מאשר הערך המוזן
 				</div>
 			</div>
 		
 			<div class="blockDesc">
 				<div class="image"><img src="onInput.png"/></div>
 				<div class="text">
-					This incident is activated as soon as the value of the colour sensor / ultrasound distance sensor / NTC resistance / photo resistance on universal input I1-I8 is higher / lower than an entered value or a value resulting in combination with blocks from the category "Operators".
+					אירוע זה יופעל כאשר הערך של חיישן הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8 גבוה/נמוך יותר מאשר הערך המוזן
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="getCounter.png"/></div>
 				<div class="text">
-					This block can be used to request the current value of counter input C1-C4 and for calculations or conditions in combination with blocks from the categories "Control", "Operators" and "Incidents". The return value is a 16-Bit value. 
+					אחזר את ערכו של קלט המונה המחובר בכניסה C1-C4 בבקר
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="getSensor.png"/></div>
 				<div class="text">
-					This block can be used to request the current value of the colour sensor / ultrasound distance sensor / NTC resistance / photo resistance on universal input I1-I8 and for calculations or conditions in combination with blocks from the categories "Control", "Operators" and "Incidents". The return value is a 16-Bit value. 
+					בפקודה זו ניתן להשתמש לשם איחזור ערכו של חיישן הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8. יוחזר ערך של 16 ביט 
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="isClosed.png"/></div>
 				<div class="text">
-					This block is used to request whether a switch / reed contact / light barrier on universal input I1-I8 is pressed / closed (or released / opened). It can be used for calculations or conditions in combination with blocks from the categories "Control", "Operators" and "Incidents". The return is a Boolean value. 
+					בפקודה זו ניתן להשתמש לשם בדיקה האם חיישן מגע/מגנטיות/מחסום אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8 לחוץ/סגור כרגע. יוחזר ערך בוליאני
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doPlaySound.png"/></div>
 				<div class="text">
-					Playing the installed sound files 1 - 29 can be started using this block. 
+					התחל לנגן את קובץ הסאונד 1-29 השמור בבקר
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doPlaySoundWait.png"/></div>
 				<div class="text">
-					Playing the installed sound files 1 - 29 can be started using this block. It waits until playing finishes before performing further commands. 
+					התחל לנגן את קובץ הסאונד 1-29 השמור בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetLamp.png"/></div>
 				<div class="text">
-					Output O1 - O8 can be set, e.g. for a lamp, to a value of 0...8 using this block. Values lower than 0 or higher than 8 are cut off at 0 or 8. 
+					הגדר ערך לנורה המחוברת ליציאת פלט O1-O8 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetOutput.png"/></div>
 				<div class="text">
-					Output O1 - O8 can be set to a value of 0...8 using this block. Values lower than 0 or higher than 8 are cut off at 0 or 8. 
+					הגדר ערך ליציאת פלט O1-O8 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doResetCounter.png"/></div>
 				<div class="text">
-					The current value of counter input C1 - C4 can be reset using this block. 
+					אפס את ערכו של קלט המונה המחובר בכניסה C1-C4 בבקר
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetMotorSpeed.png"/></div>
 				<div class="text">
-					Output M1 - M4 can be set, e.g. for a motor, to a value of 0...8 using this block. Values lower than 0 or higher than 8 are cut off at 0 or 8. 
+					עדכן את ערך המהירות של המנוע המחובר ליציאת פלט M1-M4 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב
 				</div>
 			</div>
 		
 			<div class="blockDesc">
 				<div class="image"><img src="doSetMotorSpeedDir.png"/></div>
 				<div class="text">
-					Output M1 - M4 can be set to forward (backward), e.g. for a motor, with a value of 0...8 using this block. Values lower than 0 or higher than 8 are cut off at 0 or 8.
+					עדכן את ערכי הכיוון והמהירות של המנוע המחובר ליציאת פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא יקוצץ לגבול הקרוב
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetMotorDir.png"/></div>
 				<div class="text">
-					Output M1 - M4 can be changed, e.g. for a motor, to forward (backward) using this block. 
+					עדכן את ערך הכיוון של המנוע המחובר ליציאת פלט M1-M4
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetMotorSpeedDirDist.png"/></div>
 				<div class="text">
-					Output M1 - M4 can be set, e.g. for a motor, for a set number of steps and a speed of 1...8, to forward / backward using this block. Output M1 - M4 can only be started again after running the "Stop motor" block. 
+					עדכן את ערכי הכיוון והמהירות של המנוע המחובר ליציאת פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך היחידה לעדכן את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות.
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetMotorSpeedDirSync.png"/></div>
 				<div class="text">
-					Two of the outputs M1 - M4 can be set, e.g. for a motor, synchronised with a speed of 1...8, to forward / backward using this block. Outputs M1 - M4 can only be individually started again after running the "Stop motor" block.  
+					עדכן את ערכי הכיוון והמהירות של 2 מנועים המחוברים ליציאות פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא יקוצץ לגבול הקרוב
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doSetMotorSpeedDirDistSync.png"/></div>
 				<div class="text">
-					This block is a combination of the two previous blocks. 
+					עדכן את ערכי הכיוון והמהירות של 2 מנועים המחוברים ליציאות פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך היחידה לעדכן את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות.
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doStopMotor.png"/></div>
 				<div class="text">
-					A motor on output M1 - M4 can be stopped using this block. 
+					עצור מנוע המחובר ליציאת פלט M1-M4
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="doConfigureInput.png"/></div>
 				<div class="text">
-					Universal input I1 - I8 can be changed from digital to analog using this block. 
+					עדכן את סוג כניסת הפלט I1-I8 לאנלוגית או דיגיטלית
 				</div>
 			</div>
 			
 			<div class="blockDesc">
 				<div class="image"><img src="reset.png"/></div>
 				<div class="text">
-					This block resets the ROBO TXT. All outputs are set to 0. 
+					אפס את הבקר - כל היציאות יעודכנו בערך 0
 				</div>
 			</div>
 		

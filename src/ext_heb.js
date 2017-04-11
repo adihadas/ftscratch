@@ -844,7 +844,7 @@ var IO = {
 	
 		},
 		
-		url: 'http://www.fischertechnik.de/home/info/Computing/ROBOTICS-TXT-Controller.aspx/usetemplate-1_column_no_pano/',
+		url: 'http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-142/256_read-309/usetemplate-2_column_pano/',
 		
 	};
 	
@@ -857,7 +857,7 @@ var IO = {
 	// start the update loop: periodically fetch sensor values from the device
 	setInterval(ext.doUpdate, 60);
 	
-	// ensure the ROBO LT is reset
+	// ensure the ROBO TXT is reset
 	ext.reset();
 	
 })({});
