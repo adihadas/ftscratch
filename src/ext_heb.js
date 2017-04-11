@@ -83,9 +83,9 @@ var Lang = {
 			doSetMotorSpeed: 'הגדר מנוע %m.motors למהירות %n',
 			doSetMotorSpeedDir: 'הגדר מנוע %m.motors ל %n %m.motorDirections',
 			doSetMotorDir: 'הגדר מנוע %m.motors ל %m.motorDirections',
-			doSetMotorSpeedDirDist: 'הזז מנוע %m.motors ב %n צעדים ועם %n %m.motorDirections',
-			doSetMotorSpeedDirSync: 'הזז מנוע %m.motors וגם  %m.motors עם %n %m.motorDirections',
-			doSetMotorSpeedDirDistSync: 'הזז מנוע %m.motors וגם %m.motors ב %n צעדים עם %n %m.motorDirections',
+			doSetMotorSpeedDirDist: 'הזז מנוע %m.motors ב %n צעדים במהירות %n %m.motorDirections',
+			doSetMotorSpeedDirSync: 'הזז מנוע %m.motors וגם  %m.motors במהירות %n %m.motorDirections',
+			doSetMotorSpeedDirDistSync: 'הזז מנוע %m.motors וגם %m.motors ב %n צעדים במהירות %n %m.motorDirections',
 			doStopMotor: 'עצור מנוע %m.motors',
 			doConfigureInput: 'הגדר קלט %m.inputs ל %m.inputModes',
 			dir_forward: 'קדימה',
@@ -103,7 +103,7 @@ var Lang = {
 			mode_d5k: 'התנגדות דיגיטלית',
 			mode_a10v: 'מתח אנלוגי',
 			mode_d10v: 'מתח דיגיטלי',
-			mode_ultrasonic: 'אולטרהסאונד',
+			mode_ultrasonic: 'אולטרהסוניק',
 			reset: 'איפוס'
 		},
 		
