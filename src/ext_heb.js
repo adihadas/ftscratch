@@ -10,8 +10,8 @@ function getLightBarrierState(state) {
 
 var Lang = {
 	
-	// browser's language code
-	langCode: (navigator.language || navigator.userLanguage).substr(0,2),
+	// browser's language code - no need as this is the hebrew version
+	//langCode: (navigator.language || navigator.userLanguage).substr(0,2),
 	
 	trans: {
 		// English translation
@@ -94,10 +94,12 @@ var Lang = {
 		}		
 	},	
 	
-	// get a translated version for the given constant
+	// get the hebrew translated version
 	get: function(what) {
-		var codes = this.trans[this.langCode];		// requested language
-		if (!codes) { codes = this.trans['en']; }	// fallback
+		//var codes = this.trans[this.langCode];		// requested language
+		//if (!codes) { 
+		codes = this.trans['he']; 
+		//}	// fallback
 		return codes[what];
 	},
 	
