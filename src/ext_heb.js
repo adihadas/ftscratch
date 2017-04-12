@@ -675,7 +675,7 @@ var IO = {
 	
 		},
 		
-		url: 'http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-142/256_read-309/usetemplate-2_column_pano/',
+		url: 'https://adihadas.github.io/ftscratch/',
 		
 	};
 	
