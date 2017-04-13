@@ -1,0 +1,217 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<title>FTScratchTXT</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../style.css" type="text/css" media="screen" />	
+	</head>
+	
+	<body dir="rtl">
+		
+		<h1><span style="color:#ed1c24;">FT</span><span style="color:#0071bc;">ScratchTXT</span></h1>
+		
+		<section>
+			<h1>על בקר ה-TXT של פישרטקניק</h1>
+			<div class="content">
+				<img src="http://www.fischertechnik.de/resourceimage.aspx?raid=6851" class="product"/>
+				<br>
+				<b>FTScratchTXT</b> מאפשר שימוש בבקר
+				<a href="http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-21/39_read-309/usetemplate-2_column_pano/" target="_blank">ROBOTICS TXT Controller </a>
+				במחשבי PC ובלפטופים באמצעות סביבת הפיתוח
+				<a href="http://scratchx.org/" target="_blank">Scratchx</a>.
+				הקלה ללימוד, ומאפשר לאפליקציות המפותחות בה לשלוט במנועים ובמנורות באמצעות מגוון חיישנים.
+				<br/>
+			</div>
+		</section>
+		
+		<section>
+		
+			<h1>כיצד להתקין את הסביבה</h1>
+			
+			<div class="content">
+				<h2>חלונות</h2>
+				<ol>
+					<li>
+						חבר את הבקר למחשב
+						<small>(USB/WiFi/Bluetooth)</small>
+						<br> <br>
+					</li>
+					<li>
+						הורד את מנהל ההתקן המתאים
+						<a href="https://support.microsoft.com/he-il/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system" target="_blank">לסוג מערכת החלונות</a> 
+						(
+						<a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5616">32 ביט</a>
+						/
+						<a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5617">64 ביט</a>
+						) והתקן אותו על גבי המחשב
+						<br> <br>
+						<iframe src="//videoplayercdn.osi.office.net/hub/?csid=ux-cms-en-us-msoffice&uuid=f4bdcc15-c0f6-4f72-9bc4-ab031ec43612&AutoPlayVideo=false&height=180&width=320" frameborder= "0" marginwidth= "0" marginheight= "0" scrolling= "no" allowfullscreen= "" style="width: 320px; height: 180px;"></iframe>
+						<br>
+						וידאו: כיצד לבדוק מה סוג מערכת החלונות המותקנת במחשב
+						<br> <br>
+					</li>
+					<li>
+						<a href="http://ftscratch.github.io/ROBO-TXT/bin/FTScratchTXT.exe">הורד</a>
+						את התוכנה FTScratchTXT המקשרת בין סביבת הסקראץ' והרובוט והפעל אותה בכל פעם שברצונך לעבוד בסקראץ' מול הרובוט'
+						<br> <br>
+					</li>
+					<li>
+						<a href="http://scratchx.org/?url=http://adihadas.github.io/ftscratch/src/ext_heb.js#scratch">פתח</a>
+						את סביבת הסקראץ' עם תוספת הפקודות של פישרטקניק
+						<small>(Firefox or Chrome)</small>
+						<br> <br>
+					</li>
+					<li>התחל לתכנת!<br></li>
+				</ol>
+			</div>	
+		</section>
+		
+		<section id="blockDescs">
+			<h1>Block description</h1>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="onOpenClose.png"/></div>
+				<div class="text">
+					אירוע זה יופעל כאשר חיישן מגע/מגנטי/אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8 נלחץ/משוחרר או נסגר/נפתח
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="onCounter.png"/></div>
+				<div class="text">
+					אירוע זה יופעל כאשר מספר הפולסים בקלט המונה C1-C4 יהיה גבוה/נמוך יותר מאשר הערך המוזן
+				</div>
+			</div>
+		
+			<div class="blockDesc">
+				<div class="image"><img src="onInput.png"/></div>
+				<div class="text">
+					אירוע זה יופעל כאשר הערך של חיישן הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8 גבוה/נמוך יותר מאשר הערך המוזן
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="getCounter.png"/></div>
+				<div class="text">
+					אחזר את ערכו של קלט המונה המחובר בכניסה C1-C4 בבקר
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="getSensor.png"/></div>
+				<div class="text">
+					בפקודה זו ניתן להשתמש לשם איחזור ערכו של חיישן הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8. יוחזר ערך של 16 ביט 
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="isClosed.png"/></div>
+				<div class="text">
+					בפקודה זו ניתן להשתמש לשם בדיקה האם חיישן מגע/מגנטיות/מחסום אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8 לחוץ/סגור כרגע. יוחזר ערך בוליאני
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doPlaySound.png"/></div>
+				<div class="text">
+					התחל לנגן את קובץ הסאונד 1-29 השמור בבקר
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doPlaySoundWait.png"/></div>
+				<div class="text">
+					התחל לנגן את קובץ הסאונד 1-29 השמור בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetLamp.png"/></div>
+				<div class="text">
+					הגדר ערך לנורה המחוברת ליציאת פלט O1-O8 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetOutput.png"/></div>
+				<div class="text">
+					הגדר ערך ליציאת פלט O1-O8 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doResetCounter.png"/></div>
+				<div class="text">
+					אפס את ערכו של קלט המונה המחובר בכניסה C1-C4 בבקר
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetMotorSpeed.png"/></div>
+				<div class="text">
+					עדכן את ערך המהירות של המנוע המחובר ליציאת פלט M1-M4 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב
+				</div>
+			</div>
+		
+			<div class="blockDesc">
+				<div class="image"><img src="doSetMotorSpeedDir.png"/></div>
+				<div class="text">
+					עדכן את ערכי הכיוון והמהירות של המנוע המחובר ליציאת פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא יקוצץ לגבול הקרוב
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetMotorDir.png"/></div>
+				<div class="text">
+					עדכן את ערך הכיוון של המנוע המחובר ליציאת פלט M1-M4
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetMotorSpeedDirDist.png"/></div>
+				<div class="text">
+					עדכן את ערכי הכיוון והמהירות של המנוע המחובר ליציאת פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך היחידה לעדכן את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות.
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetMotorSpeedDirSync.png"/></div>
+				<div class="text">
+					עדכן את ערכי הכיוון והמהירות של 2 מנועים המחוברים ליציאות פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא יקוצץ לגבול הקרוב
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doSetMotorSpeedDirDistSync.png"/></div>
+				<div class="text">
+					עדכן את ערכי הכיוון והמהירות של 2 מנועים המחוברים ליציאות פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך היחידה לעדכן את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות.
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doStopMotor.png"/></div>
+				<div class="text">
+					עצור מנוע המחובר ליציאת פלט M1-M4
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="doConfigureInput.png"/></div>
+				<div class="text">
+					עדכן את סוג כניסת הפלט I1-I8 לאנלוגית או דיגיטלית
+				</div>
+			</div>
+			
+			<div class="blockDesc">
+				<div class="image"><img src="reset.png"/></div>
+				<div class="text">
+					אפס את הבקר - כל היציאות יעודכנו בערך 0
+				</div>
+			</div>
+		
+		</section>
+		
+	</body>
+
+</html>
