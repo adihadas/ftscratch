@@ -1,4 +1,4 @@
-
+﻿
 function getButtonState(state) {
 	return Lang.get(state);
 }
@@ -787,9 +787,9 @@ var IO = {
 		// check both directions
 		var idx = ext._inputNameToIdx(inputName);
 		if (direction === Lang.getOpenClose('opens')) {
-			return ext.input.oldValues.inputs[idx] === 1 && ext.input.curValues.inputs[idx] === 0;	// TODO light barrier?
-		} else if (direction === Lang.getOpenClose('closes')) {
 			return ext.input.oldValues.inputs[idx] === 0 && ext.input.curValues.inputs[idx] === 1;	// TODO light barrier?
+		} else if (direction === Lang.getOpenClose('closes')) {
+			return ext.input.oldValues.inputs[idx] === 1 && ext.input.curValues.inputs[idx] === 0;	// TODO light barrier?
 		} else {
 			alert('invalid open/close mode');
 		}
