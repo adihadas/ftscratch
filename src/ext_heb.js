@@ -78,7 +78,7 @@ var Lang = {
 			dir_backwards: 'אחורה',
 			sens_color: 'חיישן צבע',
 			sens_distance: 'חיישן מרחק',
-			sens_ntc: 'חיישן חום',
+			sens_ntc: 'NTC חיישן',
 			sens_photo: 'חיישן אור',
 			sens_lightBarrier: 'מחסום אור',
 			sens_button: 'מתג',
@@ -579,9 +579,9 @@ var IO = {
 		// check both directions
 		var idx = ext._inputNameToIdx(inputName);
 		if (direction === Lang.getOpenClose('opens')) {
-			return ext.input.oldValues.inputs[idx] === 0 && ext.input.curValues.inputs[idx] === 1;	// TODO light barrier?
-		} else if (direction === Lang.getOpenClose('closes')) {
 			return ext.input.oldValues.inputs[idx] === 1 && ext.input.curValues.inputs[idx] === 0;	// TODO light barrier?
+		} else if (direction === Lang.getOpenClose('closes')) {
+			return ext.input.oldValues.inputs[idx] === 0 && ext.input.curValues.inputs[idx] === 1;	// TODO light barrier?
 		} else {
 			alert('invalid open/close mode');
 		}

@@ -1,184 +1,232 @@
-<!DOCTYPE html>
-<html><head><title>FTScratchTXT</title>
+??<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
-<meta charset="utf-8">
-<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 </head>
-
-
-	<body style="direction: rtl;">
-<h1 style="font-family: Verdana; text-align: center;"><span style="color: rgb(237, 28, 36);">FT</span><span style="color: rgb(0, 113, 188);">ScratchTXT</span></h1>
-<section style="font-family: Verdana;"> </section>
-<h1 style="font-family: Verdana;">על בקר ה-TXT של פישרטקניק</h1>
-<div style="font-family: Verdana;" class="content">
-<div style="text-align: center;"> <img src="http://www.fischertechnik.de/resourceimage.aspx?raid=6851" class="product"> <br>
+<body dir="rtl">
+<div id="header">
+	<div id="menu" class="container">
+		<ul>
+			<li><a href="#" title=""><img src="images/logo.jpg"></a></li>
+			<li><a href="#controller" title="">על הבקר</a></li>
+			<li><a href="#setup" title="">הוראות התקנה</a></li>
+			<li><a href="#commands" title="">פקודות הרובוט</a></li>
+			<li class="current_page_item"><a href="#contactus" title="">צרו קשר</a></li>
+			
+		</ul>
+	</div>
 </div>
-<b>FTScratchTXT</b> מאפשר שימוש בבקר <a href="http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-21/39_read-309/usetemplate-2_column_pano/" target="_blank">ROBOTICS TXT Controller</a> במחשבי
-PC ובלפטופים באמצעות סביבת הפיתוח <a href="http://scratchx.org/" target="_blank">ScratchX</a>. הקלה ללימוד, ומאפשר
-לאפליקציות המפותחות בה לשלוט במנועים ובמנורות באמצעות מגוון חיישנים. <br>
+<div id="logo" class="container">
+<h1 style="color: rgb(0, 113, 188);" "font-family: Verdana; text-align: center;"><span style="color: rgb(237, 28, 36);">FT</span>ScratchTXT</h1>
+<div id="page" class="container">
+	<div id="content">
+		<div class="title">
+			<h2 id="controller">ברוכים הבאים מתכנתי Scratchx!</h2>
+			<span class="byline" >תכנתו את בקר TXT של פישרטקניק בעברית באמצעות ההרחבה</span>
+		</div>
+		<p align="justify"><b>FTScratchTXT</b> הינה הרחבה מאפשרת שימוש בבקר <a href="http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-21/39_read-309/usetemplate-2_column_pano/" target="_blank">ROBOTICS TXT Controller</a> של פישרטקניק במחשבי
+PC ובלפטופים באמצעות סביבת הפיתוח <a href="http://scratchx.org/" target="_blank">ScratchX</a> הקלה ללימוד, ומאפשרת
+לתכניות המפותחות בה לשלוט במנועים, במנורות ובמגוון חיישנים באמצעות הבקר. <br></p>
+	</div>
+	<div id="sidebar"><a href="http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-21/39_read-309/usetemplate-2_column_pano/" target="_blank"><img src="images/522429_TXT_Controller_Packshot-400.jpg" alt="" /></a></div>
 </div>
-<section style="font-family: Verdana;"> </section>
-<h1 style="font-family: Verdana;">כיצד להתקין את הסביבה</h1>
-<div style="font-family: Verdana;" class="content">
-<ol>
-<li> חבר את הבקר למחשב <small>(USB/WiFi/Bluetooth)</small>
-<br>
-<br>
-</li>
-<li> הורד את מנהל ההתקן המתאים <a href="https://support.microsoft.com/he-il/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system" target="_blank">לסוג מערכת החלונות</a> ( <a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5616">32
-ביט</a> / <a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5617">64
-ביט</a> ) והתקן אותו על גבי המחשב 
-<br> <br>
-<iframe src="//videoplayercdn.osi.office.net/hub/?csid=ux-cms-en-us-msoffice&amp;uuid=f4bdcc15-c0f6-4f72-9bc4-ab031ec43612&amp;AutoPlayVideo=false&amp;height=180&amp;width=320" marginwidth="0" marginheight="0" allowfullscreen="" style="width: 320px; height: 180px;" frameborder="0" scrolling="no"></iframe>
-<br> <br>
-וידאו: כיצד לבדוק מה סוג מערכת החלונות המותקנת במחשב <br>
-<br>
-</li>
-<li> <a href="http://ftscratch.github.io/ROBO-TXT/bin/FTScratchTXT.exe">הורד
-את התוכנה FTScratchTXT</a> המקשרת בין סביבת הסקראץ' והרובוט והפעל
-אותה בכל
-פעם שברצונך לעבוד בסקראץ' מול הרובוט<br>
-<br>
-</li>
-<li> <a target="_blank" href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch">גלוש
-אל סביבת הסקראץ'</a>
-<small>(Firefox or Chrome)</small> הכוללת את הפקודות
-בעבור הבקר (ראה תיאור מפורט בהמשך העמוד למטה)
-<br>
-<br>
-</li>
-<li>התחל לתכנת!<br>
-</li>
-</ol>
 </div>
-<section style="font-family: Verdana;" id="blockDescs">
-</section>
-<h1 style="font-family: Verdana;">תיאור הפקודות</h1>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="onOpenClose.png"></div>
+<div id="featured-wrapper">
+	<div id="featured" class="container">
+		<div class="major">
+			<h2 id="setup">הוראות התקנה</h2>
+			<span class="byline">מי שהתקין <b><a href="http://www.fischertechnik.de/en/Home/info/computing/ROBO-Pro-Software.aspx/usetemplate-1_column_no_pano/" target="_blank">RoboPro</a></b> במחשב יכול לדלג על שלב הורדת התקן הבקר</span>
+		</div>
+		<div class="column1">
+		<a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" class="image image-centered img"><img src="images/scratchx-logo.png"  alt="" /></a>
+			<div class="title">
+			<br></br>
+				<h2>4) גלשו אל ההרחבה והתחילו לתכנת!</h2>
+				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" target="_blank">גלשו אל הרחבת ה-Scratchx עם פקודות בשפה העברית</a></b></span>
+				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_ar.js#scratch" target="_blank">גלשו אל הרחבת ה-Scratchx עם פקודות בשפה הערבית</a></b></span>
+				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext.js#scratch" target="_blank">גלשו אל הרחבת ה-Scratchx עם פקודות בשפה האנגלית</a></b></span>
+				</div>
+		</div>
+		<div class="column2">
+			<a href="http://ftscratch.github.io/ROBO-TXT/bin/FTScratchTXT.exe" class="image image-centered img"><img src="images/ftscratch.png"  alt="" /></a>
+				<div class="title">
+				<h2>3) הורידו את <span style="color: rgb(0, 113, 188);" "font-family: Verdana; text-align: center;"><span style="color: rgb(237, 28, 36);">FT</span>ScratchTXT</span></h2>
+				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" target="_blank">הורידו את תוכנת FTSCRATCHTXT המקשרת בין ההרחבה אל הרובוט</a></b></span>
+				<span class="byline">הפעילו את התוכנה! יש להריץ את התוכנה כאשר רוצים להתחבר לרובוט</font></span>
+				</div>
+		</div>
+		<div class="column3">
+			 <a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5616" class="image image-centered img"><img src="images/downloadarrowSMALL.png"  alt="" /></a>
+				<div class="title">
+				<h2>2) הורידו והתקינו את מנהל ההתקן לבקר</h2>
+				<span class="byline"><b><a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5616" target="_blank">להורדת גרסת 32 ביט בעבור חלונות 7 ומעלה</a></b></span>
+				<span class="byline"><b><a href="http://www.fischertechnik.de/ResourceImage.aspx?raid=5617" target="_blank">להורדת גרסת 64 ביט בעבור חלונות 7 ומעלה</a></b></span>
+				<span class="byline"><b><a href="https://videoplayercdn.osi.office.net/hub/?csid=ux-cms-en-us-msoffice&amp;uuid=f4bdcc15-c0f6-4f72-9bc4-ab031ec43612&amp;AutoPlayVideo=false" target="_blank">להסבר כיצד לקבוע את גרסת החלונות שלכם</font></a></b></span>				
+			</div>
+		</div>
+		<div class="column4">
+			 <a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" class="image image-centered img"><img src="images/TXTSMALL.jpg"  alt="" /></a>
+				<div class="title">
+				<h2>1) חברו את בקר ה-TXT למחשב (USB/BT/WiFi)</h2>
+				</div>
+		</div>
+	</div>
+</div>
+<div id="portfolio-wrapper">
+	<div id="portfolio" class="container">
+		<div id="commands" class="major">
+			<h2>פקודות הרובוט</h2>
+			<span class="byline">תיאור פקודות ההרחבה לרובוט</span>
+		</div>
+		<div  class="blockDesc">
+<div class="image"><img src="images/onOpenClose.png"></div>
 <div class="text"> אירוע זה יופעל כאשר חיישן מגע/מגנטי/אור
 המחובר בבקר לכניסת קלט אוניברסלי I1-I8 נלחץ/משוחרר או נסגר/נפתח<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="onCounter.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/onCounter.png"></div>
 <div class="text"> אירוע זה יופעל כאשר מספר הפולסים בקלט
 המונה C1-C4 יהיה גבוה/נמוך יותר מאשר הערך המוזן<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="onInput.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/onInput.png"></div>
 <div class="text"> אירוע זה יופעל כאשר הערך של חיישן
 הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט אוניברסלי
 I1-I8 גבוה/נמוך יותר מאשר הערך המוזן<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="getCounter.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/getCounter.png"></div>
 <div class="text"> אחזר את ערכו של קלט המונה המחובר בכניסה
 C1-C4 בבקר<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="getSensor.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/getSensor.png"></div>
 <div class="text"> בפקודה זו ניתן להשתמש לשם איחזור ערכו
 של חיישן הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט
 אוניברסלי I1-I8. יוחזר ערך של 16 ביט<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="isClosed.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/isClosed.png"></div>
 <div class="text"> בפקודה זו ניתן להשתמש לשם בדיקה האם
 חיישן מגע/מגנטיות/מחסום אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8
 לחוץ/סגור כרגע. יוחזר ערך בוליאני<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doPlaySound.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doPlaySound.png"></div>
 <div class="text"> התחל לנגן את קובץ הסאונד 1-29 השמור בבקר<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doPlaySoundWait.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doPlaySoundWait.png"></div>
 <div class="text"> התחל לנגן את קובץ הסאונד 1-29 השמור
 בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetLamp.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetLamp.png"></div>
 <div class="text"> הגדר ערך לנורה המחוברת ליציאת פלט O1-O8
 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetOutput.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetOutput.png"></div>
 <div class="text"> הגדר ערך ליציאת פלט O1-O8 לערך שבין
 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doResetCounter.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doResetCounter.png"></div>
 <div class="text"> אפס את ערכו של קלט המונה המחובר בכניסה
 C1-C4 בבקר<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetMotorSpeed.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetMotorSpeed.png"></div>
 <div class="text"> עדכן את ערך המהירות של המנוע המחובר
 ליציאת פלט M1-M4 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול
 הקרוב<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetMotorSpeedDir.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetMotorSpeedDir.png"></div>
 <div class="text"> עדכן את ערכי הכיוון והמהירות של המנוע
 המחובר ליציאת פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא יקוצץ
 לגבול הקרוב<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetMotorDir.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetMotorDir.png"></div>
 <div class="text"> עדכן את ערך הכיוון של המנוע המחובר
 ליציאת פלט M1-M4<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetMotorSpeedDirDist.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetMotorSpeedDirDist.png"></div>
 <div class="text"> עדכן את ערכי הכיוון והמהירות של המנוע
 המחובר ליציאת פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך היחידה לעדכן
 את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני
-הגדרה מחודשת של המהירות.<br>
+הגדרה מחודשת של המהירות<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetMotorSpeedDirSync.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetMotorSpeedDirSync.png"></div>
 <div class="text"> עדכן את ערכי הכיוון והמהירות של 2
 מנועים המחוברים ליציאות פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא
 יקוצץ לגבול הקרוב<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doSetMotorSpeedDirDistSync.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doSetMotorSpeedDirDistSync.png"></div>
 <div class="text"> עדכן את ערכי הכיוון והמהירות של 2
 מנועים המחוברים ליציאות פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך
 היחידה לעדכן את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור
-מנוע לפני הגדרה מחודשת של המהירות.<br>
+מנוע לפני הגדרה מחודשת של המהירות<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doStopMotor.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doStopMotor.png"></div>
 <div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="doConfigureInput.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/doConfigureInput.png"></div>
 <div class="text"> עדכן את סוג כניסת הפלט I1-I8 לאנלוגית
 או דיגיטלית<br>
 </div>
 </div>
-<div style="font-family: Verdana;" class="blockDesc">
-<div class="image"><img src="reset.png"></div>
+<div class="blockDesc">
+<div class="image"><img src="images/reset.png"></div>
 <div class="text"> אפס את הבקר - כל היציאות יעודכנו בערך 0
 </div>
+	
+	</div>
 </div>
-</body></html>
+</br>
+
+
+<div id="featured-wrapper">
+		<div id="contactus" class="major">
+			<h2>צרו קשר</h2>
+			<span class="byline">נשמח לשמוע מכם בכל נושא, שמרו על קשר!</span>
+				<ul class="contact">
+					<li><a href="mailto:adi@itec.co.il" class="icon"><img src="images/email-icon-small.png"></a></li>
+					<li><a href="https://www.facebook.com/ftIsrael/" class="icon"><img src="images/fb.png"></a></li>
+					<li><a href="https://www.youtube.com/channel/UCRiu0a_2RyDZGceSzJyKazw" class="icon"><img src="images/youtube.png"></a></li>
+				</ul>
+			</div>
+</div></body>
+</html>
