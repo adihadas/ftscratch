@@ -21,7 +21,6 @@
 	<div id="menu" class="container">
 		<ul>
 			<li><a href="#" title=""><img src="images/logo.jpg"></a></li>
-			<li><a href="#controller" title="">על הבקר</a></li>
 			<li><a href="#setup" title="">הוראות התקנה</a></li>
 			<li><a href="#commands" title="">פקודות הרובוט</a></li>
 			<li><a href="https://adihadas.github.io/ftscratch/workstation.html#main" title="">הקמת עמדת עבודה</a></li>
@@ -34,7 +33,7 @@
 	 <div id="page" class="container">
 	 	<div id="content">
 			 <div class="title">
-			 			<h2 id="controller">ברוכים הבאים מתכנתי Scratchx!</h2>
+			 			<h2>ברוכים הבאים מתכנתי Scratchx!</h2>
 									<span class="byline" >תכנתו את בקר TXT של פישרטקניק בעברית באמצעות ההרחבה</span>
 			</div>
 			<p align="justify"><b>FTScratchTXT</b> הינה הרחבה מאפשרת שימוש בבקר <a href="http://www.fischertechnik.de/en/desktopdefault.aspx/tabid-21/39_read-309/usetemplate-2_column_pano/" target="_blank">ROBOTICS TXT Controller</a> של פישרטקניק במחשבי PC ובלפטופים באמצעות סביבת הפיתוח <a href="http://scratchx.org/" target="_blank">ScratchX</a> הקלה ללימוד, המאפשרת לתכניות המפותחות בה לשלוט במנועים, במנורות ובמגוון חיישנים באמצעות הבקר. <br></p>
@@ -51,7 +50,7 @@
 		<a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" class="image image-centered img"><img src="images/scratchx-logo.png"  alt="" /></a>
 			<div class="title">
 			<br></br>
-				<h2>4) <a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch"> גלשו אל ההרחבה והתחילו לתכנת!</a></h2>
+				<h2>4) <a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" target="_blank"> גלשו אל ההרחבה והתחילו לתכנת!</a></h2>
 				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_heb.js#scratch" target="_blank">לגרסה העברית</a></b></span>
 				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext_ar.js#scratch" target="_blank">לגרסה הערבית</a></b></span>
 				<span class="byline"><b><a href="http://scratchx.org/?url=https://adihadas.github.io/ftscratch/src/ext.js#scratch" target="_blank">לגרסה האנגלית</a></b></span>
@@ -60,9 +59,9 @@
 		<div class="column2">
 			<a href="bin/FTScratchTXT.exe" class="image image-centered img"><img src="images/ftscratch.png"  alt="" /></a>
 				<div class="title">
-				<h2>3) הורידו את <span style="color: rgb(0, 113, 188);" "font-family: Verdana; text-align: center;"><span style="color: rgb(237, 28, 36);">FT</span>ScratchTXT</span></h2>
-				<span class="byline"><b><a href="bin/FTScratchTXT.exe">הורידו את תוכנת FTSCRATCHTXT המקשרת בין ההרחבה אל הרובוט</a></b></span>
-				<span class="byline">הפעילו את התוכנה! יש להריץ את התוכנה כאשר רוצים להתחבר לרובוט</font></span>
+				<h2>3) הפעילו את <span style="color: rgb(0, 113, 188);" "font-family: Verdana; text-align: center;"><a href="bin/FTScratchTXT.exe"><span style="color: rgb(237, 28, 36);">FT</span>ScratchTXT</span></a></h2>
+				<span class="byline"><b><a href="bin/FTScratchTXT.exe">שמרו לשולחן העבודה את תוכנת FTSCRATCHTXT המקשרת בין ההרחבה אל הרובוט</a></b></span>
+				<span class="byline">הפעילו את התוכנה - <b><b>יש להריץ את התוכנה בכל פעם שרוצים לחבר את הרובוט לסקראץ'</b></b></font></span>
 				</div>
 		</div>
 		<div class="column3">
@@ -76,6 +75,7 @@
 			 <a href="https://adihadas.github.io/ftscratch/workstation.html" class="image image-centered img"><img src="images/robopro packshot.jpg"  alt="" /></a>
 				<div class="title">
 				<h2>1) <a href="https://adihadas.github.io/ftscratch/workstation.html">הקימו סביבת עבודה על גבי המחשב</a></h2>
+				<span class="byline" style="color:rgb(237, 28, 36)"><b>שלב זה הינו חד-פעמי!</b></span>
 				</div>
 		</div>
 	</div>
@@ -87,136 +87,131 @@
 		</div>
 		<div  class="blockDesc">
 <div class="image"><img src="images/onOpenClose.png"></div>
-<div class="text"> אירוע זה יופעל כאשר חיישן מגע/מגנטי/אור
-המחובר בבקר לכניסת קלט אוניברסלי I1-I8 נלחץ/משוחרר או נסגר/נפתח<br>
+<div class="text"> אירוע זה יופעל כאשר חיישן דיגיטלי מסוג מגע/מגנטי/אור
+המחובר בבקר לכניסת קלט I1-I8 נלחץ/משוחרר או נסגר/נפתח<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/onCounter.png"></div>
-<div class="text"> אירוע זה יופעל כאשר מספר הפולסים בקלט
+<div class="text"> אירוע זה יופעל כאשר מספר הפולסים הנוכחי השמור בקלט
 המונה C1-C4 יהיה גבוה/נמוך יותר מאשר הערך המוזן<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/onInput.png"></div>
-<div class="text"> אירוע זה יופעל כאשר הערך של חיישן
-הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט אוניברסלי
-I1-I8 גבוה/נמוך יותר מאשר הערך המוזן<br>
+<div class="text"> אירוע זה יופעל כאשר הערך של חיישן אנלוגי מסוג 
+צבע/מרחק/טמפרטורה/אור המחובר לכניסת קלט 
+I1-I8 הינו גבוה/נמוך יותר מאשר הערך המוזן<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/getCounter.png"></div>
-<div class="text"> אחזר את ערכו של קלט המונה המחובר בכניסה
-C1-C4 בבקר<br>
+<div class="text"> אחזר את ערכו של קלט המונה 
+C1-C4<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/getSensor.png"></div>
-<div class="text"> בפקודה זו ניתן להשתמש לשם איחזור ערכו
-של חיישן הצבע/מרחק אולטרהסוניק/טמפרטורה/אור המחובר בבקר לכניסת קלט
-אוניברסלי I1-I8. יוחזר ערך של 16 ביט<br>
+<div class="text"> אחזר את ערכו
+של חיישן אנלוגי מסוג צבע/מרחק/טמפרטורה/אור המחובר לכניסת קלט I1-I8.<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/isClosed.png"></div>
-<div class="text"> בפקודה זו ניתן להשתמש לשם בדיקה האם
-חיישן מגע/מגנטיות/מחסום אור המחובר בבקר לכניסת קלט אוניברסלי I1-I8
-לחוץ/סגור כרגע. יוחזר ערך בוליאני<br>
+<div class="text"> בדוק האם
+חיישן דיגטלי מסוג מגע/מגנטיות/אור המחובר לכניסת קלט I1-I8
+לחוץ/סגור כרגע. יוחזר ערך בוליאני (0 או 1)<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doPlaySound.png"></div>
-<div class="text"> התחל לנגן את קובץ הסאונד 1-29 השמור בבקר<br>
+<div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doPlaySoundWait.png"></div>
-<div class="text"> התחל לנגן את קובץ הסאונד 1-29 השמור
+<div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור
 בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetLamp.png"></div>
-<div class="text"> הגדר ערך לנורה המחוברת ליציאת פלט O1-O8
-לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב<br>
+<div class="text"> הגדר ערך עוצמת הנורה המחוברת ליציאת פלט O1-O8
+לערך שבין 0-8<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetOutput.png"></div>
-<div class="text"> הגדר ערך ליציאת פלט O1-O8 לערך שבין
-0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול הקרוב<br>
+<div class="text"> הגדר ערך בין 0-8 ליציאת פלט O1-O8<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doResetCounter.png"></div>
-<div class="text"> אפס את ערכו של קלט המונה המחובר בכניסה
-C1-C4 בבקר<br>
+<div class="text"> אפס את ערכו של קלט המונה C1-C4<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetMotorSpeed.png"></div>
-<div class="text"> עדכן את ערך המהירות של המנוע המחובר
-ליציאת פלט M1-M4 לערך שבין 0-8. אם הערך חורג מהגבולות הוא יקוצץ לגבול
-הקרוב<br>
+<div class="text"> הגדר את ערך המהירות של המנוע המחובר
+ליציאת פלט M1-M4 לערך שבין 0-8<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetMotorSpeedDir.png"></div>
-<div class="text"> עדכן את ערכי הכיוון והמהירות של המנוע
-המחובר ליציאת פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא יקוצץ
-לגבול הקרוב<br>
+<div class="text">הגדר את ערכי הכיוון והמהירות של המנוע
+המחובר ליציאת פלט M1-M4<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetMotorDir.png"></div>
-<div class="text"> עדכן את ערך הכיוון של המנוע המחובר
+<div class="text">הגדר את ערך הכיוון של המנוע המחובר
 ליציאת פלט M1-M4<br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetMotorSpeedDirDist.png"></div>
-<div class="text"> עדכן את ערכי הכיוון והמהירות של המנוע
-המחובר ליציאת פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך היחידה לעדכן
+<div class="text">הגדר את ערכי הכיוון והמהירות של המנוע
+המחובר ליציאת פלט M1-M4, ואת המרחק (מספר הצעדים) אותו יש לעבור<br>בדיקת המרחק מתבצעת מול ערך כניסת המונה C1-C4 המחובר לחיישן האינקודר של המנוע (בהתאמה)<br>הדרך היחידה לשנות
 את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני
-הגדרה מחודשת של המהירות<br>
+הגדרה מחודשת של המהירות<br><b>הפקודה תעבוד רק אם חיישן האינקודר של המנוע מחובר בחוט המיוחד שלו לכניסות המתאימות בבקר</b><br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetMotorSpeedDirSync.png"></div>
-<div class="text"> עדכן את ערכי הכיוון והמהירות של 2
-מנועים המחוברים ליציאות פלט M1-M4 .אם ערך המהירות חורג מהגבולות 0-8 הוא
-יקוצץ לגבול הקרוב<br>
+<div class="text">הגדר את ערכי הכיוון והמהירות של שני
+מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים<br><b>לא ניתן לשנות ערכי מהירות או כיוון בעבור מנוע בודד בזמן נסיעה סינכרונית,  ראשית חובה לעצור את המנועים</b><br>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doSetMotorSpeedDirDistSync.png"></div>
-<div class="text"> עדכן את ערכי הכיוון והמהירות של 2
-מנועים המחוברים ליציאות פלט M1-M4 והגדר את המרחק אותו יש לעבור. הדרך
-היחידה לעדכן את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור
-מנוע לפני הגדרה מחודשת של המהירות<br>
+<div class="text">הגדר את ערכי הכיוון והמהירות של שני
+מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים, והגדר את המרחק אותו יש לעבור<br><b>לא ניתן לשנות ערכי מהירות או כיוון נסיעה בעבור מנוע בודד בזמן נסיעה סינכרונית, או את מרחק הנסיעה שנקבע. ראשית חובה לעצור את המנועים</b>
 </div>
 </div>
 <div class="blockDesc">
 <div class="image"><img src="images/doStopMotor.png"></div>
-<div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4<br>
+<div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4
 </div>
 </div>
 <div class="blockDesc">
-<div class="image"><img src="images/doConfigureInput.png"></div>
-<div class="text"> עדכן את סוג כניסת הפלט I1-I8 לאנלוגית
-או דיגיטלית<br>
-</div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/reset.png"></div>
-<div class="text"> אפס את הבקר - כל היציאות יעודכנו בערך 0
-</div>
-	
+	<div class="image"><img src="images/doConfigureInput.png"></div>
+	<div class="text">הגדר את סוג כניסת הפלט I1-I8 בהתאם לסוג החיישן האנלוגי
+או הדיגיטלי המחובר אליה<br>
+<b>מתח דיגיטל</b>י - חיישן מזהה מסלול (IR)<br>
+<b>התנגדות דיגיטלית</b> - חיישן מגע (מתג), חיישן אור (מחסום אור), חיישן מגנטיות<br>
+<b>מתח אנלוגי</b> - חיישן צבע<br>
+<b>התנגדות אנלוגית</b> - חיישן טמפרטורה, חיישן אור<br>
+<b>אולטרהסוניק</b> - חיישן מרחק
 	</div>
 </div>
+	  <div class="blockDesc">
+	  <div class="image"><img src="images/reset.png"></div>
+	  	   <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br>
+		   	מומלץ לא להשתמש בפקודה באמצע ריצת התכנית כי זמן הביצוע של התהליך עלול לחפוף לפקודות ההמשך שאחריו ולשבשן
+	  </div>
+</div>
+</div>
 </br>
-
-
 <div id="featured-wrapper">
 		<div id="contactus" class="major">
 			<h2>צרו קשר</h2>
@@ -224,7 +219,8 @@ C1-C4 בבקר<br>
 				<ul class="contact">
 					<li><a href="mailto:adi@itec.co.il" class="icon"><img src="images/email-icon-small.png"></a></li>
 					<li><a href="https://www.facebook.com/ftIsrael/" class="icon"><img src="images/fb.png"></a></li>
-					<li><a href="https://www.youtube.com/channel/UCRiu0a_2RyDZGceSzJyKazw" class="icon"><img src="images/youtube.png"></a></li>
+					<li><a href="https://www.youtube.com/channel/UCRiu0a_2RyDZGceSzJyKazw" class="icon"><img src="images/youtube.png"></a></li><br>
+					שלחו לנו דוא"ל, פנו אלינו בדף הפייסבוק והתעדכנו בסרטוני ההדרכה שאנו מפרסמים בערוץ היוטיוב שלנו
 				</ul>
 			</div>
 </div></body>
