@@ -1,5 +1,4 @@
-﻿
-function getButtonState(state) {
+﻿function getButtonState(state) {
 	return Lang.get(state);
 }
 
@@ -78,7 +77,7 @@ var Lang = {
 			dir_backwards: 'אחורה',
 			sens_color: 'חיישן צבע',
 			sens_distance: 'חיישן מרחק',
-			sens_ntc: 'NTC חיישן',
+			sens_ntc: 'חיישן טמפרטורה',
 			sens_photo: 'חיישן אור',
 			sens_lightBarrier: 'מחסום אור',
 			sens_button: 'מתג',
