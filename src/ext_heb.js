@@ -55,7 +55,7 @@ var Lang = {
 		// Hebrew translation
 		he: {
 			onOpenClose: 'אם %m.openCloseSensors %m.inputs %m.openClose',
-			onCounter: 'אם המונה %m.counters %m.compares %n',
+			onCounter: 'אם ערכו של מונה %m.counters %m.compares %n',
 			onInput: 'אם ערכו של %m.inputSensors %n %m.compares %m.inputs',
 			isClosed: 'האם %m.openCloseSensors %m.inputs סגור',
 			getCounter: 'קרא ערכו של מונה %m.counters',
