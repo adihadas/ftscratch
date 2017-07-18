@@ -556,9 +556,9 @@ var IO = {
 		var idx = ext._inputNameToIdx(inputName);
 			
 		// compare
-		if (operator === '>') {
+		if (operator === '<') {
 			return !(ext.input.oldValues.inputs[idx]  >  value) && (ext.input.curValues.inputs[idx]  >  value);
-		} else if (operator === '<') {
+		} else if (operator === '>') {
 			return !(ext.input.oldValues.inputs[idx]  <  value) && (ext.input.curValues.inputs[idx]  <  value);
 		} else if (operator === '=') {
 			return !(ext.input.oldValues.inputs[idx] === value) && (ext.input.curValues.inputs[idx] === value);
@@ -593,9 +593,9 @@ var IO = {
 	ext.onCounter = function(counterName, operator, value) {
 		
 		var idx = ext._counterNameToIdx(counterName);
-		if (operator === '>') {
+		if (operator === '<') {
 			return !(ext.input.oldValues.counters[idx]  >  value) && (ext.input.curValues.counters[idx]  >  value);
-		} else if (operator === '<') {
+		} else if (operator === '>') {
 			return !(ext.input.oldValues.counters[idx]  <  value) && (ext.input.curValues.counters[idx]  <  value);
 		} else if (operator === '=') {
 			return !(ext.input.oldValues.counters[idx] === value) && (ext.input.curValues.counters[idx] === value);
