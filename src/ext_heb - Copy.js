@@ -43,7 +43,6 @@ var Lang = {
 			sens_lightBarrier: 'Light barrier',
 			sens_button: 'Switch',
 			sens_reed: 'Reed contact',
-			sens_IR: 'Trail Sensor',
 			openclose_opens: 'opens',
 			openclose_closes: 'closes',
 			mode_a5k: 'Analogue resistance',
@@ -83,7 +82,6 @@ var Lang = {
 			sens_lightBarrier: 'מחסום אור',
 			sens_button: 'מתג',
 			sens_reed: 'חיישן מגנטיות',
-			sens_IR: 'חיישן אינפרה-רד',
 			openclose_opens: 'נפתח',
 			openclose_closes: 'נסגר',
 			mode_a5k: 'התנגדות אנלוגית',
@@ -389,7 +387,6 @@ var IO = {
 		if		(sensorType === Lang.getSensor('button'))		{ext._setSensorMode(inputName, 1);}		// DIGITAL_5KOHM
 		else if	(sensorType === Lang.getSensor('reed'))			{ext._setSensorMode(inputName, 1);}		// DIGITAL_5KOHM
 		else if	(sensorType === Lang.getSensor('lightBarrier'))	{ext._setSensorMode(inputName, 1);}		// DIGITAL_5KOHM
-		else if	(sensorType === Lang.getSensor('IR'))	{ext._setSensorMode(inputName, 0);}		// DIGITAL_10V
 		else													{alert("unsupported sensor type");}
 	};
 		
@@ -658,7 +655,7 @@ var IO = {
 			
 			inputSensors:		[Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 			
-			openCloseSensors:	[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier'), Lang.getSensor('IR')],
+			openCloseSensors:	[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier')],
 			openClose:			[Lang.getOpenClose('opens'), Lang.getOpenClose('closes')],
 			
 			inputs:				['I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8'],
