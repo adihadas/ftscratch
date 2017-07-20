@@ -251,7 +251,7 @@
 
 	#logo
 	{
-		padding: 2em 0em;
+		padding: 2em 0em 0em 0em;
 		text-transform: uppercase;
 	}
 
@@ -345,14 +345,14 @@
 
 	#content
 	{
-		float: left;
+		float: center;
 		width: 49%;
 	}
 	
 	#content .title
 	{
-		padding-bottom: 2em;
-		text-align: left;
+		padding-bottom: 1em;
+		text-align: right;
 	}
 	
 	#content h2
@@ -373,7 +373,7 @@
 
 	#sidebar
 	{
-		float: right;
+		float: left;
 		width: 49%;
 	}
 
