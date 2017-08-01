@@ -97,6 +97,7 @@ var Lang = {
 			sens_lightBarrier: 'Light barrier',
 			sens_button: 'Switch',
 			sens_reed: 'Reed contact',
+			sens_IR: 'Trail Sensor',
 			openclose_opens: 'opens',
 			openclose_closes: 'closes',
 			mode_a5k: 'Analogue resistance',
@@ -307,8 +308,10 @@ var Lang = {
 	
 	// get a translated version for the given constant
 	get: function(what) {
-		var codes = this.trans[this.langCode];		// requested language
-		if (!codes) { codes = this.trans['en']; }	// fallback
+		//var codes = this.trans[this.langCode];		// requested language
+		//if (!codes) { 
+		codes = this.trans['en']; 
+		//}	// fallback
 		return codes[what];
 	},
 	
@@ -695,6 +698,7 @@ var IO = {
 		if		(sensorType === Lang.getSensor('button'))		{ext._setSensorMode(inputName, 1);}		// DIGITAL_5KOHM
 		else if	(sensorType === Lang.getSensor('reed'))			{ext._setSensorMode(inputName, 1);}		// DIGITAL_5KOHM
 		else if	(sensorType === Lang.getSensor('lightBarrier'))	{ext._setSensorMode(inputName, 1);}		// DIGITAL_5KOHM
+		else if	(sensorType === Lang.getSensor('IR'))	{ext._setSensorMode(inputName, 0);}		// DIGITAL_10V
 		else													{alert("unsupported sensor type");}
 	};
 		
@@ -970,7 +974,7 @@ var IO = {
 			
 			inputSensors:		[Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 			
-			openCloseSensors:	[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier')],
+			openCloseSensors:	[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier'), Lang.getSensor('IR')],
 			openClose:			[Lang.getOpenClose('opens'), Lang.getOpenClose('closes')],
 			
 			inputs:				['I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8'],

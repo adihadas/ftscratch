@@ -121,7 +121,84 @@ var Lang = {
 	}
 	
 };
+function ScratchConnection(url, ext) {
+		
+	var ws = null;
+	
+	// for access within methods
+	var _this = this;
+	
+	this.status = {status: 1, msg: 'Connecting'};
+	
+	// get the current time as string
+	var getTimeString = function() {
+		var d = new Date();
+		var h = d.getHours();	h = (h<10) ? ('0'+h) : (h);
+		var m = d.getMinutes();	m = (m<10) ? ('0'+m) : (m);
+		var s = d.getSeconds();	s = (s<10) ? ('0'+s) : (s);
+		return '(' + h + ':' + m + ':' + s + ') ';
+	}
+	
+	this.connect = function() {
+		ws = new WebSocket(url);
+		ws.onmessage = handleMessage;
+		ws.onclose = handleClose;
+		ws.onopen = handleOpen;
+	}
+	
+	this.close = function() {
+		ws.close();
+	}
+	
+	// websocket connected. this == the websocket
+	var handleOpen = function() {
+		ext.onConnect();
+	}
+	
+	// new websocket message. this == the websocket
+	var handleMessage = function(message) {
+		
+		var messageType = message.data.substring(0, 4);
+		var messageData = message.data.substring(4);
+		var data = JSON.parse(messageData);
+				
+		if (messageType === "SENS") {
+			ext.input.oldValues = ext.input.curValues;
+			ext.input.curValues = data;
+		} else if (messageType == "PONG") {
+			_this.status = {status: 2, msg: getTimeString() + data[0]};
+		}
+		
+	};
+	
+	// websocket closed. this == the websocket
+	var handleClose = function() {
+		_this.status = {status: 0, msg: getTimeString() + ' Lost Connection'};
+	};
+	
+	this.playSound = function(sndIdx) {
+		this.send("PLAY", {idx: sndIdx});
+	};
+	
 
+	
+	this.ping = function() {
+		ws.send("PING");
+	}
+	
+	this.reset = function() {
+		ws.send("RSET");
+	}
+	
+	/** send CMD+json*/
+	this.send = function(cmd, obj) {
+		ws.send(cmd + JSON.stringify(obj));
+	}
+	
+	
+	
+};
+/*
 var IO = {
 
 	// the URL of the host application interfacing the ROBO-LT
@@ -133,6 +210,7 @@ var IO = {
 	// request timeout after x msec
 	timeout: 500,
 
+
 	// get the current time as string
 	getTimeString: function() {
 		var d = new Date();
@@ -141,7 +219,7 @@ var IO = {
 		var s = d.getSeconds();	s = (s<10) ? ('0'+s) : (s);
 		return '(' + h + ':' + m + ':' + s + ') ';
 	},
-	
+
 	// ping the host application
 	updateStatus: function() {
 		try {
@@ -154,14 +232,19 @@ var IO = {
 		return this.status;
 	},
 
+
 	// POST the given command and corresponding values to the host application
 	doPost: function(command, values) {
+		var json = JSON.stringify(values);
+		this.doPostJson(command, json);
+	},
+	doPostJson: function(command, json) {
 		return $.ajax({
-              async: true,
+              async: false,					// seems a lot more stable in scratch
 			  url: this.host + command,
               dataType: 'json',
 			  method: 'POST',
-			  data: JSON.stringify(values),
+			  data: json,
 			  crossDomain: true,
         });
 	},
@@ -178,9 +261,10 @@ var IO = {
         });
 	},
 
+
 	
 };
-
+	*/
 (function(ext) {
 	
 	// the current sensor values from the device
@@ -190,17 +274,20 @@ var IO = {
 	ext.oldValues = null;
 		
 	// Cleanup function when the extension is unloaded
-	ext._shutdown = function() {};
+	ext._shutdown = function() {
+		connection.close();
+	};
 	
 	// Status reporting code
 	// Use this to report missing hardware, plugin or unsupported browser
 	ext._getStatus = function() {
-		return IO.updateStatus();
+		connection.ping();
+		return connection.status;
 	};
 	
 	// reset the device
 	ext.reset = function() {
-		IO.doPost('reset', null);
+		connection.reset();
 	};
 	
 	
@@ -271,14 +358,21 @@ var IO = {
 			for (var i = 0; i < 4; ++i) {this.counters[i].transmitted();}
 		},
 		
+		needsUpdate: function() {
+			var needsUpdate = false;
+			for (var i = 0; i < 4; ++i) {needsUpdate |= this.motors[i].mod;}
+			for (var i = 0; i < 8; ++i) {needsUpdate |= this.outputs[i].mod;}
+			for (var i = 0; i < 8; ++i) {needsUpdate |= this.inputs[i].mod;}
+			for (var i = 0; i < 4; ++i) {needsUpdate |= this.counters[i].mod;}
+			return needsUpdate;
+		}
+		
 	};
 	
 	// received state
 	ext.input = {
-		
 		curValues:	{},
 		oldValues:	{},
-		
 	}
 	
 	// convert Output name to array index: '04' -> 3
@@ -309,7 +403,7 @@ var IO = {
 	
 	// convert input-mode to value 'd10v' -> 0
 	ext._inputModeToIdx = function(inputMode) {
-		console.log(inputMode);
+		//console.log(inputMode);
 		if (inputMode == Lang.getMode('d10v'))			{return 0;}
 		if (inputMode == Lang.getMode('d5k'))			{return 1;}
 		if (inputMode == Lang.getMode('a10v'))			{return 2;}
@@ -395,38 +489,27 @@ var IO = {
 		
 	
 
-	
-	
-	// update the current sensor values from the device
-	ext.doUpdate = function() {
-
-		var params = ext.output;
-		
-		IO.doPost('update', params)
-			.done(function(data) {
-				ext.input.oldValues = ext.input.curValues;
-				ext.input.curValues = data;
-				ext.output.transmitted();
-			})
-			.fail(function( xhr, status, err ) {
-				console.log(err);						// DEBUG
-			});
-	
+	ext.updateIfNeeded = function() {
+		if (ext.output.needsUpdate()) {
+			connection.send("ACTU", ext.output);
+			ext.output.transmitted();
+		}
 	};
 	
+	
+	
+	/** commands */
 	
 	
 	
 	/** play the given sound */
 	ext.doPlaySound = function(sndIdx) {
-		var cfg = {idx: sndIdx};
-		IO.doPost("sound", cfg);
+		connection.playSound(sndIdx);
 	};
 	
 	/** play the given sound and call the callback as soon as it finished */
 	ext.doPlaySoundWait = function(sndIdx, callback) {
-		var cfg = {idx: sndIdx};
-		IO.doPost("sound", cfg);
+		connection.playSound(sndIdx);
 		var id = window.setInterval(function() {
 			if (!ext.input.curValues.isPlaying) {
 				window.clearInterval(id);
@@ -438,22 +521,26 @@ var IO = {
 	/** set the lamp at the given output to the provided value [0:8] */
 	ext.doSetLamp = function(outputName, value) {
 		ext._setOutput08(outputName, value);
+		ext.updateIfNeeded();
 	};
 	
 	/** set the given Output 'Ox' to the provided value [0:8] */
 	ext.doSetOutput = function(outputName, value) {
 		ext._setOutput08(outputName, value);
+		ext.updateIfNeeded();
 	};
 	
 	
 	/** adjust the given motor's speed */
 	ext.doSetMotorSpeed = function(motorName, value) {
 		ext._setMotorSpeed08(motorName, value);
+		ext.updateIfNeeded();
 	};
 	
 	/** adjust the given motor's direction */
 	ext.doSetMotorDir = function(motorName, dirName) {
 		ext._setMotorDir(motorName, dirName);
+		ext.updateIfNeeded();
 	};
 	
 	
@@ -461,6 +548,7 @@ var IO = {
 	ext.doSetMotorSpeedDir = function(motorName, value, dirName) {
 		ext._setMotorDir(motorName, dirName);
 		ext._setMotorSpeed08(motorName, value);
+		ext.updateIfNeeded();
 	};
 	
 	/** let the given motor move "steps" steps into the given direction with the provided speed */
@@ -469,6 +557,7 @@ var IO = {
 		ext._setMotorDist(motorName, steps);
 		ext._setMotorDir(motorName, dirName);
 		ext._setMotorSpeed08(motorName, value);
+		ext.updateIfNeeded();
 	};
 	
 	/** synchronize the two given motors */
@@ -479,6 +568,7 @@ var IO = {
 		ext._setMotorDir(motor2Name, dirName);
 		ext._setMotorSpeed08(motor1Name, value);
 		ext._setMotorSpeed08(motor2Name, value);
+		ext.updateIfNeeded();
 	};
 	
 	/** synchronize the two given motors with distance */
@@ -490,6 +580,7 @@ var IO = {
 		ext._setMotorDir(motor2Name, dirName);
 		ext._setMotorSpeed08(motor1Name, value);
 		ext._setMotorSpeed08(motor2Name, value);
+		ext.updateIfNeeded();
 	};
 	
 		
@@ -498,20 +589,27 @@ var IO = {
 		ext._setMotorSpeed08(motorName, 0);		// set speed to 0
 		ext._setMotorDist(motorName, 0);		// remove distance limits
 		ext._setMotorSyncNone(motorName);		// remove sync constraints
+		ext.updateIfNeeded();
 	};
 	
 	/** reset the given counter to zero */
 	ext.doResetCounter = function(counterName) {
 		var idx = ext._counterNameToIdx(counterName);
 		ext.output.counters[idx].doReset();
+		ext.updateIfNeeded();
 	};
 	
 	/** expert config: input -> mode */
 	ext.doConfigureInput = function(inputName, inputMode) {
-		console.log(inputName + " - " + inputMode);
 		var idx = ext._inputModeToIdx(inputMode);
 		ext._setSensorMode(inputName, idx);
+		ext.updateIfNeeded();
 	};
+	
+	
+	
+	
+	
 	
 	
 	
@@ -527,6 +625,7 @@ var IO = {
 		
 		// ensure correct (analog) working mode
 		ext._adjustInputModeAnalog(inputName, sensorType);
+		ext.updateIfNeeded();
 		
 		// get value
 		var idx = ext._inputNameToIdx(inputName);
@@ -538,8 +637,8 @@ var IO = {
 	ext.isClosed = function(sensorType, inputName) {
 		
 		// ensure inputName uses the correct configuration
-		//ext._setSensorMode(inputName, 1);		// DIGITAL_5KOHM
 		ext._adjustInputModeDigital(inputName, sensorType);
+		ext.updateIfNeeded();
 		
 		// fetch
 		var idx = ext._inputNameToIdx(inputName);
@@ -549,18 +648,19 @@ var IO = {
 	
 	
 	/** sensor X on input 'Ix' >,<,= value */
-	ext.onInput = function(sensorType, value, operator, inputName) {
+	ext.onInput = function(sensorType, inputName, operator, value) {
 				
 		// ensure correct working mode
 		ext._adjustInputModeAnalog(inputName, sensorType);
+		ext.updateIfNeeded();
 		
 		// get index
 		var idx = ext._inputNameToIdx(inputName);
 			
 		// compare
-		if (operator === '<') {
+		if (operator === '>') {
 			return !(ext.input.oldValues.inputs[idx]  >  value) && (ext.input.curValues.inputs[idx]  >  value);
-		} else if (operator === '>') {
+		} else if (operator === '<') {
 			return !(ext.input.oldValues.inputs[idx]  <  value) && (ext.input.curValues.inputs[idx]  <  value);
 		} else if (operator === '=') {
 			return !(ext.input.oldValues.inputs[idx] === value) && (ext.input.curValues.inputs[idx] === value);
@@ -577,6 +677,7 @@ var IO = {
 		// ensure inputName uses the correct configuration
 		//ext._setSensorMode(inputName, 1);		// DIGITAL_5KOHM
 		ext._adjustInputModeDigital(inputName, sensorType);
+		ext.updateIfNeeded();
 		
 		// check both directions
 		var idx = ext._inputNameToIdx(inputName);
@@ -595,9 +696,9 @@ var IO = {
 	ext.onCounter = function(counterName, operator, value) {
 		
 		var idx = ext._counterNameToIdx(counterName);
-		if (operator === '<') {
+		if (operator === '>') {
 			return !(ext.input.oldValues.counters[idx]  >  value) && (ext.input.curValues.counters[idx]  >  value);
-		} else if (operator === '>') {
+		} else if (operator === '<') {
 			return !(ext.input.oldValues.counters[idx]  <  value) && (ext.input.curValues.counters[idx]  <  value);
 		} else if (operator === '=') {
 			return !(ext.input.oldValues.counters[idx] === value) && (ext.input.curValues.counters[idx] === value);
@@ -607,9 +708,9 @@ var IO = {
 		
 	};
 	
+
 	
-
-
+	
 	
 	// Block and block menu descriptions
 	var descriptor = {
@@ -625,7 +726,7 @@ var IO = {
 			['r', Lang.get('getCounter'),					'getCounter',					'C1'],
 			['r', Lang.get('getSensor'),					'getSensor',					Lang.getSensor('color'), 'I1'],
 			
-			['r', Lang.get('isClosed'),						'isClosed',						Lang.getSensor('button'), 'I1'],
+			['b', Lang.get('isClosed'),						'isClosed',						Lang.getSensor('button'), 'I1'],
 			
 			
 			// sets
@@ -685,13 +786,20 @@ var IO = {
 	
 	// Register the extension
 	ScratchExtensions.register('fischertechnik ROBO-TXT', descriptor, ext);
-	//alert(1);
+			
 	
-	// start the update loop: periodically fetch sensor values from the device
-	setInterval(ext.doUpdate, 60);
+	// connection established
+	ext.onConnect = function() {
+		
+		// ensure the ROBO LT is reset
+		ext.reset();
 	
-	// ensure the ROBO TXT is reset
-	ext.reset();
+	}
 	
+	var connection = new ScratchConnection("ws://127.0.0.1:8001/api", ext);	// edge/ie need the IP here
+	connection.connect();
+	
+	
+
 })({});
 
