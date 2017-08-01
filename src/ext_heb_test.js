@@ -658,9 +658,9 @@ var IO = {
 		var idx = ext._inputNameToIdx(inputName);
 			
 		// compare
-		if (operator === '>') {
+		if (operator === '<') {
 			return !(ext.input.oldValues.inputs[idx]  >  value) && (ext.input.curValues.inputs[idx]  >  value);
-		} else if (operator === '<') {
+		} else if (operator === '>') {
 			return !(ext.input.oldValues.inputs[idx]  <  value) && (ext.input.curValues.inputs[idx]  <  value);
 		} else if (operator === '=') {
 			return !(ext.input.oldValues.inputs[idx] === value) && (ext.input.curValues.inputs[idx] === value);
@@ -755,7 +755,7 @@ var IO = {
 		
 		menus: {
 			
-			compares:			['<', '>'],
+			compares:			['<', '>', '='],
 			
 			inputSensors:		[Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 			
