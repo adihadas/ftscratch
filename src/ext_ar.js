@@ -53,7 +53,7 @@ var Lang = {
 			mode_ultrasonic: 'Ultrasound',
 			reset: 'reset'
 		},
-		// Arab translation
+		// Arabic translation
 		ar: {
 			onOpenClose: 'اذا %m.openCloseSensors %m.inputs %m.openClose',
 			onCounter: 'اذا العداد %m.counters %m.compares %n',
@@ -98,7 +98,7 @@ var Lang = {
 	get: function(what) {
 		//var codes = this.trans[this.langCode];		// requested language
 		//if (!codes) { 
-		codes = this.trans['ar']; 
+		codes = this.trans['he']; 
 		//}	// fallback
 		return codes[what];
 	},
@@ -647,7 +647,7 @@ var IO = {
 	
 	
 	/** sensor X on input 'Ix' >,<,= value */
-	ext.onInput = function(sensorType, inputName, operator, value) {
+	ext.onInput = function(sensorType, value, operator, inputName) {
 				
 		// ensure correct working mode
 		ext._adjustInputModeAnalog(inputName, sensorType);
@@ -692,7 +692,7 @@ var IO = {
 	
 	
 	/** counter 'Cx' >,<,= value */
-	ext.onCounter = function(counterName, operator, value) {
+	ext.onCounter = function(value, operator, counterName) {
 		
 		var idx = ext._counterNameToIdx(counterName);
 		if (operator === '>') {
@@ -718,7 +718,7 @@ var IO = {
 			
 			// events
 			['h', Lang.get('onOpenClose'),					'onOpenClose',					Lang.getSensor('button'), 'I1', Lang.getOpenClose('opens')],
-			['h', Lang.get('onCounter'),					'onCounter',					'C1', '>', 0],
+			['h', Lang.get('onCounter'),					'onCounter',					0, '>', 'C1'],
 			['h', Lang.get('onInput'),						'onInput',						Lang.getSensor('color'), 0, '>', 'I1'],
 				
 			// gets
@@ -754,7 +754,7 @@ var IO = {
 		
 		menus: {
 			
-			compares:			['<', '>'],
+			compares:			['<', '>', '='],
 			
 			inputSensors:		[Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 			
