@@ -233,9 +233,9 @@ function ScratchConnection(url, ext) {
 	var handleClose = function() {
 		_this.status = {status: 0, msg: getTimeString() + ' lost connection to application'};
 		if (_this.connected) {
-			alert('Lost connection to the TXT-Application. Please ensure FTScratchTXT.exe is running and reload the Website');
+			alert('נפלה התקשורת עם תוכנת הקישור. נא לוודא שהתוכנה רצה ברקע ולטעון מחדש את סביבת הדפדפן');
 		} else {
-			alert('Could not connect to the TXT-Application. Please ensure FTScratchTXT.exe is running and reload the Website');
+			alert('לא ניתן היה להתחבר אל הרובוט. נא לוודא שתוכנת הקישור רצה ברקע ולטעון מחדש את סביבת הדפדפן');
 		}
 		_this.connected = false;
 	};

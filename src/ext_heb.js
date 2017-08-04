@@ -184,7 +184,7 @@ function ScratchConnection(url, ext) {
 	this.connect = function() {
 		ws = new WebSocket(url);
 		if (ws == null) {
-			alert('Your Browser does not support WebSockets. You need a recent Browser to use FTScratchTXT');
+			alert('Your Browser does not support WebSockets. You need a recent Browser to use FTScratchTXT. הדפדפן אינו תומך בטכנולוגיה הנדרשת, נא להשתמש בכרום או בפיירפוקס או באקספלורר.');
 			return;
 		}
 		ws.onmessage = handleMessage;
@@ -233,9 +233,9 @@ function ScratchConnection(url, ext) {
 	var handleClose = function() {
 		_this.status = {status: 0, msg: getTimeString() + ' lost connection to application'};
 		if (_this.connected) {
-			alert('Lost connection to the TXT-Application. נפלה התקשורת עם התוכנה. Please ensure FTScratchTXT.exe is running and reload the Website. נא לוודא שהתוכנה FTScratchTXT.exe רצה ברקע ולטעון מחדש את סביבת הדפדפן');
+			alert('נפלה התקשורת עם תוכנת הקישור. נא לוודא שהתוכנה רצה ברקע ולטעון מחדש את סביבת הדפדפן');
 		} else {
-			alert('Could not connect to the TXT-Application. לא ניתן היה להתחבר לתוכנה. Please ensure FTScratchTXT.exe is running and reload the Website. נא לוודא שהתוכנה FTScratchTXT.exe רצה ברקע ולטעון מחדש את סביבת הדפדפן');
+			alert('לא ניתן היה להתחבר אל הרובוט. נא לוודא שתוכנת הקישור רצה ברקע ולטעון מחדש את סביבת הדפדפן');
 		}
 		_this.connected = false;
 	};

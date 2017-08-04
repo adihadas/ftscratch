@@ -407,7 +407,7 @@ function ScratchConnection(url, ext) {
 		if (_this.connected) {
 			alert('Lost connection to the TXT-Application. Please ensure FTScratchTXT.exe is running and reload the Website');
 		} else {
-			alert('Could not connect to the TXT-Application. Please ensure FTScratchTXT.exe is running and reload the Website');
+			alert('Could not connect to the Robot. Please ensure FTScratchTXT.exe is running and reload the Website');
 		}
 		_this.connected = false;
 	};
