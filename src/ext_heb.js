@@ -222,7 +222,7 @@ function ScratchConnection(url, ext) {
 				}
 				_this.status = {status: 2, msg: getTimeString() + ' connected to ' + dev };
 			} else {
-				_this.status = {status: 1, msg: getTimeString() + ' connected to application but not to TXT' };
+				_this.status = {status: 1, msg: getTimeString() + ' הרובוט כבוי או מנותק מהמחשב' };
 			}
 			
 		}
@@ -231,7 +231,7 @@ function ScratchConnection(url, ext) {
 
 	// websocket closed. this == the websocket
 	var handleClose = function() {
-		_this.status = {status: 0, msg: getTimeString() + ' lost connection to application'};
+		_this.status = {status: 0, msg: getTimeString() + ' נפלה התקשורת עם תוכנת הקישור'};
 		if (_this.connected) {
 			alert('נפלה התקשורת עם תוכנת הקישור. נא לוודא שהתוכנה רצה ברקע ולטעון מחדש את סביבת הדפדפן');
 		} else {
