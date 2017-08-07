@@ -53,6 +53,45 @@ var Lang = {
 			mode_ultrasonic: 'Ultrasound',
 			reset: 'reset'
 		},
+		// Arabic translation
+		ar: {
+			onOpenClose: 'اذا %m.openCloseSensors %m.inputs %m.openClose',
+			onCounter: 'اذا العداد %m.counters %m.compares %n',
+			onInput: 'اذا كانت قيمة %m.inputSensors %n %m.compares %m.inputs',
+			isClosed: 'هل %m.openCloseSensors %m.inputs اغلق',
+			getCounter: 'اقرأ قيمة العداد %m.counters',
+			getSensor: 'اقرأ قيمة ال %m.inputSensors %m.inputs',
+			doPlaySound: 'شغل الصوت %n',
+			doPlaySoundWait: 'شغل الصوت الى نهايته %n',
+			doSetLamp: 'عيّن قيمة المصباح %m.outputs إلى %n',
+			doSetOutput: 'عرف الإخراج %m.outputs إلى %n',
+			doResetCounter: 'أعد تعيين العداد %m.counters',
+			doSetMotorSpeed: 'تعريف المحرك %m.motors للسرعة %n',
+			doSetMotorSpeedDir: 'تعريف المحرك %m.motors إلى %n %m.motorDirections',
+			doSetMotorDir: 'تعريف المحرك %m.motors إلى %m.motorDirections',
+			doSetMotorSpeedDirDist: 'حرّك المحرك %m.motors في %n خطوات في السرعة %n %m.motorDirections',
+			doSetMotorSpeedDirSync: 'حرّك المحرك %m.motors وأيضا   %m.motors في السرعة  %n %m.motorDirections',
+			doSetMotorSpeedDirDistSync: 'حرّك المحرك %m.motors وأيضا  %m.motors في %n خطوات في السرعة %n %m.motorDirections',
+			doStopMotor: 'اوقف المحرك %m.motors',
+			doConfigureInput: 'عيّن الإدخال %m.inputs إلى %m.inputModes',
+			dir_forward: 'أمام',
+			dir_backwards: 'خلف',
+			sens_color: 'استشعار اللون',
+			sens_distance: 'استشعار المسافة',
+			sens_ntc: 'NTC استشعار',
+			sens_photo: 'استشعار الضوء',
+			sens_lightBarrier: 'حاجز الضوء',
+			sens_button: 'محوّل',
+			sens_reed: 'استشعار مغناطيسي',
+			openclose_opens: 'فتح',
+			openclose_closes: 'اغلق',
+			mode_a5k: 'مقاومة انالوجت',
+			mode_d5k: 'مقاومة ديجيتالت',
+			mode_a10v: 'تيار انالوجي',
+			mode_d10v: 'تيار ديجيتالي ',
+			mode_ultrasonic: 'اولتراسونيك',
+			reset: 'إعادة تعيين'
+		},		
 		// Hebrew translation
 		he: {
 			onOpenClose: 'כאשר %m.openCloseSensors %m.inputs %m.openClose',
@@ -121,12 +160,15 @@ var Lang = {
 	}
 	
 };
+
 function ScratchConnection(url, ext) {
 		
 	var ws = null;
 	
 	// for access within methods
 	var _this = this;
+	var connected = false;
+	var curDev = null;
 	
 	this.status = {status: 1, msg: 'Connecting'};
 	
@@ -141,6 +183,10 @@ function ScratchConnection(url, ext) {
 	
 	this.connect = function() {
 		ws = new WebSocket(url);
+		if (ws == null) {
+			alert('Your Browser does not support WebSockets. You need a recent Browser to use FTScratchTXT. הדפדפן אינו תומך בטכנולוגיה הנדרשת, נא להשתמש בכרום או בפיירפוקס או באקספלורר.');
+			return;
+		}
 		ws.onmessage = handleMessage;
 		ws.onclose = handleClose;
 		ws.onopen = handleOpen;
@@ -152,6 +198,7 @@ function ScratchConnection(url, ext) {
 	
 	// websocket connected. this == the websocket
 	var handleOpen = function() {
+		_this.connected = true;
 		ext.onConnect();
 	}
 	
@@ -166,14 +213,31 @@ function ScratchConnection(url, ext) {
 			ext.input.oldValues = ext.input.curValues;
 			ext.input.curValues = data;
 		} else if (messageType == "PONG") {
-			_this.status = {status: 2, msg: getTimeString() + data[0]};
+			var dev = data[0];
+			var devChanged = dev != _this.curDev;
+			_this.curDev = dev;
+			if (dev) {
+				if (devChanged) {
+					ext.onConnectTXT();
+				}
+				_this.status = {status: 2, msg: getTimeString() + ' connected to ' + dev };
+			} else {
+				_this.status = {status: 1, msg: getTimeString() + ' connected to application but not to TXT' };
+			}
+			
 		}
 		
 	};
-	
+
 	// websocket closed. this == the websocket
 	var handleClose = function() {
-		_this.status = {status: 0, msg: getTimeString() + ' Lost Connection'};
+		_this.status = {status: 0, msg: getTimeString() + ' lost connection to application'};
+		if (_this.connected) {
+			alert('נפלה התקשורת עם תוכנת הקישור. נא לוודא שהתוכנה רצה ברקע ולטעון מחדש את סביבת הדפדפן');
+		} else {
+			alert('לא ניתן היה להתחבר אל הרובוט. נא לוודא שתוכנת הקישור רצה ברקע ולטעון מחדש את סביבת הדפדפן');
+		}
+		_this.connected = false;
 	};
 	
 	this.playSound = function(sndIdx) {
@@ -198,6 +262,7 @@ function ScratchConnection(url, ext) {
 	
 	
 };
+
 /*
 var IO = {
 
@@ -265,6 +330,7 @@ var IO = {
 	
 };
 	*/
+
 (function(ext) {
 	
 	// the current sensor values from the device
@@ -288,6 +354,7 @@ var IO = {
 	// reset the device
 	ext.reset = function() {
 		connection.reset();
+		ext.output.init();
 	};
 	
 	
@@ -300,6 +367,7 @@ var IO = {
 		this.dist = -10;		// -10 = no change, 0 = no distance limit, >0 = distance limit
 		this.modified =			function() {this.mod = true;}
 		this.transmitted =		function() {this.mod = false; this.sync = -10; this.dist = -10;}
+		this.init =				function() {this.speed = 0; this.dir = 1; this.sync = -10; this.dist = -10;}
 	};
 	
 	// describes one output (value)
@@ -308,6 +376,7 @@ var IO = {
 		this.val = 0;
 		this.modified =			function() {this.mod = true;}
 		this.transmitted =		function() {this.mod = false;}
+		this.init = 			function() {this.val = 0;}
 	};
 	
 	// describes one input-configuration (mode)
@@ -318,23 +387,19 @@ var IO = {
 			var changed = this.mode != newMode;
 			this.mode = newMode;
 			if (changed) {this.mod = true;}
+			//console.log(this.mode + ":" + newMode + ":" + changed + " - " + this.mod);
 		}
-		this.transmitted = function() {
-			this.mod = false;
-		}
+		this.transmitted = 	function() {this.mod = false;}
+		this.init =			function() {this.mode = -1;}
 	};
 	
 	// describes one counter-configuration
 	function Counter() {
 		this.mod = false;
 		this.rst = false;
-		this.doReset = function() {
-			this.rst = true;
-			this.mod = true;
-		}
-		this.transmitted = function() {
-			this.mod = false;
-		}
+		this.doReset =		function() {this.rst = true; this.mod = true;}
+		this.transmitted =	function() {this.mod = false;}
+		this.init =			function() {this.rst = false;}
 	}
 	
 	Motor.prototype.toString = function motorToString() {
@@ -365,7 +430,15 @@ var IO = {
 			for (var i = 0; i < 8; ++i) {needsUpdate |= this.inputs[i].mod;}
 			for (var i = 0; i < 4; ++i) {needsUpdate |= this.counters[i].mod;}
 			return needsUpdate;
-		}
+		},
+		
+		// reset to initial state
+		init: function() {
+			for (var i = 0; i < 4; ++i) {this.motors[i].init();}
+			for (var i = 0; i < 8; ++i) {this.outputs[i].init();}
+			for (var i = 0; i < 8; ++i) {this.inputs[i].init();}
+			for (var i = 0; i < 4; ++i) {this.counters[i].init();}
+		},
 		
 	};
 	
@@ -782,19 +855,26 @@ var IO = {
 		
 	};
 	
-
+	/** IO via WebSockets */
 	
 	// Register the extension
 	ScratchExtensions.register('fischertechnik ROBO-TXT', descriptor, ext);
-			
 	
-	// connection established
+	// connected to FTScratchTXT.exe
 	ext.onConnect = function() {
 		
 		// ensure the ROBO LT is reset
 		ext.reset();
 	
-	}
+	};
+	
+	// connected to a TXT
+	ext.onConnectTXT = function() {
+	
+		// ensure the internal state is reset as the TXT's state is also reset!
+		ext.output.init();
+	
+	};
 	
 	var connection = new ScratchConnection("ws://127.0.0.1:8001/api", ext);	// edge/ie need the IP here
 	connection.connect();

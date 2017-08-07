@@ -1,4 +1,4 @@
-
+﻿
 function getButtonState(state) {
 	return Lang.get(state);
 }
@@ -339,6 +339,8 @@ function ScratchConnection(url, ext) {
 	
 	// for access within methods
 	var _this = this;
+	var connected = false;
+	var curDev = null;
 	
 	this.status = {status: 1, msg: 'Connecting'};
 	
@@ -353,6 +355,10 @@ function ScratchConnection(url, ext) {
 	
 	this.connect = function() {
 		ws = new WebSocket(url);
+		if (ws == null) {
+			alert('Your Browser does not support WebSockets. You need a recent Browser to use FTScratchTXT');
+			return;
+		}
 		ws.onmessage = handleMessage;
 		ws.onclose = handleClose;
 		ws.onopen = handleOpen;
@@ -364,6 +370,7 @@ function ScratchConnection(url, ext) {
 	
 	// websocket connected. this == the websocket
 	var handleOpen = function() {
+		_this.connected = true;
 		ext.onConnect();
 	}
 	
@@ -378,14 +385,31 @@ function ScratchConnection(url, ext) {
 			ext.input.oldValues = ext.input.curValues;
 			ext.input.curValues = data;
 		} else if (messageType == "PONG") {
-			_this.status = {status: 2, msg: getTimeString() + data[0]};
+			var dev = data[0];
+			var devChanged = dev != _this.curDev;
+			_this.curDev = dev;
+			if (dev) {
+				if (devChanged) {
+					ext.onConnectTXT();
+				}
+				_this.status = {status: 2, msg: getTimeString() + ' connected to ' + dev };
+			} else {
+				_this.status = {status: 1, msg: getTimeString() + ' connected to application but not to TXT' };
+			}
+			
 		}
 		
 	};
-	
+
 	// websocket closed. this == the websocket
 	var handleClose = function() {
-		_this.status = {status: 0, msg: getTimeString() + ' Lost Connection'};
+		_this.status = {status: 0, msg: getTimeString() + ' lost connection to application'};
+		if (_this.connected) {
+			alert('Lost connection to the TXT-Application. Please ensure FTScratchTXT.exe is running and reload the Website');
+		} else {
+			alert('Could not connect to the Robot. Please ensure FTScratchTXT.exe is running and reload the Website');
+		}
+		_this.connected = false;
 	};
 	
 	this.playSound = function(sndIdx) {
@@ -502,6 +526,7 @@ var IO = {
 	// reset the device
 	ext.reset = function() {
 		connection.reset();
+		ext.output.init();
 	};
 	
 	
@@ -514,6 +539,7 @@ var IO = {
 		this.dist = -10;		// -10 = no change, 0 = no distance limit, >0 = distance limit
 		this.modified =			function() {this.mod = true;}
 		this.transmitted =		function() {this.mod = false; this.sync = -10; this.dist = -10;}
+		this.init =				function() {this.speed = 0; this.dir = 1; this.sync = -10; this.dist = -10;}
 	};
 	
 	// describes one output (value)
@@ -522,6 +548,7 @@ var IO = {
 		this.val = 0;
 		this.modified =			function() {this.mod = true;}
 		this.transmitted =		function() {this.mod = false;}
+		this.init = 			function() {this.val = 0;}
 	};
 	
 	// describes one input-configuration (mode)
@@ -534,22 +561,17 @@ var IO = {
 			if (changed) {this.mod = true;}
 			//console.log(this.mode + ":" + newMode + ":" + changed + " - " + this.mod);
 		}
-		this.transmitted = function() {
-			this.mod = false;
-		}
+		this.transmitted = 	function() {this.mod = false;}
+		this.init =			function() {this.mode = -1;}
 	};
 	
 	// describes one counter-configuration
 	function Counter() {
 		this.mod = false;
 		this.rst = false;
-		this.doReset = function() {
-			this.rst = true;
-			this.mod = true;
-		}
-		this.transmitted = function() {
-			this.mod = false;
-		}
+		this.doReset =		function() {this.rst = true; this.mod = true;}
+		this.transmitted =	function() {this.mod = false;}
+		this.init =			function() {this.rst = false;}
 	}
 	
 	Motor.prototype.toString = function motorToString() {
@@ -580,7 +602,15 @@ var IO = {
 			for (var i = 0; i < 8; ++i) {needsUpdate |= this.inputs[i].mod;}
 			for (var i = 0; i < 4; ++i) {needsUpdate |= this.counters[i].mod;}
 			return needsUpdate;
-		}
+		},
+		
+		// reset to initial state
+		init: function() {
+			for (var i = 0; i < 4; ++i) {this.motors[i].init();}
+			for (var i = 0; i < 8; ++i) {this.outputs[i].init();}
+			for (var i = 0; i < 8; ++i) {this.inputs[i].init();}
+			for (var i = 0; i < 4; ++i) {this.counters[i].init();}
+		},
 		
 	};
 	
@@ -993,7 +1023,7 @@ var IO = {
 	
 		},
 		
-		url: 'http://www.fischertechnik.de/home/info/Computing/ROBOTICS-TXT-Controller.aspx/usetemplate-1_column_no_pano/',
+		url: 'https://adihadas.github.io/ftscratch/',
 		
 	};
 	
@@ -1002,13 +1032,21 @@ var IO = {
 	// Register the extension
 	ScratchExtensions.register('fischertechnik ROBO-TXT', descriptor, ext);
 	
-	// connection established
+	// connected to FTScratchTXT.exe
 	ext.onConnect = function() {
 		
 		// ensure the ROBO LT is reset
 		ext.reset();
 	
-	}
+	};
+	
+	// connected to a TXT
+	ext.onConnectTXT = function() {
+	
+		// ensure the internal state is reset as the TXT's state is also reset!
+		ext.output.init();
+	
+	};
 	
 	var connection = new ScratchConnection("ws://127.0.0.1:8001/api", ext);	// edge/ie need the IP here
 	connection.connect();
