@@ -24,7 +24,7 @@ var Lang = {
 			doPlaySound: 'Play sound %n',
 			doPlaySoundWait: 'Play and maintain sound %n',
 			doSetLamp: 'Set lamp %m.outputs to %n',
-			doSetOutput: 'Set output %m.outputs to %n',
+			//doSetOutput: 'Set output %m.outputs to %n',
 			doResetCounter: 'Reset counter %m.counters',
 			doSetMotorSpeed: 'Set motor %m.motors to %n',
 			doSetMotorSpeedDir: 'Set motor %m.motors to %n %m.motorDirections',
@@ -64,7 +64,7 @@ var Lang = {
 			doPlaySound: 'شغل الصوت %n',
 			doPlaySoundWait: 'شغل الصوت الى نهايته %n',
 			doSetLamp: 'عيّن قيمة المصباح %m.outputs إلى %n',
-			doSetOutput: 'عرف الإخراج %m.outputs إلى %n',
+			//doSetOutput: 'عرف الإخراج %m.outputs إلى %n',
 			doResetCounter: 'أعد تعيين العداد %m.counters',
 			doSetMotorSpeed: 'تعريف المحرك %m.motors للسرعة %n',
 			doSetMotorSpeedDir: 'تعريف المحرك %m.motors إلى %n %m.motorDirections',
@@ -103,7 +103,7 @@ var Lang = {
 			doPlaySound: 'נגן צליל %n',
 			doPlaySoundWait: 'נגן צליל %n עד לסיומו',
 			doSetLamp: 'קבע עוצמת נורה %m.outputs ל %n',
-			doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
+			//doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
 			doResetCounter: 'אפס מונה %m.counters',
 			doSetMotorSpeed: 'קבע מהירות מנוע %m.motors ל %n',
 			doSetMotorSpeedDir: 'קבע מהירות מנוע %m.motors ל %n %m.motorDirections',
@@ -597,11 +597,11 @@ var IO = {
 		ext.updateIfNeeded();
 	};
 	
-	/** set the given Output 'Ox' to the provided value [0:8] */
+	/** set the given Output 'Ox' to the provided value [0:8] 
 	ext.doSetOutput = function(outputName, value) {
 		ext._setOutput08(outputName, value);
 		ext.updateIfNeeded();
-	};
+	};*/
 	
 	
 	/** adjust the given motor's speed */
@@ -807,7 +807,7 @@ var IO = {
 			['w', Lang.get('doPlaySoundWait'),				'doPlaySoundWait',				1],
 			
 			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 0],
-			[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
+			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
 			[' ', Lang.get('doResetCounter'),				'doResetCounter',				'C1'],
 			
 			[' ', Lang.get('doSetMotorSpeed'),				'doSetMotorSpeed',				'M1', 8],

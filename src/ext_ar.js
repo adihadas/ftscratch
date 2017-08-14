@@ -24,7 +24,7 @@ var Lang = {
 			doPlaySound: 'Play sound %n',
 			doPlaySoundWait: 'Play and maintain sound %n',
 			doSetLamp: 'Set lamp %m.outputs to %n',
-			doSetOutput: 'Set output %m.outputs to %n',
+			//doSetOutput: 'Set output %m.outputs to %n',
 			doResetCounter: 'Reset counter %m.counters',
 			doSetMotorSpeed: 'Set motor %m.motors to %n',
 			doSetMotorSpeedDir: 'Set motor %m.motors to %n %m.motorDirections',
@@ -64,7 +64,7 @@ var Lang = {
 			doPlaySound: 'شغل الصوت %n',
 			doPlaySoundWait: 'شغل الصوت الى نهايته %n',
 			doSetLamp: 'عيّن قيمة المصباح %m.outputs إلى %n',
-			doSetOutput: 'عرف الإخراج %m.outputs إلى %n',
+			//doSetOutput: 'عرف الإخراج %m.outputs إلى %n',
 			doResetCounter: 'أعد تعيين العداد %m.counters',
 			doSetMotorSpeed: 'تعريف المحرك %m.motors للسرعة %n',
 			doSetMotorSpeedDir: 'تعريف المحرك %m.motors إلى %n %m.motorDirections',
@@ -103,7 +103,7 @@ var Lang = {
 			doPlaySound: 'נגן צליל %n',
 			doPlaySoundWait: 'נגן צליל %n עד לסיומו',
 			doSetLamp: 'קבע עוצמת נורה %m.outputs ל %n',
-			doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
+			//doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
 			doResetCounter: 'אפס מונה %m.counters',
 			doSetMotorSpeed: 'קבע מהירות מנוע %m.motors ל %n',
 			doSetMotorSpeedDir: 'קבע מהירות מנוע %m.motors ל %n %m.motorDirections',
@@ -134,7 +134,7 @@ var Lang = {
 		}		
 	},	
 	
-	// get the Arabic translated version
+	// get the hebrew translated version
 	get: function(what) {
 		//var codes = this.trans[this.langCode];		// requested language
 		//if (!codes) { 
@@ -184,7 +184,7 @@ function ScratchConnection(url, ext) {
 	this.connect = function() {
 		ws = new WebSocket(url);
 		if (ws == null) {
-			alert('Your Browser does not support WebSockets. You need a recent Browser to use FTScratchTXT');
+			alert('Your Browser does not support WebSockets. You need a recent Browser to use FTScratchTXT. הדפדפן אינו תומך בטכנולוגיה הנדרשת, נא להשתמש בכרום או בפיירפוקס או באקספלורר.');
 			return;
 		}
 		ws.onmessage = handleMessage;
@@ -222,7 +222,7 @@ function ScratchConnection(url, ext) {
 				}
 				_this.status = {status: 2, msg: getTimeString() + ' connected to ' + dev };
 			} else {
-				_this.status = {status: 1, msg: getTimeString() + ' connected to application but not to TXT' };
+				_this.status = {status: 1, msg: getTimeString() + ' הרובוט כבוי או מנותק מהמחשב' };
 			}
 			
 		}
@@ -231,7 +231,7 @@ function ScratchConnection(url, ext) {
 
 	// websocket closed. this == the websocket
 	var handleClose = function() {
-		_this.status = {status: 0, msg: getTimeString() + ' lost connection to application'};
+		_this.status = {status: 0, msg: getTimeString() + ' נפלה התקשורת עם תוכנת הקישור'};
 		if (_this.connected) {
 			alert('נפלה התקשורת עם תוכנת הקישור. נא לוודא שהתוכנה רצה ברקע ולטעון מחדש את סביבת הדפדפן');
 		} else {
@@ -597,11 +597,11 @@ var IO = {
 		ext.updateIfNeeded();
 	};
 	
-	/** set the given Output 'Ox' to the provided value [0:8] */
+	/** set the given Output 'Ox' to the provided value [0:8] 
 	ext.doSetOutput = function(outputName, value) {
 		ext._setOutput08(outputName, value);
 		ext.updateIfNeeded();
-	};
+	};*/
 	
 	
 	/** adjust the given motor's speed */
@@ -807,7 +807,7 @@ var IO = {
 			['w', Lang.get('doPlaySoundWait'),				'doPlaySoundWait',				1],
 			
 			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 0],
-			[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
+			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
 			[' ', Lang.get('doResetCounter'),				'doResetCounter',				'C1'],
 			
 			[' ', Lang.get('doSetMotorSpeed'),				'doSetMotorSpeed',				'M1', 8],
