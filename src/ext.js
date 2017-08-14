@@ -30,7 +30,7 @@ var Lang = {
 			doPlaySoundWait:			'Sound %n abspielen und warten',
 			
 			doSetLamp:					'Setze Lampe %m.outputs auf %n',
-			doSetOutput:				'Setze Ausgang %m.outputs auf %n',
+			//doSetOutput:				'Setze Ausgang %m.outputs auf %n',
 			doResetCounter:				'Setze Zähler %m.counters zurück',
 			
 			doSetMotorSpeed:			'Setze Motor %m.motors auf %n',
@@ -78,7 +78,7 @@ var Lang = {
 			doPlaySound: 'Play sound %n',
 			doPlaySoundWait: 'Play and maintain sound %n',
 			doSetLamp: 'Set lamp %m.outputs to %n',
-			doSetOutput: 'Set output %m.outputs to %n',
+			//doSetOutput: 'Set output %m.outputs to %n',
 			doResetCounter: 'Reset counter %m.counters',
 			doSetMotorSpeed: 'Set motor %m.motors to %n',
 			doSetMotorSpeedDir: 'Set motor %m.motors to %n %m.motorDirections',
@@ -118,7 +118,7 @@ var Lang = {
 			doPlaySound: 'Jouer sound %n',
 			doPlaySoundWait: 'Jouer sound %n et attendre',
 			doSetLamp: 'Si lumière %m.outputs mise sur %n',
-			doSetOutput: 'Si sortie %m.outputs mise sur %n',
+			//doSetOutput: 'Si sortie %m.outputs mise sur %n',
 			doResetCounter: 'Si compteur %m.counters réinitialisé',
 			doSetMotorSpeed: 'Si moteur %m.motors mis sur %n',
 			doSetMotorSpeedDir: 'Si moteur %m.motors mis sur %n %m.motorDirections',
@@ -157,7 +157,7 @@ var Lang = {
 			doPlaySound: 'Reproducir sonido %n',
 			doPlaySoundWait: 'Reproducir sonido %n y esperar',
 			doSetLamp: 'Fijar la lámpara %m.outputs a %n',
-			doSetOutput: 'Fijar la salida %m.outputs a %n',
+			//doSetOutput: 'Fijar la salida %m.outputs a %n',
 			doResetCounter: 'Reiniciar el contador %m.counters',
 			doSetMotorSpeed: 'Fijar el motor %m.motors a %n',
 			doSetMotorSpeedDir: 'Fijar el motor %m.motors a %n %m.motorDirections',
@@ -196,7 +196,7 @@ var Lang = {
 			doPlaySound: 'Geluid %n afspelen',
 			doPlaySoundWait: 'Geluid %n afspelen en wachten',
 			doSetLamp: 'Stel lamp %m.outputs in op %n',
-			doSetOutput: 'Stel uitgang %m.outputs in op %n',
+			//doSetOutput: 'Stel uitgang %m.outputs in op %n',
 			doResetCounter: 'Reset teller %m.counters',
 			doSetMotorSpeed: 'Stel motor %m.motors in op %n',
 			doSetMotorSpeedDir: 'Stel motor %m.motors in op %n %m.motorDirections',
@@ -235,7 +235,7 @@ var Lang = {
 			doPlaySound: 'Reproduzir som %n',
 			doPlaySoundWait: 'Reproduzir som %n e aguardar',
 			doSetLamp: 'A definir lâmpada %m.outputs para %n',
-			doSetOutput: 'A definir saída %m.outputs para %n',
+			//doSetOutput: 'A definir saída %m.outputs para %n',
 			doResetCounter: 'A repor contador %m.counters',
 			doSetMotorSpeed: 'A definir motor %m.motors para %n',
 			doSetMotorSpeedDir: 'A definir motor %m.motors para %n %m.motorDirections',
@@ -274,7 +274,7 @@ var Lang = {
 			doPlaySound: 'נגן צליל %n',
 			doPlaySoundWait: 'נגן צליל %n עד לסיומו',
 			doSetLamp: 'קבע עוצמת נורה %m.outputs ל %n',
-			doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
+			//doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
 			doResetCounter: 'אפס מונה %m.counters',
 			doSetMotorSpeed: 'קבע מהירות מנוע %m.motors ל %n',
 			doSetMotorSpeedDir: 'קבע מהירות מנוע %m.motors ל %n %m.motorDirections',
@@ -769,11 +769,11 @@ var IO = {
 		ext.updateIfNeeded();
 	};
 	
-	/** set the given Output 'Ox' to the provided value [0:8] */
+	/** set the given Output 'Ox' to the provided value [0:8] 
 	ext.doSetOutput = function(outputName, value) {
 		ext._setOutput08(outputName, value);
 		ext.updateIfNeeded();
-	};
+	};*/
 	
 	
 	/** adjust the given motor's speed */
@@ -979,7 +979,7 @@ var IO = {
 			['w', Lang.get('doPlaySoundWait'),				'doPlaySoundWait',				1],
 			
 			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 0],
-			[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
+			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
 			[' ', Lang.get('doResetCounter'),				'doResetCounter',				'C1'],
 			
 			[' ', Lang.get('doSetMotorSpeed'),				'doSetMotorSpeed',				'M1', 8],
