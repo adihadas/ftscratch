@@ -68,8 +68,8 @@
 		<div class="column3">
 			 <a href="https://youtu.be/de_M67jBT4w" target="_blank" class="image image-centered img"><img src="images/txt.png"  alt="" /></a>
 				<div class="title">
-				<h2>2) חברו את בקר ה-TXT למחשב</h2><span class="byline"><b><b>( USB / <a href="src/TXT to PC via Bluetooth.pdf" target="_blank">BT</a> / <a href="src/WLAN_Client_Mode_en.pdf" target="_blank">WiFi</a> )</b></b></span>
-				</div>
+				<h2>2) חברו את בקר ה-TXT למחשב</h2><span class="byline"><b><b>( *USB / <a href="src/TXT to PC via Bluetooth.pdf" target="_blank">BT</a> / <a href="src/WLAN_Client_Mode_en.pdf" target="_blank">WiFi</a> )</b></b></span>
+				</div>*החיבור יתבצע לרשת WiFi מוגנת סיסמא
 			</div>
 		</div>
 		<div class="column4">
@@ -87,103 +87,101 @@
 			<h2>פקודות הרובוט</h2>
 		</div>
 		<div  class="blockDesc">
-<div class="image"><img src="images/onOpenClose.png"></div>
-<div class="text"> אירוע זה יופעל כאשר חיישן דיגיטלי מסוג מגע/מגנטי/אור/אינפרה-רד המחובר בבקר לכניסת קלט I1-I8 משנה את מצבו לנפתח (מ-1 ל-0) או לנסגר (מ-0 ל-1)<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/onCounter.png"></div>
-<div class="text"> אירוע זה יופעל כאשר המספר הנוכחי השמור בקלט המונה C1-C4 יהיה גבוה/נמוך יותר מאשר הערך המוזן<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/onInput.png"></div>
-<div class="text"> אירוע זה יופעל כאשר הערך של חיישן אנלוגי מסוג צבע/מרחק/טמפרטורה/אור המחובר לכניסת קלט I1-I8 הינו גבוה/נמוך יותר מאשר הערך המוזן<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/getCounter.png"></div>
-<div class="text"> אחזר את ערכו של קלט המונה C1-C4<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/getSensor.png"></div>
-<div class="text"> אחזר את ערכו של חיישן אנלוגי מסוג צבע/מרחק/טמפרטורה/אור המחובר לכניסת קלט I1-I8<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/isClosed.png"></div>
-<div class="text"> בדוק האם ערכו של חיישן דיגטלי מסוג מגע/מגנטיות/אור/אינפרה-רד המחובר לכניסת קלט I1-I8 הינו 1. יוחזר ערך בוליאני (0 או 1)<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doPlaySound.png"></div>
-<div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doPlaySoundWait.png"></div>
-<div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetLamp.png"></div>
-<div class="text"> הגדר ערך עוצמת הנורה המחוברת ליציאת פלט O1-O8<br>
-יש להגדיר ערך עוצמת אור בין 0-8. הגדרת עוצמת אור ל-0 תכבה את הנורה<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doResetCounter.png"></div>
-<div class="text"> אפס את ערכו של קלט המונה C1-C4<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetMotorSpeed.png"></div>
-<div class="text"> הגדר את ערך המהירות של המנוע המחובר ליציאת פלט M1-M4 לערך שבין 0-8<br>
-יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetMotorSpeedDir.png"></div>
-<div class="text">הגדר את ערכי הכיוון והמהירות של המנוע המחובר ליציאת פלט M1-M4<br>
-יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
-</div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetMotorDir.png"></div>
-<div class="text">הגדר את הכיוון של סיבוב המנוע המחובר ליציאת פלט M1-M4<br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetMotorSpeedDirDist.png"></div>
-<div class="text">הגדר את ערכי הכיוון והמהירות של המנוע המחובר ליציאת פלט M1-M4, ואת המרחק (מספר הצעדים) אותו יש לעבור<br>
-יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
-בדיקת המרחק מתבצעת מול ערך כניסת המונה C1-C4 המחובר לחיישן האינקודר של המנוע (בהתאמה)<br>
-הדרך היחידה לשנות את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות<br>
-<b>הפקודה תעבוד רק אם חיישן האינקודר של המנוע מחובר לכניסת המונה המתאימה בבקר: C1 עבור מנוע ב-M1 וכן הלאה</b></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetMotorSpeedDirSync.png"></div>
-<div class="text">הגדר את ערכי הכיוון והמהירות של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים<br>
-יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
-<b>לא ניתן לשנות ערכי מהירות או כיוון בעבור מנוע בודד בזמן נסיעה סינכרונית,  ראשית חובה לעצור את המנועים</b><br></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doSetMotorSpeedDirDistSync.png"></div>
-<div class="text">הגדר את ערכי הכיוון והמהירות של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים, והגדר את המרחק אותו יש לעבור<br>
-יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
-בדיקת המרחק מתבצעת מול ערך כניסת המונים C1-C4 המחוברים לחיישני האינקודרים של המנועים (בהתאמה)<br>
-<b>לא ניתן לשנות ערכי מהירות או כיוון נסיעה בעבור מנוע בודד בזמן נסיעה סינכרונית, או את מרחק הנסיעה שנקבע. ראשית חובה לעצור את המנועים</b><br>
-<b>הפקודה תעבוד רק אם חיישני האינקודרים של המנועים מחוברים לכניסות המונים המתאימים בבקר:  C1 עבור מנוע ב-M1 וכן הלאה</b></div>
-</div>
-<div class="blockDesc">
-<div class="image"><img src="images/doStopMotor.png"></div>
-<div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4</div>
-</div>
-<div class="blockDesc">
-	<div class="image"><img src="images/doConfigureInput.png"></div>
-	<div class="text">הגדר את סוג הטכנולוגיה בה פועל החיישן המחובר לכניסת הפלט I1-I8<br>
-	 <b>חובה להגדיר בתסריט את סוג החיישן על מנת שהסביבה תדע כיצד יש לעבוד איתו ויתקבלו ממנו ערכים מתאימים</b><br>
-	<b>מתח דיגיטלי</b> - חיישן מזהה מסלול (IR)<br>
-	<b>התנגדות דיגיטלית</b> - חיישן מגע (מתג), חיישן אור (מחסום אור), חיישן מגנטיות<br>
-	<b>מתח אנלוגי</b> - חיישן צבע<br>
-	<b>התנגדות אנלוגית</b> - חיישן טמפרטורה, חיישן אור<br>
-	<b>אולטרהסוניק</b> - חיישן מרחק
-	</div>
-</div>
+			  <div class="image"><img src="images/onOpenClose.png"></div>
+			  <div class="text"> אירוע זה יופעל כאשר חיישן דיגיטלי מסוג מגע/מגנטי/אור/אינפרה-רד המחובר בבקר לכניסת קלט I1-I8 משנה את מצבו לנפתח (מ-1 ל-0) או לנסגר (מ-0 ל-1)<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/onCounter.png"></div>
+			 <div class="text"> אירוע זה יופעל כאשר המספר הנוכחי השמור בקלט המונה C1-C4 יהיה גבוה/נמוך יותר מאשר הערך המוזן<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/onInput.png"></div>
+			 <div class="text"> אירוע זה יופעל כאשר הערך של חיישן אנלוגי מסוג צבע/מרחק/טמפרטורה/אור המחובר לכניסת קלט I1-I8 הינו גבוה/נמוך יותר מאשר הערך המוזן<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/getCounter.png"></div>
+			 <div class="text"> אחזר את ערכו של קלט המונה C1-C4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/getSensor.png"></div>
+			 <div class="text"> אחזר את ערכו של חיישן אנלוגי מסוג צבע/מרחק/טמפרטורה/אור המחובר לכניסת קלט I1-I8<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/isClosed.png"></div>
+			 <div class="text"> בדוק האם ערכו של חיישן דיגטלי מסוג מגע/מגנטיות/אור/אינפרה-רד המחובר לכניסת קלט I1-I8 הינו 1. יוחזר ערך בוליאני (0 או 1)<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doPlaySound.png"></div>
+			 <div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doPlaySoundWait.png"></div>
+			 <div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetLamp.png"></div>
+			 <div class="text"> הגדר ערך עוצמת הנורה המחוברת ליציאת פלט O1-O8<br>
+			 יש להגדיר ערך עוצמת אור בין 0-8. הגדרת עוצמת אור ל-0 תכבה את הנורה<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doResetCounter.png"></div>
+			 <div class="text"> אפס את ערכו של קלט המונה C1-C4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeed.png"></div>
+			 <div class="text"> הגדר את ערך המהירות של המנוע המחובר ליציאת פלט M1-M4 לערך שבין 0-8<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDir.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותו של המנוע המחובר ליציאת פלט M1-M4<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorDir.png"></div>
+			 <div class="text">הגדר את הכיוון של סיבוב המנוע המחובר ליציאת פלט M1-M4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDirDist.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותו של המנוע המחובר ליציאת פלט M1-M4, ואת המרחק (מספר הצעדים) אותו יש לעבור<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
+			 בדיקת המרחק מתבצעת מול ערך כניסת המונה C1-C4 המחובר לחיישן האינקודר של המנוע (בהתאמה)<br>
+			 הדרך היחידה לשנות את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות<br>
+			 <b>הפקודה תעבוד רק אם חיישן האינקודר של המנוע מחובר לכניסת המונה המתאימה בבקר: C1 עבור מנוע ב-M1 וכן הלאה</b></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDirSync.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותם של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
+			 <b>לא ניתן לשנות ערכי מהירות או כיוון בעבור מנוע בודד בזמן נסיעה סינכרונית,  ראשית חובה לעצור את המנועים</b><br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDirDistSync.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותם של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים, והגדר את המרחק אותו יש לעבור<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
+			 בדיקת המרחק מתבצעת מול ערך כניסת המונים C1-C4 המחוברים לחיישני האינקודרים של המנועים (בהתאמה)<br>
+			 <b>לא ניתן לשנות ערכי מהירות או כיוון נסיעה בעבור מנוע בודד בזמן נסיעה סינכרונית, או את מרחק הנסיעה שנקבע. ראשית חובה לעצור את המנועים</b><br>
+			 <b>הפקודה תעבוד רק אם חיישני האינקודרים של המנועים מחוברים לכניסות המונים המתאימים בבקר:  C1 עבור מנוע ב-M1 וכן הלאה</b></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doStopMotor.png"></div>
+			 <div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4</div>
+		</div>
+		<div class="blockDesc">
+			<div class="image"><img src="images/doConfigureInput.png"></div>
+			<div class="text">הגדר את סוג הטכנולוגיה בה פועל החיישן המחובר לכניסת הפלט I1-I8<br>
+			<b>חובה להגדיר בתסריט את סוג החיישן על מנת שהסביבה תדע כיצד יש לעבוד איתו ויתקבלו ממנו ערכים מתאימים</b><br>
+			<b>מתח דיגיטלי</b> - חיישן מזהה מסלול (IR)<br>
+			<b>התנגדות דיגיטלית</b> - חיישן מגע (מתג), חיישן אור (מחסום אור), חיישן מגנטיות<br>
+			<b>מתח אנלוגי</b> - חיישן צבע<br>
+			<b>התנגדות אנלוגית</b> - חיישן טמפרטורה, חיישן אור<br>
+			<b>אולטרהסוניק</b> - חיישן מרחק</div>
+		</div>
 	  <div class="blockDesc">
-	  <div class="image"><img src="images/reset.png"></div>
-	  	   <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br>
-		   	מומלץ לא להשתמש בפקודה באמצע ריצת התכנית משום שזמן הביצוע של התהליך עלול לחפוף לפקודות ההמשך שאחריו ולשבשן</div>
-</div>
+	  	  <div class="image"><img src="images/reset.png"></div>
+		  <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br>
+		  מומלץ לא להשתמש בפקודה באמצע ריצת התכנית משום שזמן הביצוע של התהליך עלול לחפוף לפקודות ההמשך שאחריו ולשבשן</div>
+	  </div>
 </div>
 </br>
 <div id="featured-wrapper">
