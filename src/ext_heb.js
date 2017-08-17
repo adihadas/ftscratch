@@ -102,7 +102,7 @@ var Lang = {
 			getSensor: 'קרא ערכו של %m.inputSensors %m.inputs',
 			doPlaySound: 'נגן צליל %n',
 			doPlaySoundWait: 'נגן צליל %n עד לסיומו',
-			doSetLamp: 'קבע עוצמת נורה %m.outputs ל %n',
+			doSetLamp: 'הפעל נורה %m.outputs בעוצמת הארה %n',
 			//doSetOutput: 'הגדר פלט %m.outputs לעוצמה %n',
 			doResetCounter: 'אפס מונה %m.counters',
 			doSetMotorSpeed: 'הפעל מנוע %m.motors במהירות %n',
