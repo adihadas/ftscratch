@@ -289,7 +289,7 @@
 	#menu ul
 	{
 		margin: 0;
-		padding: 15px 0px 15px 0px;
+		padding: 20px 0px 20px 0px;
 		list-style: none;
 		line-height: normal;
 		text-align: center;
@@ -303,7 +303,7 @@
 	#menu a
 	{
 		display: block;
-		padding: 1em 1.5em;
+		padding: 1em 1em;
 		letter-spacing: 1px;
 		text-decoration: none;
 		text-transform: uppercase;
