@@ -346,14 +346,19 @@ var IO = {
 		connection.close();
 	};
 	
+	// react to ScratchX stop button/event
+	ext._stop = function () {
+	ext.reset();
+	};
+
 	// Status reporting code
 	// Use this to report missing hardware, plugin or unsupported browser
 	ext._getStatus = function() {
-		try {
-			connection.ping();
-		} catch (err) {
+	try {
+		connection.ping();
+	} catch (err) {
 		;    // not yet connected. no problem
-   		 }
+   	}
 		return connection.status;
 	};
 	
@@ -583,6 +588,8 @@ var IO = {
 		}
 	};
 	
+
+
 	/** commands */
 	
 	
