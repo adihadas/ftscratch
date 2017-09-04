@@ -176,7 +176,7 @@
 		align: right;
 		display: block;
 		padding-top: 0.2em;
-		font-weight: 300;
+		font-weight: 400;
 		font-size: 2em;
 	}
 
@@ -188,7 +188,7 @@
 	.problem {
         text-align:right;
 		padding-top: 0.2em;
-		font-weight: 300;
+		font-weight: 400;
 		font-size: 1.2em;
         padding:15px;
 	}
@@ -216,7 +216,7 @@
 		text-align: center;
 		display: block;
 		padding-top: 1em;
-		font-weight: 300;
+		font-weight: 400;
 		font-size: 1.1em;
 	}
 
