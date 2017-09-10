@@ -1,6 +1,9 @@
 	html, body
 	{
 		height: 100%;
+        font-family: 'Source Sans Pro', sans-serif;
+		font-size: 12pt;
+		font-weight: 400;
 	}
 	
 	body
@@ -8,9 +11,6 @@
 		margin: 0px;
 		padding: 0px;
 		background: #dddede;
-		font-family: 'Source Sans Pro', sans-serif;
-		font-size: 12pt;
-		font-weight: 400;
 		color: #4E4D4D;
 	}
 	
