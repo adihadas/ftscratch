@@ -9,7 +9,7 @@ function getLightBarrierState(state) {
 
 var Lang = {
 	
-	// browser's language code - no need as this is the hebrew version
+	// browser's language code - no need as this is the Arabic version
 	//langCode: (navigator.language || navigator.userLanguage).substr(0,2),
 	
 	trans: {
@@ -78,11 +78,12 @@ var Lang = {
 			dir_backwards: 'خلف',
 			sens_color: 'استشعار اللون',
 			sens_distance: 'استشعار المسافة',
-			sens_ntc: 'NTC استشعار',
+			sens_ntc: 'استشعار درجة الحرارة',
 			sens_photo: 'استشعار الضوء',
 			sens_lightBarrier: 'حاجز الضوء',
 			sens_button: 'محوّل',
 			sens_reed: 'استشعار مغناطيسي',
+			sens_IR: 'الأشعة تحت الحمراء',
 			openclose_opens: 'فتح',
 			openclose_closes: 'اغلق',
 			mode_a5k: 'مقاومة انالوجت',
@@ -134,7 +135,7 @@ var Lang = {
 		}		
 	},	
 	
-	// get the arabic translated version
+	// get the hebrew translated version
 	get: function(what) {
 		//var codes = this.trans[this.langCode];		// requested language
 		//if (!codes) { 
@@ -348,7 +349,7 @@ var IO = {
 	
 	// react to ScratchX stop button/event
 	ext._stop = function () {
-	ext.reset();
+	        ext.reset();
 	};
 
 	// Status reporting code
