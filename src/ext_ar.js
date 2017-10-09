@@ -827,8 +827,8 @@ var IO = {
 			[' ', Lang.get('doPlaySound'),					'doPlaySound',					1],
 			['w', Lang.get('doPlaySoundWait'),				'doPlaySoundWait',				1],
 			
-			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 0],
-			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
+			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 8],
+			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 8],
 			[' ', Lang.get('doResetCounter'),				'doResetCounter',				'C1'],
 			
 			[' ', Lang.get('doSetMotorSpeed'),				'doSetMotorSpeed',				'M1', 8],
