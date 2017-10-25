@@ -32,11 +32,11 @@ var Lang = {
 			doSetMotorSpeedDirDist: 'Move motor %m.motors by %n steps with %n %m.motorDirections',
 			doSetMotorSpeedDirSync: 'Move motor %m.motors with %m.motors with %n %m.motorDirections',
 			doSetMotorSpeedDirDistSync: 'Move motor %m.motors with %m.motors by %n steps with %n %m.motorDirections',
-			doStopMotor: 'Stop motor %m.motors',
-			doStopAllMotors: 'Stop all motors',
+			doStopMotor: 'Stop motor %m.stopmotors',
 			doConfigureInput: 'Set input %m.inputs to %m.inputModes',
 			dir_forward: 'forward',
 			dir_backwards: 'back',
+			all: 'All',
 			sens_color: 'Colour sensor',
 			sens_distance: 'Distance sensor',
 			sens_ntc: 'NTC resistance',
@@ -73,18 +73,19 @@ var Lang = {
 			doSetMotorSpeedDirDist: 'حرّك المحرك %m.motors في %n خطوات في السرعة %n %m.motorDirections',
 			doSetMotorSpeedDirSync: 'حرّك المحرك %m.motors وأيضا   %m.motors في السرعة  %n %m.motorDirections',
 			doSetMotorSpeedDirDistSync: 'حرّك المحرك %m.motors وأيضا  %m.motors في %n خطوات في السرعة %n %m.motorDirections',
-			doStopMotor: 'اوقف المحرك %m.motors',
-			doStopAllMotors: 'إيقاف جميع المحركات',
+			doStopMotor: 'اوقف المحرك %m.stopmotors',
 			doConfigureInput: 'عيّن الإدخال %m.inputs إلى %m.inputModes',
 			dir_forward: 'أمام',
 			dir_backwards: 'خلف',
+			all: الكل,
 			sens_color: 'استشعار اللون',
 			sens_distance: 'استشعار المسافة',
-			sens_ntc: 'NTC استشعار',
+			sens_ntc: 'استشعار درجة الحرارة',
 			sens_photo: 'استشعار الضوء',
 			sens_lightBarrier: 'حاجز الضوء',
 			sens_button: 'محوّل',
 			sens_reed: 'استشعار مغناطيسي',
+			sens_IR: 'الأشعة تحت الحمراء',
 			openclose_opens: 'فتح',
 			openclose_closes: 'اغلق',
 			mode_a5k: 'مقاومة انالوجت',
@@ -113,11 +114,11 @@ var Lang = {
 			doSetMotorSpeedDirDist: 'הפעל מנוע %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
 			doSetMotorSpeedDirSync: 'הפעל מנועים %m.motors וגם  %m.motors במהירות %n %m.motorDirections',
 			doSetMotorSpeedDirDistSync: 'הפעל מנועים %m.motors וגם %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
-			doStopMotor: 'עצור מנוע %m.motors',
-			doStopAllMotors: 'עצור את כל המנועים',
+			doStopMotor: 'עצור מנוע %m.stopmotors',
 			doConfigureInput: 'הגדר סוג קלט %m.inputs ל %m.inputModes',
 			dir_forward: 'קדימה',
 			dir_backwards: 'אחורה',
+			all: 'הכל'
 			sens_color: 'חיישן צבע',
 			sens_distance: 'חיישן מרחק',
 			sens_ntc: 'חיישן טמפרטורה',
@@ -682,29 +683,31 @@ var IO = {
 		
 	/** stop the given motor [remove distance and sync constraints] */
 	ext.doStopMotor = function(motorName) {
-		ext._setMotorSpeed08(motorName, 0);		// set speed to 0
-		ext._setMotorDist(motorName, 0);		// remove distance limits
-		//ext._setMotorSyncNone(motorName);		// remove sync constraints
-		ext.updateIfNeeded();
-	};
+		if (motorName) === Lang.getMotorDir('all')) {
+			/** stop all motors [remove distance and sync constraints] */
+			ext._setMotorSpeed08('M1', 0);		// set speed to 0
+			ext._setMotorDist('M1', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M1');		// remove sync constraints
+			ext._setMotorSpeed08('M2', 0);		// set speed to 0
+			ext._setMotorDist('M2', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M2');		// remove sync constraints
+			ext._setMotorSpeed08('M3', 0);		// set speed to 0
+			ext._setMotorDist('M3', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M3');		// remove sync constraints
+			ext._setMotorSpeed08('M4', 0);		// set speed to 0
+			ext._setMotorDist('M4', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M4');		// remove sync constraints
+			ext.updateIfNeeded();
+		}
+		else {
+			ext._setMotorSpeed08(motorName, 0);		// set speed to 0
+			ext._setMotorDist(motorName, 0);		// remove distance limits
+			//ext._setMotorSyncNone(motorName);		// remove sync constraints
+			ext.updateIfNeeded();
+		}
 
-	/** stop all motors [remove distance and sync constraints] */
-	ext.doStopAllMotors = function() {
-		ext._setMotorSpeed08('M1', 0);		// set speed to 0
-		ext._setMotorDist('M1', 0);		// remove distance limits
-		//ext._setMotorSyncNone('M1');		// remove sync constraints
-		ext._setMotorSpeed08('M2', 0);		// set speed to 0
-		ext._setMotorDist('M2', 0);		// remove distance limits
-		//ext._setMotorSyncNone('M2');		// remove sync constraints
-		ext._setMotorSpeed08('M3', 0);		// set speed to 0
-		ext._setMotorDist('M3', 0);		// remove distance limits
-		//ext._setMotorSyncNone('M3');		// remove sync constraints
-		ext._setMotorSpeed08('M4', 0);		// set speed to 0
-		ext._setMotorDist('M4', 0);		// remove distance limits
-		//ext._setMotorSyncNone('M4');		// remove sync constraints
-		ext.updateIfNeeded();
-	};
 
+	};
 	
 	/** reset the given counter to zero */
 	ext.doResetCounter = function(counterName) {
@@ -847,8 +850,8 @@ var IO = {
 			[' ', Lang.get('doPlaySound'),					'doPlaySound',					1],
 			['w', Lang.get('doPlaySoundWait'),				'doPlaySoundWait',				1],
 			
-			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 0],
-			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 0],
+			[' ', Lang.get('doSetLamp'),					'doSetLamp',					'O1', 8],
+			//[' ', Lang.get('doSetOutput'),					'doSetOutput',					'O1', 8],
 			[' ', Lang.get('doResetCounter'),				'doResetCounter',				'C1'],
 			
 			[' ', Lang.get('doSetMotorSpeed'),				'doSetMotorSpeed',				'M1', 8],
@@ -859,7 +862,6 @@ var IO = {
 			[' ', Lang.get('doSetMotorSpeedDirDistSync'),	'doSetMotorSpeedDirDistSync',	'M1', 'M2', 100, 8, Lang.getMotorDir('forward')],
 			
 			[' ', Lang.get('doStopMotor'),					'doStopMotor',					'M1'],
-			[' ', Lang.get('doStopAllMotors'),					'doStopAllMotors'],
 
 			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getMode('d10v')],
 
@@ -881,6 +883,7 @@ var IO = {
 			//buttonStates:		[getButtonState('pressed'), getButtonState('released')],
 			//lightBarrierStates:	[getLightBarrierState('opens'), getLightBarrierState('closes')],
 			motors:				['M1', 'M2', 'M3', 'M4'],
+			stopmotors:				['M1', 'M2', 'M3', 'M4',Lang.getMotorDir('all')],
 			motorDirections:	[Lang.getMotorDir('forward'), Lang.getMotorDir('backwards')],
 			
 			
