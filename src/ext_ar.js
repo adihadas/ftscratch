@@ -9,7 +9,7 @@ function getLightBarrierState(state) {
 
 var Lang = {
 	
-	// browser's language code - no need as this is the Arabic version
+	// browser's language code - no need as this is the hebrew version
 	//langCode: (navigator.language || navigator.userLanguage).substr(0,2),
 	
 	trans: {
@@ -32,10 +32,11 @@ var Lang = {
 			doSetMotorSpeedDirDist: 'Move motor %m.motors by %n steps with %n %m.motorDirections',
 			doSetMotorSpeedDirSync: 'Move motor %m.motors with %m.motors with %n %m.motorDirections',
 			doSetMotorSpeedDirDistSync: 'Move motor %m.motors with %m.motors by %n steps with %n %m.motorDirections',
-			doStopMotor: 'Stop motor %m.motors',
+			doStopMotor: 'Stop motor %m.stopmotors',
 			doConfigureInput: 'Set input %m.inputs to %m.inputModes',
 			dir_forward: 'forward',
 			dir_backwards: 'back',
+			all: 'All',
 			sens_color: 'Colour sensor',
 			sens_distance: 'Distance sensor',
 			sens_ntc: 'NTC resistance',
@@ -72,10 +73,11 @@ var Lang = {
 			doSetMotorSpeedDirDist: 'حرّك المحرك %m.motors في %n خطوات في السرعة %n %m.motorDirections',
 			doSetMotorSpeedDirSync: 'حرّك المحرك %m.motors وأيضا   %m.motors في السرعة  %n %m.motorDirections',
 			doSetMotorSpeedDirDistSync: 'حرّك المحرك %m.motors وأيضا  %m.motors في %n خطوات في السرعة %n %m.motorDirections',
-			doStopMotor: 'اوقف المحرك %m.motors',
+			doStopMotor: 'اوقف المحرك %m.stopmotors',
 			doConfigureInput: 'عيّن الإدخال %m.inputs إلى %m.inputModes',
 			dir_forward: 'أمام',
 			dir_backwards: 'خلف',
+			all: 'الكل',
 			sens_color: 'استشعار اللون',
 			sens_distance: 'استشعار المسافة',
 			sens_ntc: 'استشعار درجة الحرارة',
@@ -112,10 +114,11 @@ var Lang = {
 			doSetMotorSpeedDirDist: 'הפעל מנוע %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
 			doSetMotorSpeedDirSync: 'הפעל מנועים %m.motors וגם  %m.motors במהירות %n %m.motorDirections',
 			doSetMotorSpeedDirDistSync: 'הפעל מנועים %m.motors וגם %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
-			doStopMotor: 'עצור מנוע %m.motors',
+			doStopMotor: 'עצור מנוע %m.stopmotors',
 			doConfigureInput: 'הגדר סוג קלט %m.inputs ל %m.inputModes',
 			dir_forward: 'קדימה',
 			dir_backwards: 'אחורה',
+			all: 'הכל',
 			sens_color: 'חיישן צבע',
 			sens_distance: 'חיישן מרחק',
 			sens_ntc: 'חיישן טמפרטורה',
@@ -135,7 +138,7 @@ var Lang = {
 		}		
 	},	
 	
-	// get the hebrew translated version
+	// get the arabic translated version
 	get: function(what) {
 		//var codes = this.trans[this.langCode];		// requested language
 		//if (!codes) { 
@@ -158,8 +161,10 @@ var Lang = {
 	
 	getMode: function(mode) {
 		return this.get('mode_' + mode);
+	},
+	getAll: function() {
+		return this.get('all');
 	}
-	
 };
 
 function ScratchConnection(url, ext) {
@@ -680,10 +685,28 @@ var IO = {
 		
 	/** stop the given motor [remove distance and sync constraints] */
 	ext.doStopMotor = function(motorName) {
-		ext._setMotorSpeed08(motorName, 0);		// set speed to 0
-		ext._setMotorDist(motorName, 0);		// remove distance limits
-		//ext._setMotorSyncNone(motorName);		// remove sync constraints
-		ext.updateIfNeeded();
+		if (motorName === Lang.getAll()) {
+			/** stop all motors [remove distance and sync constraints] */
+			ext._setMotorSpeed08('M1', 0);		// set speed to 0
+			ext._setMotorDist('M1', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M1');		// remove sync constraints
+			ext._setMotorSpeed08('M2', 0);		// set speed to 0
+			ext._setMotorDist('M2', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M2');		// remove sync constraints
+			ext._setMotorSpeed08('M3', 0);		// set speed to 0
+			ext._setMotorDist('M3', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M3');		// remove sync constraints
+			ext._setMotorSpeed08('M4', 0);		// set speed to 0
+			ext._setMotorDist('M4', 0);		// remove distance limits
+			//ext._setMotorSyncNone('M4');		// remove sync constraints
+			ext.updateIfNeeded();
+		}
+		else {
+			ext._setMotorSpeed08(motorName, 0);		// set speed to 0
+			ext._setMotorDist(motorName, 0);		// remove distance limits
+			//ext._setMotorSyncNone(motorName);		// remove sync constraints
+			ext.updateIfNeeded();
+		}
 	};
 	
 	/** reset the given counter to zero */
@@ -860,6 +883,7 @@ var IO = {
 			//buttonStates:		[getButtonState('pressed'), getButtonState('released')],
 			//lightBarrierStates:	[getLightBarrierState('opens'), getLightBarrierState('closes')],
 			motors:				['M1', 'M2', 'M3', 'M4'],
+			stopmotors:				['M1', 'M2', 'M3', 'M4', Lang.getAll()],
 			motorDirections:	[Lang.getMotorDir('forward'), Lang.getMotorDir('backwards')],
 			
 			
