@@ -685,11 +685,8 @@ var IO = {
 		
 	/** stop the given motor [remove distance and sync constraints] */
 	ext.doStopMotor = function(motorName) {
-		alert(motorName);
-		alert(Lang.getAll());
 		if (motorName === Lang.getAll()) {
 			/** stop all motors [remove distance and sync constraints] */
-			alert('stopping all');
 			ext._setMotorSpeed08('M1', 0);		// set speed to 0
 			ext._setMotorDist('M1', 0);		// remove distance limits
 			//ext._setMotorSyncNone('M1');		// remove sync constraints
