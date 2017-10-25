@@ -161,10 +161,6 @@ var Lang = {
 	
 	getMode: function(mode) {
 		return this.get('mode_' + mode);
-	},
-
-	getAll: function() {
-		return this.get('all');
 	}
 };
 
