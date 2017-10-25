@@ -77,7 +77,7 @@ var Lang = {
 			doConfigureInput: 'عيّن الإدخال %m.inputs إلى %m.inputModes',
 			dir_forward: 'أمام',
 			dir_backwards: 'خلف',
-			all: الكل,
+			all: 'الكل',
 			sens_color: 'استشعار اللون',
 			sens_distance: 'استشعار المسافة',
 			sens_ntc: 'استشعار درجة الحرارة',
@@ -161,6 +161,9 @@ var Lang = {
 	
 	getMode: function(mode) {
 		return this.get('mode_' + mode);
+	},
+	getAll: function() {
+		return this.get('all');
 	}
 };
 
