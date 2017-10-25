@@ -36,7 +36,7 @@ var Lang = {
 			doConfigureInput: 'Set input %m.inputs to %m.inputModes',
 			dir_forward: 'forward',
 			dir_backwards: 'back',
-			all: 'All',
+			all: 'Everything',
 			sens_color: 'Colour sensor',
 			sens_distance: 'Distance sensor',
 			sens_ntc: 'NTC resistance',
