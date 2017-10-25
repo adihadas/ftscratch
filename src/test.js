@@ -867,7 +867,6 @@ var IO = {
 			//buttonStates:		[getButtonState('pressed'), getButtonState('released')],
 			//lightBarrierStates:	[getLightBarrierState('opens'), getLightBarrierState('closes')],
 			motors:				['M1', 'M2', 'M3', 'M4'],
-			stopmotors:				['M1', 'M2', 'M3', 'M4',Lang.getAll('all')],
 			motorDirections:	[Lang.getMotorDir('forward'), Lang.getMotorDir('backwards')],
 			
 			
