@@ -686,30 +686,11 @@ var IO = {
 		
 	/** stop the given motor [remove distance and sync constraints] */
 	ext.doStopMotor = function(motorName) {
-		if (motorName === Lang.getAll()) {
-			/** stop all motors [remove distance and sync constraints] */
-			ext._setMotorSpeed08('M1', 0);		// set speed to 0
-			ext._setMotorDist('M1', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M1');		// remove sync constraints
-			ext._setMotorSpeed08('M2', 0);		// set speed to 0
-			ext._setMotorDist('M2', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M2');		// remove sync constraints
-			ext._setMotorSpeed08('M3', 0);		// set speed to 0
-			ext._setMotorDist('M3', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M3');		// remove sync constraints
-			ext._setMotorSpeed08('M4', 0);		// set speed to 0
-			ext._setMotorDist('M4', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M4');		// remove sync constraints
-			ext.updateIfNeeded();
-		}
-		else {
 			ext._setMotorSpeed08(motorName, 0);		// set speed to 0
 			ext._setMotorDist(motorName, 0);		// remove distance limits
 			//ext._setMotorSyncNone(motorName);		// remove sync constraints
 			ext.updateIfNeeded();
-		}
-
-
+		
 	};
 	
 	/** reset the given counter to zero */
