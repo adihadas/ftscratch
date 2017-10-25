@@ -161,8 +161,11 @@ var Lang = {
 	
 	getMode: function(mode) {
 		return this.get('mode_' + mode);
+	},
+
+	getAll: function() {
+		return this.get('all');
 	}
-	
 };
 
 function ScratchConnection(url, ext) {
@@ -683,7 +686,7 @@ var IO = {
 		
 	/** stop the given motor [remove distance and sync constraints] */
 	ext.doStopMotor = function(motorName) {
-		if (motorName === Lang.getMotorDir('all')) {
+		if (motorName === Lang.getAll()) {
 			/** stop all motors [remove distance and sync constraints] */
 			ext._setMotorSpeed08('M1', 0);		// set speed to 0
 			ext._setMotorDist('M1', 0);		// remove distance limits
@@ -883,7 +886,7 @@ var IO = {
 			//buttonStates:		[getButtonState('pressed'), getButtonState('released')],
 			//lightBarrierStates:	[getLightBarrierState('opens'), getLightBarrierState('closes')],
 			motors:				['M1', 'M2', 'M3', 'M4'],
-			stopmotors:				['M1', 'M2', 'M3', 'M4',Lang.getMotorDir('all')],
+			stopmotors:				['M1', 'M2', 'M3', 'M4',Lang.getMotor('all')],
 			motorDirections:	[Lang.getMotorDir('forward'), Lang.getMotorDir('backwards')],
 			
 			
