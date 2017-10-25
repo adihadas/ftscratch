@@ -118,7 +118,7 @@ var Lang = {
 			doConfigureInput: 'הגדר סוג קלט %m.inputs ל %m.inputModes',
 			dir_forward: 'קדימה',
 			dir_backwards: 'אחורה',
-			all: 'הכל'
+			all: 'הכל',
 			sens_color: 'חיישן צבע',
 			sens_distance: 'חיישן מרחק',
 			sens_ntc: 'חיישן טמפרטורה',
@@ -683,7 +683,7 @@ var IO = {
 		
 	/** stop the given motor [remove distance and sync constraints] */
 	ext.doStopMotor = function(motorName) {
-		if (motorName) === Lang.getMotorDir('all')) {
+		if (motorName === Lang.getMotorDir('all')) {
 			/** stop all motors [remove distance and sync constraints] */
 			ext._setMotorSpeed08('M1', 0);		// set speed to 0
 			ext._setMotorDist('M1', 0);		// remove distance limits
