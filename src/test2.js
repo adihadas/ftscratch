@@ -61,7 +61,7 @@ var Lang = {
 			onInput: ' اذا  كانت قيمة  %m.inputSensors %n %m.compares %m.inputs',
 			isClosed: ' هل  %m.openCloseSensors %m.inputs اغلق',
 			getCounter: ' اقرأ  قيمة  العداد  %m.counters',
-			getSensor: ' اقرأ  قيمة                     ال  %m.inputSensors %m.inputs',
+			getSensor: ' اقرأ  قيمة                   ال  %m.inputSensors %m.inputs',
 			doPlaySound: 'شغل - الصوت  %n',
 			doPlaySoundWait: ' -شغل-الصوت-الى-نهايته-  %n',
 			doSetLamp: ' عيّن  قيمة  المصباح  %m.outputs  إلى  %n',
