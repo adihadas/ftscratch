@@ -63,7 +63,7 @@ var Lang = {
 			getCounter: ' اقرأ  قيمة  العداد  %m.counters',
 			getSensor: ' اقرأ  قيمة  ال  %m.inputSensors %m.inputs',
 			doPlaySound: 'شغل الصوت  %n',
-			doPlaySoundWait: ' -شغل-الصوت-الى-نهايته-  %n',
+			doPlaySoundWait: ' -شغل-الصو تإلى نهايته-  %n',
 			doSetLamp: ' عيّن  قيمة  المصباح  %m.outputs  إلى  %n',
 			//doSetOutput: ' عرف  الإخراج  %m.outputs  إلى  %n',
 			doResetCounter: ' أعد  تعيين  العداد  %m.counters',
