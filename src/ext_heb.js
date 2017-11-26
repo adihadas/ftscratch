@@ -126,7 +126,7 @@ var Lang = {
 			sens_lightBarrier: 'מחסום אור',
 			sens_button: 'מתג',
 			sens_reed: 'חיישן מגנטיות',
-			sens_IR: 'חיישן אינפרה-רד',
+			sens_IR: 'חיישן מסלול',
 			openclose_opens: 'נפתח',
 			openclose_closes: 'נסגר',
 			mode_a5k: 'התנגדות אנלוגית',
