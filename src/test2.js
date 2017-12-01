@@ -866,7 +866,7 @@ var IO = {
 			
 			[' ', Lang.get('doStopMotor'),					'doStopMotor',					'M1'],
 
-			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getMode('d10v')],
+			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getSensor('button')],
 
 			
 			[' ', Lang.get('reset'),						'reset'],
