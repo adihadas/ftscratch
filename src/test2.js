@@ -719,6 +719,8 @@ var IO = {
 	/** expert config: input -> mode */
 	ext.doConfigureInput = function(inputName, inputMode) {
 
+		alert(inputMode);
+		alert(Lang.getSensor('distance'));
 		if (inputMode=== Lang.getSensor('button') || inputMode=== Lang.getSensor('lightBarrier') || inputMode=== Lang.getSensor('reed')) {var idx = ext._inputModeToIdx(Lang.getMode('d5k'));} 
 		else if (inputMode=== Lang.getSensor('IR')) {var idx = ext._inputModeToIdx(Lang.getMode('d10v'));} 
 		else if (inputMode=== Lang.getSensor('ntc') || inputMode=== Lang.getSensor('photo')) {var idx = ext._inputModeToIdx(Lang.getMode('a5k'));} 
