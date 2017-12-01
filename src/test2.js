@@ -718,17 +718,14 @@ var IO = {
 	
 	/** expert config: input -> mode */
 	ext.doConfigureInput = function(inputName, inputMode) {
-		if (inputMode=== Lang.getSensor('button') || inputMode=== Lang.getSensor('lightBarrier') || inputMode=== Lang.getSensor('reed')) {
-					var idx = ext._inputModeToIdx(Lang.getMode('d5k'));
-		} else if (inputMode=== Lang.getSensor('IR')) {
-					var idx = ext._inputModeToIdx(Lang.getMode('d10v'));
-		} else if (inputMode=== Lang.getSensor('ntc') || (inputMode=== Lang.getSensor('photo')) {
-					var idx = ext._inputModeToIdx(Lang.getMode('a5k'));
-		} else if (inputMode=== Lang.getSensor('color')) {
-					var idx = ext._inputModeToIdx(Lang.getMode('a10v'));
-		} else if (inputMode=== Lang.getSensor('distance')) {
-					var idx = ext._inputModeToIdx(Lang.getMode('ultrasonic'));
-		}
+
+		if (inputMode=== Lang.getSensor('button') || inputMode=== Lang.getSensor('lightBarrier') || inputMode=== Lang.getSensor('reed')) {var idx = ext._inputModeToIdx(Lang.getMode('d5k'));} 
+		else if (inputMode=== Lang.getSensor('IR')) {var idx = ext._inputModeToIdx(Lang.getMode('d10v'));} 
+		else if (inputMode=== Lang.getSensor('ntc') || inputMode=== Lang.getSensor('photo')) {var idx = ext._inputModeToIdx(Lang.getMode('a5k'));} 
+		else if (inputMode=== Lang.getSensor('color')) {var idx = ext._inputModeToIdx(Lang.getMode('a10v'));} 
+		else if (inputMode=== Lang.getSensor('distance')) {var idx = ext._inputModeToIdx(Lang.getMode('ultrasonic'));}
+		else {alert("unsupported input type");}
+
 		alert(Lang.getMode('ultrasonic'));
 
 		ext._setSensorMode(inputName, idx);
