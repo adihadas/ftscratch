@@ -728,6 +728,7 @@ var IO = {
 					var idx = ext._inputModeToIdx(Lang.getMode('a10v'));
 		} else if (inputMode=== Lang.getSensor('distance')) {
 					var idx = ext._inputModeToIdx(Lang.getMode('ultrasonic'));
+		}
 		alert(Lang.getMode('ultrasonic'));
 
 		ext._setSensorMode(inputName, idx);
