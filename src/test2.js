@@ -895,7 +895,7 @@ var IO = {
 			outputs:			['O1', 'O2', 'O3', 'O4', 'O5', 'O6', 'O7', 'O8'],
 			outputValues:		[0, 1, 2, 3, 4, 5, 6, 7, 8],
 			
-			inputModes:			[Lang.getMode('d10v'), Lang.getMode('d5k'), Lang.getMode('a10v'), Lang.getMode('a5k'), Lang.getMode('ultrasonic')],
+			inputModes:			[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier'), Lang.getSensor('IR'), Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 	
 		},
 		
