@@ -94,7 +94,7 @@ var Lang = {
 			mode_d10v: 'تيار-ديجيتالي-',
 			mode_ultrasonic: 'اولت-اسونيك-',
 			reset: 'إعادة-تعيين-'
-		},		
+		},
 		// Hebrew translation
 		he: {
 			onOpenClose: 'כאשר %m.openCloseSensors %m.inputs %m.openClose',
@@ -126,7 +126,7 @@ var Lang = {
 			sens_lightBarrier: 'מחסום אור',
 			sens_button: 'מתג',
 			sens_reed: 'חיישן מגנטיות',
-			sens_IR: 'חיישן אינפרה-רד',
+			sens_IR: 'חיישן מסלול',
 			openclose_opens: 'נפתח',
 			openclose_closes: 'נסגר',
 			mode_a5k: 'התנגדות אנלוגית',
@@ -138,7 +138,7 @@ var Lang = {
 		}		
 	},	
 	
-	// get the arabic translated version
+	// get the hebrew translated version
 	get: function(what) {
 		//var codes = this.trans[this.langCode];		// requested language
 		//if (!codes) { 
@@ -718,19 +718,16 @@ var IO = {
 	
 	/** expert config: input -> mode */
 	ext.doConfigureInput = function(inputName, inputMode) {
-		var idx = ext._inputModeToIdx(inputMode);
+		if (inputMode=== Lang.getSensor('button') || inputMode=== Lang.getSensor('lightBarrier') || inputMode=== Lang.getSensor('reed')) {var idx = ext._inputModeToIdx(Lang.getMode('d5k'));} 
+		else if (inputMode=== Lang.getSensor('IR')) {var idx = ext._inputModeToIdx(Lang.getMode('d10v'));} 
+		else if (inputMode=== Lang.getSensor('ntc') || inputMode=== Lang.getSensor('photo')) {var idx = ext._inputModeToIdx(Lang.getMode('a5k'));} 
+		else if (inputMode=== Lang.getSensor('color')) {var idx = ext._inputModeToIdx(Lang.getMode('a10v'));} 
+		else if (inputMode=== Lang.getSensor('distance')) {var idx = ext._inputModeToIdx(Lang.getMode('ultrasonic'));}
+		else {alert("unsupported input type");}
 		ext._setSensorMode(inputName, idx);
 		ext.updateIfNeeded();
 	};
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	/** get the given counter's current value */
 	ext.getCounter = function(counterName) {
 		var idx = ext._counterNameToIdx(counterName);
@@ -863,7 +860,7 @@ var IO = {
 			
 			[' ', Lang.get('doStopMotor'),					'doStopMotor',					'M1'],
 
-			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getMode('d10v')],
+			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getSensor('button')],
 
 			
 			[' ', Lang.get('reset'),						'reset'],
@@ -892,7 +889,7 @@ var IO = {
 			outputs:			['O1', 'O2', 'O3', 'O4', 'O5', 'O6', 'O7', 'O8'],
 			outputValues:		[0, 1, 2, 3, 4, 5, 6, 7, 8],
 			
-			inputModes:			[Lang.getMode('d10v'), Lang.getMode('d5k'), Lang.getMode('a10v'), Lang.getMode('a5k'), Lang.getMode('ultrasonic')],
+			inputModes:			[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier'), Lang.getSensor('IR'), Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 	
 		},
 		
