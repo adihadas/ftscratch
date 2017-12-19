@@ -30,8 +30,8 @@ var Lang = {
 			doSetMotorSpeedDir: 'Set motor %m.motors to %n %m.motorDirections',
 			doSetMotorDir: 'Set motor %m.motors to %m.motorDirections',
 			doSetMotorSpeedDirDist: 'Move motor %m.motors by %n steps with %n %m.motorDirections',
-			doSetMotorSpeedDirSync: 'Move motor %m.motors with %m.motors with %n %m.motorDirections',
-			doSetMotorSpeedDirDistSync: 'Move motor %m.motors with %m.motors by %n steps with %n %m.motorDirections',
+			doSetMotorSpeedDirSync: 'Move motor %m.motors %m.motorDirections and %m.motors %m.motorDirections with %n ',
+			doSetMotorSpeedDirDistSync: 'Move motor %m.motors %m.motorDirections and %m.motors %m.motorDirections with %n by %n steps',
 			doStopMotor: 'Stop motor %m.stopmotors',
 			doConfigureInput: 'Set input %m.inputs to %m.inputModes',
 			dir_forward: 'forward',
@@ -112,8 +112,10 @@ var Lang = {
 			doSetMotorSpeedDir: 'הפעל מנוע %m.motors במהירות %n %m.motorDirections',
 			doSetMotorDir: 'קבע כיוון מנוע %m.motors ל %m.motorDirections',
 			doSetMotorSpeedDirDist: 'הפעל מנוע %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
-			doSetMotorSpeedDirSync: 'הפעל מנועים %m.motors וגם  %m.motors במהירות %n %m.motorDirections',
-			doSetMotorSpeedDirDistSync: 'הפעל מנועים %m.motors וגם %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
+
+			doSetMotorSpeedDirSync: 'הפעל מנועים %m.motors %m.motorDirections וגם %m.motors %m.motorDirections במהירות %n',
+			doSetMotorSpeedDirDistSync: 'הפעל מנועים %m.motors %m.motorDirections וגם %m.motors %m.motorDirections למרחק %n צעדים במהירות %n',
+
 			doStopMotor: 'עצור מנוע %m.stopmotors',
 			doConfigureInput: 'הגדר סוג קלט %m.inputs ל %m.inputModes',
 			dir_forward: 'קדימה',
@@ -218,9 +220,11 @@ function ScratchConnection(url, ext) {
 		if (messageType === "SENS") {
 			ext.input.oldValues = ext.input.curValues;
 			ext.input.curValues = data;
+			ext.onNewInputs();
 		} else if (messageType === "SDON") {
 			ext.onSoundDone();
 		} else if (messageType == "PONG") {
+			ext.onPong();
 			var dev = data[0];
 			var devChanged = dev != _this.curDev;
 			_this.curDev = dev;
@@ -499,7 +503,7 @@ var IO = {
 		if (inputMode == Lang.getMode('a10v'))			{return 2;}
 		if (inputMode == Lang.getMode('a5k'))			{return 3;}
 		if (inputMode == Lang.getMode('ultrasonic'))	{return 4;}
-		console.log("err");
+		//console.log("err");
 	};
 	
 	
@@ -593,7 +597,30 @@ var IO = {
 			ext.soundCallback = null;
 		}
 	};
-	
+
+    	ext.waitForMotor = [];
+    
+	/** input values have changed */
+	ext.onNewInputs = function() {
+	ext.checkCallbacks();
+	};
+    
+	/** ping/pong between scratch and app */
+	ext.onPong = function() {
+	ext.checkCallbacks();
+	}
+    	
+	/** check callbacks for some blocks whether they are hit */
+	ext.checkCallbacks = function() {
+		for (var idx in ext.waitForMotor) {
+			var func = ext.waitForMotor[idx];
+			var res = func();
+			if (res) {
+				//console.log("remove");
+				ext.waitForMotor.splice(idx, 1);
+			}
+		}       
+	};	
 
 
 	/** commands */
@@ -651,63 +678,112 @@ var IO = {
 	};
 	
 	/** let the given motor move "steps" steps into the given direction with the provided speed */
-	ext.doSetMotorSpeedDirDist = function(motorName, steps, value, dirName) {
-		// do NOT change sync-constraint
+	ext.doSetMotorSpeedDirDist = function(motorName, steps, value, dirName, callback) {
+                
+		ext._setMotorSyncNone(motorName);               // remove sync
 		ext._setMotorDist(motorName, steps);
 		ext._setMotorDir(motorName, dirName);
 		ext._setMotorSpeed08(motorName, value);
 		ext.updateIfNeeded();
+        
+ 		// register a function that will be checked for every input check.
+		// if the counters reached a certain level, call the blocking callback
+		var motorIdx = ext._motorNameToIdx(motorName);
+		var check = function() {
+			//console.log("check motor " + motorIdx + " >= " + steps);
+			var c1 = ext.input.oldValues.counters[motorIdx];
+			var c2 = ext.input.curValues.counters[motorIdx];
+			if (c2 >= steps) {
+				//if (c1 < c2) {
+				callback(); return true;
+				//}
+			}
+			return false;
+		}
+        
+		window.setTimeout(
+			function(){ ext.waitForMotor.push(check); },
+			200
+		);      
+        
 	};
 	
-	/** synchronize the two given motors */
-	ext.doSetMotorSpeedDirSync = function(motor1Name, motor2Name, value, dirName) {
-		// do NOT chang distance-limit
-		ext._setMotorSync(motor1Name, motor2Name);
-		ext._setMotorDir(motor1Name, dirName);
-		ext._setMotorDir(motor2Name, dirName);
-		ext._setMotorSpeed08(motor1Name, value);
-		ext._setMotorSpeed08(motor2Name, value);
+	/** synchronize the two given motors */	
+	ext.doSetMotorSpeedDirSync = function(motor1Name, dir1Name, motor2Name, dir2Name, speed) {
+        		if (motor1Name == motor2Name) {return;}
+        
+		ext._setMotorDist(motor1Name, 0);               // remove distance limits
+		ext._setMotorDist(motor2Name, 0);               // remove distance limits
+		ext._setMotorSync(motor1Name, motor2Name);      // sync both motors (same speed)
+		ext._setMotorDir(motor1Name, dir1Name);
+		ext._setMotorDir(motor2Name, dir2Name);
+		ext._setMotorSpeed08(motor1Name, speed);
+		ext._setMotorSpeed08(motor2Name, speed);
 		ext.updateIfNeeded();
 	};
 	
 	/** synchronize the two given motors with distance */
-	ext.doSetMotorSpeedDirDistSync = function(motor1Name, motor2Name, steps, value, dirName) {
+	    ext.doSetMotorSpeedDirDistSync = function(motor1Name, dir1Name, motor2Name, dir2Name, steps, speed, callback) {
+        		if (motor1Name == motor2Name) {callback(); return;}
+    
 		ext._setMotorSync(motor1Name, motor2Name);
 		ext._setMotorDist(motor1Name, steps);
 		ext._setMotorDist(motor2Name, steps);
-		ext._setMotorDir(motor1Name, dirName);
-		ext._setMotorDir(motor2Name, dirName);
-		ext._setMotorSpeed08(motor1Name, value);
-		ext._setMotorSpeed08(motor2Name, value);
+		ext._setMotorDir(motor1Name, dir1Name);
+		ext._setMotorDir(motor2Name, dir2Name);
+		ext._setMotorSpeed08(motor1Name, speed);
+		ext._setMotorSpeed08(motor2Name, speed);
 		ext.updateIfNeeded();
+        
+		// register a function that will be checked for every input check.
+		// if the counters reached a certain level, call the blocking callback
+		var motorIdx = ext._motorNameToIdx(motor1Name);
+		var check = function() {
+			//console.log("check motor " + motorIdx + " >= " + steps);
+			var c1 = ext.input.oldValues.counters[motorIdx];
+			var c2 = ext.input.curValues.counters[motorIdx];
+			if (c2 >= steps) {
+				//if (c1 < c2) {
+					callback(); return true;
+				//}
+			}
+			return false;
+		}
+        	
+		window.setTimeout(
+			function(){ ext.waitForMotor.push(check); },
+			200
+		);      
+        
 	};
 	
 		
-	/** stop the given motor [remove distance and sync constraints] */
+	/** stop the given motor */
 	ext.doStopMotor = function(motorName) {
 		if (motorName === Lang.getAll()) {
-			/** stop all motors [remove distance and sync constraints] */
-			ext._setMotorSpeed08('M1', 0);		// set speed to 0
-			ext._setMotorDist('M1', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M1');		// remove sync constraints
-			ext._setMotorSpeed08('M2', 0);		// set speed to 0
-			ext._setMotorDist('M2', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M2');		// remove sync constraints
-			ext._setMotorSpeed08('M3', 0);		// set speed to 0
-			ext._setMotorDist('M3', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M3');		// remove sync constraints
-			ext._setMotorSpeed08('M4', 0);		// set speed to 0
-			ext._setMotorDist('M4', 0);		// remove distance limits
-			//ext._setMotorSyncNone('M4');		// remove sync constraints
+		/** stop all motors [remove distance and sync constraints] */
+			ext._setMotorSpeed08('M1', 0);      // set speed to 0
+			ext._setMotorDist('M1', 0);     // remove distance limits
+			ext._setMotorSyncNone('M1');      // remove sync constraints
+			ext._setMotorSpeed08('M2', 0);      // set speed to 0
+			ext._setMotorDist('M2', 0);     // remove distance limits
+			ext._setMotorSyncNone('M2');      // remove sync constraints
+`			ext._setMotorSpeed08('M3', 0);      // set speed to 0
+			ext._setMotorDist('M3', 0);     // remove distance limits
+			ext._setMotorSyncNone('M3');      // remove sync constraints
+			ext._setMotorSpeed08('M4', 0);      // set speed to 0
+			ext._setMotorDist('M4', 0);     // remove distance limits
+			ext._setMotorSyncNone('M4');      // remove sync constraints
 			ext.updateIfNeeded();
 		}
-		else {
-			ext._setMotorSpeed08(motorName, 0);		// set speed to 0
-			ext._setMotorDist(motorName, 0);		// remove distance limits
-			//ext._setMotorSyncNone(motorName);		// remove sync constraints
+		else { 
+			ext._setMotorSpeed08(motorName, 0);     // set speed to 0
+			//ext._setMotorDist(motorName, 0);        // remove distance limits
+			//ext._setMotorSyncNone(motorName);     // remove sync constraints
 			ext.updateIfNeeded();
 		}
 	};
+    
 	
 	/** reset the given counter to zero */
 	ext.doResetCounter = function(counterName) {
@@ -718,20 +794,16 @@ var IO = {
 	
 	/** expert config: input -> mode */
 	ext.doConfigureInput = function(inputName, inputMode) {
-		alert(inputMode);
-		var idx = ext._inputModeToIdx(inputMode);
+		if (inputMode=== Lang.getSensor('button') || inputMode=== Lang.getSensor('lightBarrier') || inputMode=== Lang.getSensor('reed')) {var idx = ext._inputModeToIdx(Lang.getMode('d5k'));} 
+		else if (inputMode=== Lang.getSensor('IR')) {var idx = ext._inputModeToIdx(Lang.getMode('d10v'));} 
+		else if (inputMode=== Lang.getSensor('ntc') || inputMode=== Lang.getSensor('photo')) {var idx = ext._inputModeToIdx(Lang.getMode('a5k'));} 
+		else if (inputMode=== Lang.getSensor('color')) {var idx = ext._inputModeToIdx(Lang.getMode('a10v'));} 
+		else if (inputMode=== Lang.getSensor('distance')) {var idx = ext._inputModeToIdx(Lang.getMode('ultrasonic'));}
+		else {alert("unsupported input type");}
 		ext._setSensorMode(inputName, idx);
 		ext.updateIfNeeded();
 	};
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	/** get the given counter's current value */
 	ext.getCounter = function(counterName) {
 		var idx = ext._counterNameToIdx(counterName);
@@ -858,13 +930,14 @@ var IO = {
 			[' ', Lang.get('doSetMotorSpeed'),				'doSetMotorSpeed',				'M1', 8],
 			[' ', Lang.get('doSetMotorSpeedDir'),			'doSetMotorSpeedDir',			'M1', 8, Lang.getMotorDir('forward')],			
 			[' ', Lang.get('doSetMotorDir'),				'doSetMotorDir',				'M1', Lang.getMotorDir('forward')],
-			[' ', Lang.get('doSetMotorSpeedDirDist'),		'doSetMotorSpeedDirDist',		'M1', 100, 8, Lang.getMotorDir('forward')],
-			[' ', Lang.get('doSetMotorSpeedDirSync'),		'doSetMotorSpeedDirSync',		'M1', 'M2', 8, Lang.getMotorDir('forward')],
-			[' ', Lang.get('doSetMotorSpeedDirDistSync'),	'doSetMotorSpeedDirDistSync',	'M1', 'M2', 100, 8, Lang.getMotorDir('forward')],
 			
 			[' ', Lang.get('doStopMotor'),					'doStopMotor',					'M1'],
+			// advanced motor
+			['w', Lang.get('doSetMotorSpeedDirDist'),       'doSetMotorSpeedDirDist',       'M1', 100, 8, Lang.getMotorDir('forward')],
+			[' ', Lang.get('doSetMotorSpeedDirSync'),       'doSetMotorSpeedDirSync',       'M1', Lang.getMotorDir('forward'), 'M2', Lang.getMotorDir('forward'), 8],
+			['w', Lang.get('doSetMotorSpeedDirDistSync'),   'doSetMotorSpeedDirDistSync',   'M1', Lang.getMotorDir('forward'), 'M2', Lang.getMotorDir('forward'), 100, 8],
 
-			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getMode('d10v')],
+			[' ', Lang.get('doConfigureInput'),				'doConfigureInput',				'I1', Lang.getSensor('button')],
 
 			
 			[' ', Lang.get('reset'),						'reset'],
@@ -893,7 +966,7 @@ var IO = {
 			outputs:			['O1', 'O2', 'O3', 'O4', 'O5', 'O6', 'O7', 'O8'],
 			outputValues:		[0, 1, 2, 3, 4, 5, 6, 7, 8],
 			
-			inputModes:			[Lang.getMode('d10v'), Lang.getMode('d5k'), Lang.getMode('a10v'), Lang.getMode('a5k'), Lang.getMode('ultrasonic')],
+			inputModes:			[Lang.getSensor('button'), Lang.getSensor('reed'), Lang.getSensor('lightBarrier'), Lang.getSensor('IR'), Lang.getSensor('color'), Lang.getSensor('distance'), Lang.getSensor('ntc'), Lang.getSensor('photo')],
 	
 		},
 		
