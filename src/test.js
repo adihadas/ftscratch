@@ -768,7 +768,7 @@ var IO = {
 			ext._setMotorSpeed08('M2', 0);      // set speed to 0
 			ext._setMotorDist('M2', 0);     // remove distance limits
 			ext._setMotorSyncNone('M2');      // remove sync constraints
-`			ext._setMotorSpeed08('M3', 0);      // set speed to 0
+			ext._setMotorSpeed08('M3', 0);      // set speed to 0
 			ext._setMotorDist('M3', 0);     // remove distance limits
 			ext._setMotorSyncNone('M3');      // remove sync constraints
 			ext._setMotorSpeed08('M4', 0);      // set speed to 0
