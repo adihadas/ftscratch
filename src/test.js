@@ -65,7 +65,7 @@ var Lang = {
 			getSensor: 'اقرأ -قيمة -ال- %m.inputSensors %m.inputs',
 			doPlaySound: 'أسمع -النغمة- %n',
 			doPlaySoundWait: 'أسمع -نغمة -حتى -نهايتها- %n',
-			doSetLamp: أضئ -المصباح- %m.outputs بقوة -سطوع- %n',
+			doSetLamp: 'أضئ -المصباح- %m.outputs بقوة -سطوع- %n',
 			doResetCounter: 'قم -بتصفير -العداد- %m.counters',
 			doSetMotorSpeed: 'شغل -المحرك-  %m.motors  بسر-عة- %n',
 			doSetMotorSpeedDir: 'شغل -المحرك- %m.motors بسر-عة- %n %m.motorDirections',
