@@ -56,7 +56,7 @@ var Lang = {
 		},
 		// Arabic translation
 		ar: {
-			onOpenClose: اذا- %m.openCloseSensors %m.inputs %m.openClose',
+			onOpenClose: 'اذا- %m.openCloseSensors %m.inputs %m.openClose',
 			onCounter: 'اذا- -كانت- -قيمة- -العداد- %m.counters %m.compares %n',
 			onInput: 'اذا- -كانت- -قيمة- %m.inputSensors %n %m.compares %m.inputs',
 			isClosed: 'هل- %m.openCloseSensors %m.inputs مغلق-',
