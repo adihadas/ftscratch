@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+?<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -67,7 +67,7 @@
 				</div>
 		</div>
 		<div class="column2">
-			<a href="bin/FTScratchTXT.exe" class="image image-centered img"><img src="images/ftscratch.png"  alt="" /></a>
+			<a href="bin/FTScratchTXT.exe" class="image image-centered img"><img src="images/ftscratch122.png"  alt="" /></a>
 				<div class="title">
 				<h2>3) הפעילו את <span style="color: rgb(0, 113, 188);" "font-family: Verdana; text-align: center;"><a href="bin/FTScratchTXT.exe"><span style="color: rgb(237, 28, 36);">FT</span>ScratchTXT</span></a></h2>
 				<span class="byline"><b><a href="bin/FTScratchTXT.exe">הורידו למחשב</a> את תוכנת FTSCRATCHTXT המקשרת בין ההרחבה אל הרובוט והפעילו אותה</b></span>
@@ -169,6 +169,11 @@
 			 <div class="text">הגדר את הכיוון של סיבוב המנוע המחובר ליציאת פלט M1-M4<br></div>
 		</div>
 		<div class="blockDesc">
+			 <div class="image"><img src="images/doStopMotor.png"></div>
+			 <div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4<br>
+			 פרמטר "הכל" עוצר את כל יציאות הפלט ומאפס כל הגבלת סינכרון או מרחק שהוטלה על המנועים בפקודות קודמות<br></div>
+		</div>
+		<div class="blockDesc">
 			 <div class="image"><img src="images/doSetMotorSpeedDirDist.png"></div>
 			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותו של המנוע המחובר ליציאת פלט M1-M4, ואת המרחק (מספר הצעדים) אותו יש לעבור<br>
 			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
@@ -180,7 +185,7 @@
 			 <div class="image"><img src="images/doSetMotorSpeedDirSync.png"></div>
 			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותם של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים<br>
 			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
-			 <b style="color: rgb(237, 28, 36);">חובה להשתמש בפקודות "עצור מנוע" למנועים איתם עבדנו בצורה סינכרונית לאחר סיום פעולתם כדי לאפשר המשך עבודה עם שאר הפקודות</b><br></div>
+			 <b style="color: rgb(237, 28, 36);">חובה להשתמש בפקודת "עצור מנוע - הכל"  כדי לאפשר המשך עבודה עם כל מנוע בנפרד</b><br></div>
 		</div>
 		<div class="blockDesc">
 			 <div class="image"><img src="images/doSetMotorSpeedDirDistSync.png"></div>
@@ -188,11 +193,7 @@
 			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
 			 בדיקת המרחק מתבצעת מול ערך כניסת המונים C1-C4 המחוברים לחיישני האינקודרים של המנועים (בהתאמה)<br>
 			 <b>הפקודה תעבוד רק אם חיישני האינקודרים של המנועים מחוברים לכניסות המונים המתאימים בבקר:  C1 עבור מנוע ב-M1 וכן הלאה</b><br>
-			 <b style="color: rgb(237, 28, 36);">חובה להשתמש בפקודות "עצור מנוע" למנועים איתם עבדנו בצורה סינכרונית לאחר סיום פעולתם כדי לאפשר המשך עבודה עם שאר הפקודות</b></div>
-		</div>
-		<div class="blockDesc">
-			 <div class="image"><img src="images/doStopMotor.png"></div>
-			 <div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4</div>
+			 <b style="color: rgb(237, 28, 36);">חובה להשתמש בפקודת "עצור מנוע - הכל"  כדי לאפשר המשך עבודה עם כל מנוע בנפרד</b></div>
 		</div>
 		<div class="blockDesc">
 			<div class="image"><img src="images/doConfigureInput.png"></div>
@@ -201,8 +202,7 @@
 		</div>
 	  <div class="blockDesc">
 	  	  <div class="image"><img src="images/reset.png"></div>
-		  <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br>
-		  מומלץ לא להשתמש בפקודה באמצע ריצת התכנית משום שזמן הביצוע של התהליך עלול לחפוף לפקודות ההמשך שאחריו ולשבשן</div>
+		  <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br></div>
 	  </div>
 </div>
 </br>
