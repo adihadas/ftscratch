@@ -1,4 +1,8 @@
-﻿function getButtonState(state) {
+﻿window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-111419028-1', 'auto');
+ga('send', 'pageview');
+
+function getButtonState(state) {
 	return Lang.get(state);
 }
 
