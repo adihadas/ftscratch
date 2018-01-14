@@ -56,39 +56,38 @@ var Lang = {
 		},
 		// Arabic translation
 		ar: {
-
 			onOpenClose: 'اذا- %m.openCloseSensors %m.inputs %m.openClose',
-			onCounter: 'اذا -كانت -قيمة -العداد- %m.counters %m.compares %n',
-			onInput: 'اذا -كانت -قيمة- %m.inputSensors %n %m.compares %m.inputs',
+			onCounter: 'اذا -كانت قيمة العداد- %m.counters %m.compares %n',
+			onInput: 'اذا- -كانت قيمة- %m.inputSensors %n %m.compares %m.inputs',
 			isClosed: 'هل- %m.openCloseSensors %m.inputs مغلق-',
-			getCounter: 'اقرأ -قيمة -العداد- %m.counters',
+			getCounter: 'اقرأ- قيمة- العداد- %m.counters',
 			getSensor: 'اقرأ -قيمة -ال- %m.inputSensors %m.inputs',
 			doPlaySound: 'أسمع -النغمة- %n',
 			doPlaySoundWait: 'أسمع -نغمة -حتى -نهايتها- %n',
 			doSetLamp: 'أضئ -المصباح- %m.outputs بقوة -سطوع- %n',
 			doResetCounter: 'قم -بتصفير -العداد- %m.counters',
-			doSetMotorSpeed: 'شغل -المحرك-  %m.motors  بسر-عة- %n',
-			doSetMotorSpeedDir: 'شغل -المحرك- %m.motors بسر-عة- %n %m.motorDirections',
-			doSetMotorDir:  'حدد -جهة -المحرك- %m.motors ل- %m.motorDirections',
-			doSetMotorSpeedDirDist: 'شغل -المحرك- %m.motors لمسافة %n خطو-ات -بسر-عة-  %n %m.motorDirections',
-			doSetMotorSpeedDirSync: 'شغل -المحر-كات- %m.motors %m.motorDirections  وأيضا- %m.motors %m.motorDirections  بالسر-عة- %n',
-			doSetMotorSpeedDirDistSync: 'شغل -المحر-كات- %m.motors %m.motorDirections  وأيضا-  %m.motors %m.motorDirections  لمسافة %n خطو-ات -بسرعة-  %n',
-			doStopMotor: 'أوقف -المحرك- %m.stopmotors',
-			doConfigureInput: 'حدد -نوع -المُدخَل- %m.inputs  ل %m.inputModes',
-			dir_forward: 'الى -الأمام-',
+			doSetMotorSpeed: 'شغل -المحرك-  %m.motors  بسرعة- %n',
+			doSetMotorSpeedDir: 'شغل -المحرك- %m.motors بسرعة- %n %m.motorDirections',
+			doSetMotorDir:  'حدد -جهة -المحرك- %m.motors ل %m.motorDirections',
+			doSetMotorSpeedDirDist: 'شغل -المحرك- %m.motors لمسافة- %n خطو-ات -بسرعة-  %n %m.motorDirections',
+			doSetMotorSpeedDirSync: 'شغل -المحركات- %m.motors %m.motorDirections وأيضا- %m.motors %m.motorDirections  -بالسرعة- %n',
+			doSetMotorSpeedDirDistSync: 'شغل -المحركات- %m.motors %m.motorDirections وأيضا- %m.motors %m.motorDirections لمسافة- %n خطوات- -بسرعة-  %n',
+			doStopMotor: 'أوقف- -المحرك- %m.stopmotors',
+			doConfigureInput: 'حدد نوع -المُدخَل- %m.inputs  ل %m.inputModes',
+			dir_forward: 'الى -الأمام',
 			dir_backwards: 'الى -الخلف-',
 			all: 'الكل-',
 			sens_color: 'مجس -اللون-',
 			sens_distance: 'مجس -المسافة-',
 			sens_ntc: 'مجس -الحرارة-',
 			sens_photo: 'مجس -الضوء-',
-			sens_lightBarrier: 'حاجز -الضوء-',
+			sens_lightBarrier: 'حاجز- -الضوء-',
 			sens_button: 'مفتاح-',
-			sens_reed: 'مجس -الحقل -المغناطيسي-',
-			sens_IR: 'مجس -الأشعة تحت -الحمراء-',
+			sens_reed: 'مجس -الحقل -المغناطيسي--',
+			sens_IR: 'مجس -الأشعة -تحت -الحمراء--',
 			openclose_opens: 'يُفتح-',
 			openclose_closes: 'يُغلق-',
-			mode_a5k: 'مقاومة -تناظرية-',
+			mode_a5k: 'مقاومة- -تناظرية-',
 			mode_d5k: 'مقاومة -رقمية-',
 			mode_a10v: 'جهد -تناظري-',
 			mode_d10v: 'جهد -رقمي-',
@@ -112,10 +111,8 @@ var Lang = {
 			doSetMotorSpeedDir: 'הפעל מנוע %m.motors במהירות %n %m.motorDirections',
 			doSetMotorDir: 'קבע כיוון מנוע %m.motors ל %m.motorDirections',
 			doSetMotorSpeedDirDist: 'הפעל מנוע %m.motors למרחק %n צעדים במהירות %n %m.motorDirections',
-
 			doSetMotorSpeedDirSync: 'הפעל מנועים %m.motors %m.motorDirections וגם %m.motors %m.motorDirections במהירות %n',
 			doSetMotorSpeedDirDistSync: 'הפעל מנועים %m.motors %m.motorDirections וגם %m.motors %m.motorDirections למרחק %n צעדים במהירות %n',
-
 			doStopMotor: 'עצור מנוע %m.stopmotors',
 			doConfigureInput: 'הגדר סוג קלט %m.inputs ל %m.inputModes',
 			dir_forward: 'קדימה',
@@ -144,7 +141,7 @@ var Lang = {
 	get: function(what) {
 		//var codes = this.trans[this.langCode];		// requested language
 		//if (!codes) { 
-		codes = this.trans['he']; 
+		codes = this.trans['en']; 
 		//}	// fallback
 		return codes[what];
 	},
