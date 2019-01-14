@@ -127,10 +127,9 @@
 
             eventData = e.data.split(" ");
 	    connected = 2;
+		
             if (eventData[0] == "R_state_update") {
                 cachedValues = eventData;
-                //console.log("cached "+cachedValues);
-                
             } else {
                 if (DEBUG) {
                     console.log("emitted " + eventData)
@@ -171,7 +170,7 @@
     }
 
     /**
-     * The function sends code of thymio_motion.aesl to asebahttp bridge
+     *The function sends code of thymio_motion.aesl to asebahttp bridge
      */
 
     function loadAesl() {
@@ -1898,10 +1897,32 @@ motor.right.target = event.args[0] \
             ["w", "turn %n", "scratch_turn", 45],
             ["w", "turn %n with speed %n", "scratch_turn_with_speed", 90,50],
             ["w", "turn %n in %n s", "scratch_turn_with_time", 90,1],
-            ["w", "circle radius %n angle %n", "scratch_arc", 150, 45],
+            ["r", "proximity sensor %n", "proximity", 2],
+            ["r", "ground sensor %n", "ground", 0],
+            ["r", "distance %m.sensors", "distance", "front"],
+            ["r", "angle %m.angles", "angle", "front"],
+            ["b", "touching %m.sensors", "touching", "front"],
+            ["b", "touching %m.sensors %n", "touching_threshold", "front"],
             [" ", "leds RGB %m.light %n %n %n", "scratch_leds", "all", 0, 0, 32],
             [" ", "leds set color %n on %m.light", "scratch_set_leds", 0, "all"],
             [" ", "leds change color %n on %m.light", "scratch_change_leds", 0, "all"],
+            [" ", "leds clear", "scratch_clear_leds"],
+            ["w", "circle radius %n angle %n", "scratch_arc", 150, 45],
+            [" ", "play system sound %m.sounds", "A_sound_system", 1],
+            [" ", "play note %n during %n s", "A_sound_freq", 440, 1],
+            [" ", "play sound SD %n", "A_sound_play_sd", ""],
+            [" ", "record sound %n", "A_sound_record", ""],
+            [" ", "replay sound %n", "A_sound_replay", ""],
+            ["r", "proximity sensors", "prox_horizontal"],
+            ["r", "ground sensors", "prox_ground_delta"],
+            ["r", "sound level", "mic_intensity"],
+            ["b", "sound detected", "sound_detected"],
+            ["b", "tap %n", "bump"],
+            ["r", "tilt on %m.tilts", "tilt", "front-back"],
+            ["R", "temperature", "temperature"],
+            [" ", "set odometer %n %n %n", "Q_set_odometer", 90, 0, 0],
+            ["r", "odometer %m.odo", "odo", "direction"],
+            ["r", "measure motor %m.leftright", "motor", "left"],
             [" ", "leds next dial %m.leftright", "scratch_next_dial", "left"],
             [" ", "leds dial all %n %n %n %n %n %n %n %n", "V_leds_circle", 0, 8, 16, 32, 0, 8, 16, 32],
             [" ", "leds sensors h %n %n %n %n %n %n %n %n", "V_leds_prox_h", 0, 16, 32, 32, 16, 0, 32, 32],
@@ -1910,37 +1931,14 @@ motor.right.target = event.args[0] \
             [" ", "leds temperature %n %n", "V_leds_temperature", 32, 8],
             [" ", "leds rc %n", "V_leds_rc", 16],
             [" ", "leds sound %n", "V_leds_sound", 32],
-            [" ", "leds clear", "scratch_clear_leds"],
-            [" ", "play system sound %m.sounds", "A_sound_system", 1],
-            [" ", "play note %n during %n s", "A_sound_freq", 440, 1],
-            [" ", "play sound SD %n", "A_sound_play_sd", ""],
-            [" ", "record sound %n", "A_sound_record", ""],
-            [" ", "replay sound %n", "A_sound_replay", ""],
-            ["r", "proximity sensor %n", "proximity", 2],
-            ["r", "proximity sensor %m.proxsensors", "proximity2", "front far left"],
-            ["r", "proximity sensors", "prox_horizontal"],
-            ["r", "ground sensor %n", "ground", 0],
-            ["r", "ground sensors", "prox_ground_delta"],
-            ["r", "distance %m.sensors", "distance", "front"],
-            ["r", "angle %m.angles", "angle", "front"],
-            ["b", "touching %m.sensors", "touching", "front"],
-            ["b", "touching %m.sensors %n", "touching_threshold", "front"],
-            ["r", "sound level", "mic_intensity"],
-            ["b", "sound detected", "sound_detected"],
-            ["b", "tap %n", "bump"],
-            ["r", "tilt on %m.tilts", "tilt", "front-back"],
-            ["R", "temperature", "temperature"],
-            ["r", "measure motor %m.leftright", "motor", "left"],
-            ["r", "leds color %m.light", "leds", "top"],    
-            [" ", "set odometer %n %n %n", "Q_set_odometer", 90, 0, 0],
-            ["r", "odometer %m.odo", "odo", "direction"],
             [" ", "emit %n", "emit", 1],
             ["r", "receive", "receive"],
             ["h", "button %m.buttons", "button","center"]
-            
            /* 
+            ["r", "proximity sensor %m.proxsensors", "proximity2", "front far left"],
             ["r", "motor %m.leftright speed", "motor_speed", "left" ],
             ["r", "motor %m.leftright target", "motor_target", "left" ],
+            ["r", "leds color %m.light", "leds", "top"],            
             */
             ],
         fr: [
@@ -1952,11 +1950,33 @@ motor.right.target = event.args[0] \
             ["w", "tourner %n", "scratch_turn", 45],
             ["w", "tourner %n avec vitesse %n", "scratch_turn_with_speed", 90,50],
             ["w", "tourner %n en %n s", "scratch_turn_with_time", 90,1],
-            ["w", "cercle rayon %n angle %n", "scratch_arc", 150, 45],
+            ["r", "capteur horizontal %n", "proximity", 2],
+            ["r", "capteur dessous %n", "ground", 0],
+            ["r", "distance %m.sensors", "distance", "devant"],
+            ["r", "angle %m.angles", "angle", "devant"],
+            ["b", "objet détecté %m.sensors", "touching", "devant"],
+            ["b", "objet détecté %m.sensors %n", "touching_threshold", "devant"],
             [" ", "leds RVB %m.light %n %n %n", "scratch_leds", "tout", 0, 0, 32],
             [" ", "leds fixer couleur %n on %m.light", "scratch_set_leds", 0, "tout"],
             [" ", "leds changer couleur %n pour %m.light", "scratch_change_leds", 0, "all"],
-            [" ", "led cadran suivante %m.leftright", "scratch_next_dial", "gauche"],
+            [" ", "éteindre leds", "scratch_clear_leds"],
+            ["w", "cercle rayon %n angle %n", "scratch_arc", 150, 45],
+            [" ", "jouer son système %m.sounds", "A_sound_system", 1],
+            [" ", "jouer note %n pendant %n s", "A_sound_freq", 440, 1],
+            [" ", "jouer son SD %n", "A_sound_play_sd", ""],
+            [" ", "enregistrer son %n", "A_sound_record", ""],
+            [" ", "rejouer son %n", "A_sound_replay", ""],
+            ["r", "capteurs horizontaux", "prox_horizontal"],
+            ["r", "capteurs dessous", "prox_ground_delta"],
+            ["r", "niveau sonore", "mic_intensity"],
+            ["b", "bruit", "sound_detected"],
+            ["b", "choc %n", "bump"],
+            ["r", "inclinaison %m.tilts", "tilt", "devant-derrière"],
+            ["R", "température", "temperature"],
+            [" ", "odomètre %n %n %n", "Q_set_odometer", 90, 0, 0],
+            ["r", "odomètre %m.odo", "odo", "direction"],
+            ["r", "mesure moteur %m.leftright", "motor", "gauche"],
+           	[" ", "led cadran suivante %m.leftright", "scratch_next_dial", "gauche"],
             [" ", "leds cadran toutes %n %n %n %n %n %n %n %n", "V_leds_circle", 0, 8, 16, 32, 0, 8, 16, 32],
             [" ", "leds capteurs horiz. %n %n %n %n %n %n %n %n", "V_leds_prox_h", 0, 16, 32, 32, 16, 0, 32, 32],
             [" ", "leds capteurs dessous %n %n", "V_leds_prox_v", 32, 32],
@@ -1964,36 +1984,15 @@ motor.right.target = event.args[0] \
             [" ", "leds temperature %n %n", "V_leds_temperature", 32, 8],
             [" ", "leds rc %n", "V_leds_rc", 16],
             [" ", "leds sound %n", "V_leds_sound", 32],
-            [" ", "éteindre leds", "scratch_clear_leds"],
-            [" ", "jouer son système %m.sounds", "A_sound_system", 1],
-            [" ", "jouer note %n pendant %n s", "A_sound_freq", 440, 1],
-            [" ", "jouer son SD %n", "A_sound_play_sd", ""],
-            [" ", "enregistrer son %n", "A_sound_record", ""],
-            [" ", "rejouer son %n", "A_sound_replay", ""],
-            ["r", "capteur horizontal %n", "proximity", 2],
-            ["r", "capteur horizontal %m.proxsensors", "proximity2", "devant extrême gauche"],
-            ["r", "capteurs horizontaux", "prox_horizontal"],
-            ["r", "capteur dessous %n", "ground", 0],
-            ["r", "capteurs dessous", "prox_ground_delta"],
-            ["r", "distance %m.sensors", "distance", "devant"],
-            ["r", "angle %m.angles", "angle", "devant"],
-            ["b", "objet détecté %m.sensors", "touching", "devant"],
-            ["b", "objet détecté %m.sensors %n", "touching_threshold", "devant"],
-            ["r", "niveau sonore", "mic_intensity"],
-            ["b", "bruit", "sound_detected"],
-            ["b", "choc %n", "bump"],
-            ["r", "inclinaison %m.tilts", "tilt", "devant-derrière"],
-            ["R", "température", "temperature"],
-            ["r", "mesure moteur %m.leftright", "motor", "gauche"],
-            ["r", "leds couleur %m.singlelight", "leds", "dessus"],
-            [" ", "odomètre %n %n %n", "Q_set_odometer", 90, 0, 0],
-            ["r", "odomètre %m.odo", "odo", "direction"],
             [" ", "emission %n", "emit", 1],
             ["r", "reception", "receive"],
             ["h", "bouton %m.buttons", "button","central"]
+            
             /*
+            ["r", "capteur horizontal %m.proxsensors", "proximity2", "devant extrême gauche"],
             ["r", "moteur %m.leftright vitesse", "motor_speed", "gauche" ],
             ["r", "moteur %m.leftright target", "motor_target", "gauche" ],
+            ["r", "leds couleur %m.singlelight", "leds", "dessus"],
             */
         ],
         it: [
@@ -2005,49 +2004,48 @@ motor.right.target = event.args[0] \
             ["w", "ruota di %n gradi", "scratch_turn", 45],
             ["w", "ruota di %n gradi con velocità %n", "scratch_turn_with_speed", 90,50],
             ["w", "ruota di %n gradi in %n s", "scratch_turn_with_time", 90,1],
-            ["w", "fai un cerchio di raggio %n per %n gradi", "scratch_arc", 150, 45],
+            ["r", "sensore prox. %n", "proximity", 2],
+            ["r", "sensore terreno %n", "ground", 0],
+            ["r", "distanza %m.sensors", "distance", "davanti"],
+            ["r", "angolo %m.angles", "angle", "davanti"],
+            ["b", "oggetto rilevato %m.sensors", "touching", "davanti"],
+            ["b", "oggetto rilevato %m.sensors %n", "touching_threshold", "davanti"],
             [" ", "tutti i LED RVB %m.light %n %n %n", "scratch_leds", "tutti", 0, 0, 32],
             [" ", "colora LED %n %m.light", "scratch_set_leds", 0, "tutti"],
-            [" ", "cambia colore LED %n %m.light", "scratch_change_leds", 0, "tutti"],
-            [" ", "on LED quadrante %m.leftright", "scratch_next_dial", "sinistro"],
-            [" ", "on LED quadrante %n %n %n %n %n %n %n %n", "V_leds_circle", 0, 8, 16, 32, 0, 8, 16, 32],
-            [" ", "LED sensori prox. %n %n %n %n %n %n %n %n", "V_leds_prox_h", 0, 16, 32, 32, 16, 0, 32, 32],
-            [" ", "LED sensori terreno %n %n", "V_leds_prox_v", 32, 32],
-            [" ", "LED bottoni %n %n %n %n", "V_leds_buttons", 16, 32, 16, 32],
-            [" ", "LED temperatura %n %n", "V_leds_temperature", 32, 8],
-            [" ", "LED RC %n", "V_leds_rc", 16],
-            [" ", "LED microfono %n", "V_leds_sound", 32],
+            [" ", "cambia colore LED %n %m.light", "scratch_change_leds", 0, "all"],
             [" ", "spegni LED", "scratch_clear_leds"],
+            ["w", "fai un cerchio di raggio %n per %n gradi", "scratch_arc", 150, 45],
             [" ", "suona suono Thymio %m.sounds", "A_sound_system", 1],
             [" ", "suona nota %n per %n s", "A_sound_freq", 440, 1],
             [" ", "suona suono su scheda SD %n", "A_sound_play_sd", ""],
             [" ", "registra suono %n", "A_sound_record", ""],
             [" ", "riproduci suono %n", "A_sound_replay", ""],
-            ["r", "sensore prox.%n", "proximity", 2],
-            ["r", "sensore prox. %m.proxsensors", "proximity2", "tutto a sinistra"],
-            ["r", "sensori di prox. oriz.", "prox_horizontal"],
-            ["r", "sensore terreno %n", "ground", 0],
-            ["r", "sensori di prox. terreno", "prox_ground_delta"],
-            ["r", "distanza %m.sensors", "distance", "davanti"],
-            ["r", "angolo %m.angles", "angle", "davanti"],
-            ["b", "oggetto rilevato %m.sensors", "touching", "davanti"],
-            ["b", "oggetto rilevato %m.sensors %n", "touching_threshold", "davanti"],
+            ["r", "sensori di prox.", "prox_horizontal"],
+            ["r", "sensori di prox.", "prox_ground_delta"],
             ["r", "livello sonoro", "mic_intensity"],
             ["b", "rumore captato", "sound_detected"],
             ["b", "urto %n", "bump"],
             ["r", "inclinazione %m.tilts", "tilt", "davanti-dietro"],
             ["R", "temperatura", "temperature"],
-            ["r", "misura motori %m.leftright", "motor", "sinistro"],
-            ["r", "colore LED %m.singlelight", "leds", "sopra"],
             [" ", "inizializza isometria %n %n %n", "Q_set_odometer", 90, 0, 0],
             ["r", "isometria %m.odo", "odo", "direzione"],
+            ["r", "misura motori %m.leftright", "motor", "sinistro"],
+           	[" ", "on LED quadrante %m.leftright", "scratch_next_dial", "sinistro"],
+            [" ", "on LED quadrante %n %n %n %n %n %n %n %n", "V_leds_circle", 0, 8, 16, 32, 0, 8, 16, 32],
+            [" ", "LED sensori prox. %n %n %n %n %n %n %n %n", "V_leds_prox_h", 0, 16, 32, 32, 16, 0, 32, 32],
+            [" ", "LED sensori terreno %n %n", "V_leds_prox_v", 32, 32],
+            [" ", "LED bottoni %n %n %n %n", "V_leds_buttons", 16, 32, 16, 32],
+            [" ", "LED bottoni %n %n", "V_leds_temperature", 32, 8],
+            [" ", "LED RC %n", "V_leds_rc", 16],
+            [" ", "LED microfono %n", "V_leds_sound", 32],
             [" ", "emetti %n", "emit", 1],
             ["r", "ricezione", "receive"],
             ["h", "bottone %m.buttons", "button","centrale"]
-            
             /* 
+            ["r", "sensore prox. %m.proxsensors", "proximity2", "tutto a sinistra"],
             ["r", "moteur %m.leftright vitesse", "motor_speed", "gauche" ],
             ["r", "moteur %m.leftright target", "motor_target", "gauche" ],
+            ["r", "colore LED %m.singlelight", "leds", "sopra"],
             */
             
         ]
@@ -2236,7 +2234,7 @@ motor.right.target = event.args[0] \
                 rgb[2] = 33 - color % 33;
                 break;
         }
-        
+      
         return rgb;
     }
 

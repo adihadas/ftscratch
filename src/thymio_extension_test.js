@@ -21,22 +21,46 @@
     var ASEBAHTTPURL = 'http://localhost:3000/';
     var VMAX = 500;
     var VMIN = -500;
-    var DEBUG = false;
+    var DEBUG = true;
     var LMAX = 32;
     var LMIN = 0;
 
     var source = null;
     var connected = 0;
+    var aeslLoaded=0;
     var eventCompleteCallback = false;
     var cachedValues = Array();
     var leds = [0, 0, 0];
     var dial = -1;
 
+	setup();
 
-	loadAesl();
-	connect();
 	
+	
+	function setup(){
+            
+   	 $.ajax({
+    	url: ASEBAHTTPURL + 'nodes/thymio-II/',
+        dataType: 'json',
+		async:false,
+        success: function(data) {
+			connected==1;
+			
+        	if (DEBUG) {
+            	console.log("Thymio response");
+            }
+			if(data.events.hasOwnProperty('Q_add_motion')){
+				connect();
+			}else{
+				console.log("manca aesl");
+				loadAesl();
+			}
 
+
+        }
+    	});
+	
+}
     /**
      * Cleanup function when the extension is unloaded
      */
@@ -125,16 +149,22 @@
 
         source.addEventListener('message', function(e) {
 
+			console.log()
             eventData = e.data.split(" ");
-	    connected = 2;
+	    	connected = 2;
+	    	
             if (eventData[0] == "R_state_update") {
                 cachedValues = eventData;
-                //console.log("cached "+cachedValues);
                 
             } else {
                 if (DEBUG) {
                     console.log("emitted " + eventData)
                 }
+              
+              	 if (eventData[0] == "24" && connected!=0) {
+              	 	disconnect('');
+              	 	setup();
+              	 }
             }
 
 
@@ -149,8 +179,7 @@
         source.addEventListener('error', function(e) {
 
             disconnect('Event stream closed');
-            connected = 0;
-            connect();
+            setup();
 
         });
 
@@ -414,7 +443,7 @@ motor.right.target = event.args[0] \
   			type: 'PUT',
   			data: xmlstring,
   			success: function(data) {
-  				connect();
+  				setup();
     	 
   			}
 		});
