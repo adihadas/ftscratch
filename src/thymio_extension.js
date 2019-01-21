@@ -1913,9 +1913,9 @@ motor.right.target = event.args[0] \
             ["r", "אחזר רמת ווליום", "mic_intensity"],
             ["b", "האם זוהה צליל", "sound_detected"],
             ["r", "אחזר זווית הטיה %m.tilts", "tilt", "קדימה-אחורה"],
-            ["R", "טמפרטורה", "temperature"],
-            ["r", "אחזר מהירות מנוע %m.leftright", "motor", "שמאל"],
-            ["r", "אחזר צבע לד %m.light", "leds", "למעלה"]
+            ["R", "טמפרטורה", "temperature"]
+//            ["r", "אחזר צבע לד %m.light", "leds", "למעלה"]
+//            ["r", "אחזר מהירות מנוע %m.leftright", "motor", "שמאל"],
 //            ["b", "האם זוהתה טפיחה  %n", "bump"],
  //           ["r", "proximity sensors", "prox_horizontal"],
  //           [" ", "הגדר צבע אור %n on %m.light", "scratch_set_leds", 0, "הכל"],
