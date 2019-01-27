@@ -1890,7 +1890,7 @@ motor.right.target = event.args[0] \
 
     var blocks = {
 	he: [
-		 	["h", "בלחיצת כפתור %m.buttons", "button","מרכז"],
+            ["h", "בלחיצת כפתור %m.buttons", "button","מרכז"],
             [" ", "הפעל מנוע %m.leftrightall %n", "scratch_motor", "שמאל", 50],
             [" ", "עצור", "scratch_stop"],
             ["w", "סע מרחק %n", "scratch_move", 50],
@@ -1907,7 +1907,7 @@ motor.right.target = event.args[0] \
             [" ", "נגן צליל %m.sounds", "A_sound_system", 1],
             [" ", "נגן תו %n במשך %n שניות", "A_sound_freq", 440, 1],
             ["r", "אחזר ערך חיישן קרבה %m.proxsensors", "proximity2", "קדימה-שמאל-קיצוני"],
-			["r", "חיישן רצפה %n", "ground", 0],
+            ["r", "אחזר ערך חיישן רצפה %n", "ground", 0],
             ["r", "אחזר מרחק %m.sensors", "distance", "קדימה"],
             ["b", "האם זוהה מכשול %m.sensors", "touching", "קדימה"],
             ["r", "אחזר רמת ווליום", "mic_intensity"],
