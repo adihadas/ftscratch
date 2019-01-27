@@ -1907,13 +1907,14 @@ motor.right.target = event.args[0] \
             [" ", "נגן צליל %m.sounds", "A_sound_system", 1],
             [" ", "נגן תו %n במשך %n שניות", "A_sound_freq", 440, 1],
             ["r", "אחזר ערך חיישן קרבה %m.proxsensors", "proximity2", "קדימה-שמאל-קיצוני"],
-             ["r", "אחזר ערך חיישן רצפה %m.leftright", "ground", "שמאל"],
+			["r", "חיישן רצפה %n", "ground", 0],
             ["r", "אחזר מרחק %m.sensors", "distance", "קדימה"],
             ["b", "האם זוהה מכשול %m.sensors", "touching", "קדימה"],
             ["r", "אחזר רמת ווליום", "mic_intensity"],
             ["b", "האם זוהה צליל", "sound_detected"],
             ["r", "אחזר זווית הטיה %m.tilts", "tilt", "קדימה-אחורה"],
             ["R", "טמפרטורה", "temperature"]
+//			 ["r", "אחזר ערך חיישן רצפה %m.leftright", "ground", "שמאל"],
 //            ["r", "אחזר צבע לד %m.light", "leds", "למעלה"]
 //            ["r", "אחזר מהירות מנוע %m.leftright", "motor", "שמאל"],
 //            ["b", "האם זוהתה טפיחה  %n", "bump"],
