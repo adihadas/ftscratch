@@ -1900,7 +1900,7 @@ motor.right.target = event.args[0] \
             ["w", "פנה %n במהירות %n", "scratch_turn_with_speed", 90,50],
             ["w", "פנה %n במשך %n שניות", "scratch_turn_with_time", 90,1],
             ["w", "פנה למרחק %n בזווית %n", "scratch_arc", 150, 45],
-            [" ", "הדלק אור בצבע %m.light %n %n %n", "scratch_leds", "הכל", 0, 0, 32],
+            [" ", "הדלק אור %m.light בצבע %n %n %n", "scratch_leds", "הכל", 0, 0, 32],
             [" ", "הדלק נורת חוגה הבאה בכיוון %m.leftright", "scratch_next_dial", "שמאל"],
             [" ", "הדלק כל נורות החוגה %n %n %n %n %n %n %n %n", "V_leds_circle", 0, 8, 16, 32, 0, 8, 16, 32],
             [" ", "כבה אורות לד", "scratch_clear_leds"],
