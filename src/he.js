@@ -23,7 +23,7 @@ module.exports = {
         ledsRc: 'הדלק נורות לד של חיישן השלט-רחוק [A]',
         ledsSound: 'הדלק נורות לד של המיקרופון [A]',
         soundSystem: 'נגן צליל [S]',
-        soundFreq: 'נגן תו בתדר [N]Hz במשך [S] שניות',
+        soundFreq: 'נגן תו בתדר [N]הרץ במשך [S] שניות',
         soundPlaySd: 'נגן צליל מכרטיס הזיכרון [N]',
         soundRecord: 'הקלט צליל [N]',
         soundReplay: 'השמע צליל מוקלט [N]',
