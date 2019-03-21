@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Thymio exension for ScratchX
 * v 1.1 for internal use
 * Created by Elisa Bernardoni on July 14, 2017
@@ -1943,32 +1943,6 @@ motor.right.target = event.args[0] \
             ["r", "motor %m.leftright target", "motor_target", "left" ],
             */
             ],
-ar: [
-["h", "عند الضغط على الزر  %m.buttons", "button","المركز"],
-            [" ", "شغل المحرك  %m.leftrightall %n", "scratch_motor", "يسار", 50],
-            [" ", "توقف", "scratch_stop"],
-            ["w", "تحرك لمسافة %n", "scratch_move", 50],
-            ["w", "تحرك لمسافة %n بسرعة %n", "scratch_move_with_speed", 50, 50],
-            ["w", "تحرك لمسافة %n لمدة %n ثواني", "scratch_move_with_time", 50, 1],
-            ["w", "استدر %n", "scratch_turn", 45],
-            ["w", "استدر %n بسرعة %n", "scratch_turn_with_speed", 90,50],
-            ["w", "استدر %n لمدة %n ثواني", "scratch_turn_with_time", 90,1],
-            ["w", "استدر لمسافة %n بزاوية %n", "scratch_arc", 150, 45],
-            [" ", "أضيء المصباح بلون %m.light %n %n %n", "scratch_leds", "الكل", 0, 0, 32],
-            [" ", "أضيء مصباح الشريط التالي باتجاه %m.leftright", "scratch_next_dial", "يسار"],
-            [" ", "أضيء كل المصابيح المحيطة %n %n %n %n %n %n %n %n", "V_leds_circle", 0, 8, 16, 32, 0, 8, 16, 32],
-            [" ", "أطفئ مصابيح ليد", "scratch_clear_leds"],
-            [" ", "أسمع نغمة %m.sounds", "A_sound_system", 1],
-            [" ", "أسمع نوتة %n במשך %n שניות", "A_sound_freq", 440, 1],
-            ["r", "اقرأ قيمة مجس القرب %m.proxsensors", "proximity2", "أمام-يسار-متطرف"],
-            ["r", "مجس الأرضية %n", "ground", 0],
-            ["r", "اقرأ البعد %m.sensors", "distance", "أمام"],
-            ["b", "هل ميزت حاجزا %m.sensors", "touching", "أمام"],
-            ["r", "اقرأ درجة الصوت", "mic_intensity"],
-            ["b", "هل ميزت نغمة", "sound_detected"],
-            ["r", "اقرأ زاوية الميل %m.tilts", "tilt", "أمام-خلف"],
-            ["R", "حرارة", "temperature"]
-],
         en: [
             [" ", "motor %m.leftrightall %n", "scratch_motor", "left", 50],
             [" ", "stop motors", "scratch_stop"],
@@ -2148,19 +2122,6 @@ ar: [
             buttons: ["מרכז","קדימה","אחורה","שמאלה","ימינה"]
 
         },
-he: {
-            leftrightall: ["يسار", "يمين", "الكل"],
-            leftright: ["يسار", "يمين"],
-            sensors: ["أمام", "خلف", "أرضا"],
-            proxsensors: ["أمام-يسار-متطرف", "أمام-يسار", "أمام-مركز", "أمام-يمين", "أمام-يمين-متطرف", "خلف-يسار", "خلف-يمين"],
-            singlelight: ["أعلى", "أسفل-يسار", "أسفل-يمين"],
-            light: ["الكل", "أعلى", "أسفل", "أسفل-يسار", "أسفل-يمين"],
-            angles: ["الى الأمام", "الى الخلف", "أرضا"],
-            sounds: ["0", "1", "2", "3", "4", "5", "6", "7"],
-            odo: ["اتجاه", "x", "y"],
-            tilts: ["أمام-خلف", "أعلى-أسفل", "يمين-يسار"],
-            buttons: ["مركز","أمام","خلف","يسار","يمين"]
-},
         en: {
             leftrightall: ["left", "right", "all"],
             leftright: ["left", "right"],
