@@ -117,6 +117,106 @@ gtag('config', 'UA-111419028-1');
 		</div></div>
 	</div>
 </div>	
+<div id="portfolio-wrapper">
+	<div id="portfolio" class="container">
+		<div id="commands" class="major">
+			<h2>תיאור פקודות Scratch 3 לרובוט</h2>
+		</div>
+		<div  class="blockDesc">
+			  <div class="image"><img src="images/onOpenClose3.png"></div>
+			  <div class="text"> אירוע זה יופעל כאשר חיישן דיגיטלי (מגע/מגנטי/אור/אינפרה-רד) המחובר בבקר לכניסת קלט (I1-I8) משנה את מצבו לנפתח (מ-1 ל-0) או לנסגר (מ-0 ל-1)<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/onCounter3.png"></div>
+			 <div class="text"> אירוע זה יופעל כאשר המספר הנוכחי השמור בקלט המונה (C1-C4) יהיה גבוה/נמוך/שווה לערך המוזן בפרמטר<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/onInput3.png"></div>
+			 <div class="text"> אירוע זה יופעל כאשר הערך של חיישן אנלוגי (צבע/מרחק/טמפרטורה/אור) המחובר לכניסת קלט (I1-I8) הינו גבוה/נמוך/שווה לערך המוזן בפרמטר<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/getCounter3.png"></div>
+			 <div class="text"> אחזר את ערכו של קלט המונה C1-C4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/getSensor3.png"></div>
+			 <div class="text"> אחזר את ערכו של חיישן אנלוגי (צבע/מרחק/טמפרטורה/אור) המחובר לכניסת קלט (I1-I8)<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/isClosed3.png"></div>
+			 <div class="text"> בדוק את ערכו של חיישן דיגטלי (מגע/מגנטיות/אור/אינפרה-רד) המחובר לכניסת קלט (I1-I8). יוחזר ערך בוליאני (0 או 1)<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doPlaySound3.png"></div>
+			 <div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doPlaySoundWait3.png"></div>
+			 <div class="text"> התחל לנגן את קובץ הצליל 1-29 השמור בבקר, והמתן עד לסיומו לפני המשך ביצוע שאר הפקודות<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetLamp3.png"></div>
+			 <div class="text"> הגדר ערך עוצמת הנורה המחוברת ליציאת פלט O1-O8<br>
+			 יש להגדיר ערך עוצמת אור בין 0-8. הגדרת עוצמת אור ל-0 תכבה את הנורה<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doResetCounter3.png"></div>
+			 <div class="text"> אפס את ערכו של קלט המונה C1-C4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeed3.png"></div>
+			 <div class="text"> הגדר את ערך המהירות של המנוע המחובר ליציאת פלט M1-M4 לערך שבין 0-8<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDir3.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותו של המנוע המחובר ליציאת פלט M1-M4<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorDir3.png"></div>
+			 <div class="text">הגדר את הכיוון של סיבוב המנוע המחובר ליציאת פלט M1-M4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doStopMotor3.png"></div>
+			 <div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doResetMotor3.png"></div>
+			 <div class="text"> עצור מנוע המחובר ליציאת פלט M1-M4, ואפס כל הגבלת סינכרון או מרחק שהוטלה על המנוע בפקודות קודמות<br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDirDist3.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותו של המנוע המחובר ליציאת פלט M1-M4, ואת המרחק (מספר הצעדים) אותו יש לעבור<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
+			 בדיקת המרחק מתבצעת מול ערך כניסת המונה C1-C4 המחובר לחיישן האינקודר של המנוע (בהתאמה)<br>
+			 הדרך היחידה לשנות את המהירות בזמן הנסיעה למרחק שנקבע היא להשתמש בפקודת עצור מנוע לפני הגדרה מחודשת של המהירות<br>
+			 <b>הפקודה תעבוד רק אם חיישן האינקודר של המנוע מחובר לכניסת המונה המתאימה בבקר: C1 עבור מנוע ב-M1 וכן הלאה</b></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDirSync3.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותם של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
+			 <b style="color: rgb(237, 28, 36);">חובה להשתמש בפקודת "אפס מנוע" כדי לאפשר המשך עבודה עם כל מנוע בנפרד</b><br></div>
+		</div>
+		<div class="blockDesc">
+			 <div class="image"><img src="images/doSetMotorSpeedDirDistSync3.png"></div>
+			 <div class="text">הגדר את ערכי כיוון הסיבוב ומהירותם של שני מנועים המחוברים ליציאות פלט M1-M4 לשם ביצוע הנעה סינכרונית של שני המנועים, והגדר את המרחק אותו יש לעבור<br>
+			 יש להגדיר ערך מהירות בין 0-8. הגדרת מהירות מנוע ל-0 תעצור אותו<br>
+			 בדיקת המרחק מתבצעת מול ערך כניסת המונים C1-C4 המחוברים לחיישני האינקודרים של המנועים (בהתאמה)<br>
+			 <b>הפקודה תעבוד רק אם חיישני האינקודרים של המנועים מחוברים לכניסות המונים המתאימים בבקר:  C1 עבור מנוע ב-M1 וכן הלאה</b><br>
+			 <b style="color: rgb(237, 28, 36);">חובה להשתמש בפקודת "אפס מנוע" כדי לאפשר המשך עבודה עם כל מנוע בנפרד</b></div>
+		</div>
+		<div class="blockDesc">
+			<div class="image"><img src="images/doConfigureInput3.png"></div>
+			<div class="text">הגדר את סוג החיישן המחובר לכניסת הפלט I1-I8<br>
+			<b>חובה להגדיר בתסריט את סוג החיישן על מנת שהסביבה תדע כיצד יש לעבוד איתו ויתקבלו ממנו ערכים מתאימים</b><br>
+		</div>
+	  <div class="blockDesc">
+	  	  <div class="image"><img src="images/reset3.png"></div>
+		  <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br></div>
+	  </div>
+</div>
 <div id="featured-wrapper">
 	<div id="featured" class="container">
 		<div class="major">
@@ -159,8 +259,6 @@ gtag('config', 'UA-111419028-1');
 		</div>
 	</div>
 </div>
-
-
 <div id="featured-wrapper">
 	 <div id="featured" class="container">
 	 	<div align="center"><div class="column1">
@@ -275,7 +373,6 @@ gtag('config', 'UA-111419028-1');
 		  <div class="text"> אפס את הבקר - כל ערכי כניסות הקלט ויציאות הפלט יאותחלו<br></div>
 	  </div>
 </div>
-</br>
 <div id="featured-wrapper">
 		<div id="contactus" class="major">
 			<h2>צרו קשר</h2>
